@@ -1,0 +1,829 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adhyatmik Toolkit — आध्यात्मिक यात्रा</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0b0d14;
+    --bg2: #11141f;
+    --bg3: #181c2a;
+    --glass: rgba(255,255,255,0.04);
+    --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08);
+    --indigo: #5c6bc0;
+    --indigo-light: #7986cb;
+    --mint: #80cbc4;
+    --mint-glow: rgba(128,203,196,0.18);
+    --gold: #c8a96e;
+    --gold-dim: rgba(200,169,110,0.15);
+    --text: #e8e6f0;
+    --text-muted: #8b8fa8;
+    --text-dim: #555a73;
+    --accent: #9575cd;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Aurora background */
+  .aurora {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    overflow: hidden;
+  }
+  .aurora-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(80px); opacity: 0.12;
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; animation-delay: 0s; }
+  .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
+  .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
+  @keyframes drift {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.08); }
+  }
+
+  /* Noise texture overlay */
+  body::after {
+    content: '';
+    position: fixed; inset: 0; z-index: 1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    opacity: 0.4;
+  }
+
+  /* Layout */
+  .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+
+  /* Header */
+  header {
+    text-align: center; padding: 3rem 0 2rem;
+  }
+  .brand-symbol {
+    font-size: 2rem; color: var(--gold); letter-spacing: 0.3em;
+    font-family: 'Cormorant Garamond', serif; font-weight: 300;
+    opacity: 0.8; display: block; margin-bottom: 0.5rem;
+  }
+  header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    font-weight: 300; letter-spacing: 0.04em;
+    background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1.2;
+  }
+  header p {
+    margin-top: 0.75rem; color: var(--text-muted);
+    font-size: 0.9rem; letter-spacing: 0.08em;
+    font-weight: 300;
+  }
+
+  /* Nav tabs */
+  .nav-tabs {
+    display: flex; gap: 0.5rem; justify-content: center;
+    margin: 1.5rem 0 2.5rem; flex-wrap: wrap;
+  }
+  .tab-btn {
+    padding: 0.55rem 1.4rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 50px; color: var(--text-muted);
+    font-size: 0.82rem; letter-spacing: 0.06em;
+    cursor: pointer; transition: all 0.3s ease;
+    font-family: 'DM Sans', sans-serif; font-weight: 400;
+  }
+  .tab-btn:hover { background: var(--glass-hover); color: var(--text); border-color: rgba(255,255,255,0.18); }
+  .tab-btn.active {
+    background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25));
+    border-color: var(--indigo); color: var(--text);
+    box-shadow: 0 0 20px rgba(92,107,192,0.2);
+  }
+
+  /* Sections */
+  .section { display: none; animation: fadeIn 0.4s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* Glass card */
+  .glass-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--mint); letter-spacing: 0.04em;
+    margin-bottom: 0.3rem;
+  }
+  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+
+  /* ===== BREATHING ENGINE ===== */
+  .mood-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .mood-btn {
+    padding: 0.45rem 1.1rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 50px; font-size: 0.8rem; color: var(--text-muted);
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
+  }
+  .mood-btn:hover { color: var(--text); border-color: var(--mint); }
+  .mood-btn.active {
+    background: var(--mint-glow); border-color: var(--mint); color: var(--mint);
+    box-shadow: 0 0 12px var(--mint-glow);
+  }
+
+  /* Breathing circle */
+  .breath-container {
+    display: flex; flex-direction: column; align-items: center;
+    gap: 2rem; padding: 1rem 0;
+  }
+  .breath-outer {
+    position: relative; width: 220px; height: 220px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .breath-ring {
+    position: absolute; border-radius: 50%; border: 1px solid;
+    animation: none; transition: transform 0s linear;
+  }
+  .ring-1 { width: 100%; height: 100%; border-color: rgba(128,203,196,0.12); }
+  .ring-2 { width: 80%; height: 80%; border-color: rgba(128,203,196,0.18); }
+  .ring-3 { width: 60%; height: 60%; border-color: rgba(128,203,196,0.25); }
+
+  .breath-circle {
+    position: relative; z-index: 2;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle at 40% 35%, rgba(149,117,205,0.5), rgba(92,107,192,0.3) 50%, rgba(0,191,165,0.15));
+    border: 1px solid rgba(128,203,196,0.35);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0s linear;
+    box-shadow: 0 0 30px rgba(128,203,196,0.1), inset 0 0 20px rgba(149,117,205,0.1);
+  }
+  .breath-phase-icon { font-size: 1.6rem; }
+
+  .breath-instruction {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 300; color: var(--text);
+    letter-spacing: 0.04em; min-height: 2.2rem;
+    transition: opacity 0.5s ease;
+  }
+  .breath-counter {
+    font-size: 0.85rem; color: var(--text-muted);
+    letter-spacing: 0.1em; margin-top: -0.5rem;
+  }
+
+  .phase-dots { display: flex; gap: 0.6rem; }
+  .phase-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--glass-border); transition: all 0.3s;
+  }
+  .phase-dot.active { background: var(--mint); box-shadow: 0 0 8px var(--mint); }
+  .phase-dot.done { background: rgba(128,203,196,0.4); }
+
+  /* Manual sliders */
+  .manual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  @media (max-width: 500px) { .manual-grid { grid-template-columns: 1fr; } }
+  .slider-row { display: flex; flex-direction: column; gap: 0.4rem; }
+  .slider-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.06em; display: flex; justify-content: space-between; }
+  .slider-label span { color: var(--mint); }
+  input[type=range] {
+    width: 100%; height: 4px; appearance: none; background: var(--glass-border);
+    border-radius: 2px; outline: none; cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    appearance: none; width: 14px; height: 14px; border-radius: 50%;
+    background: var(--mint); cursor: pointer;
+    box-shadow: 0 0 8px var(--mint-glow);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    padding: 0.7rem 2rem;
+    background: linear-gradient(135deg, rgba(92,107,192,0.4), rgba(149,117,205,0.35));
+    border: 1px solid rgba(149,117,205,0.5);
+    border-radius: 50px; color: var(--text);
+    font-size: 0.85rem; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-primary:hover { background: linear-gradient(135deg, rgba(92,107,192,0.6), rgba(149,117,205,0.5)); box-shadow: 0 0 20px rgba(149,117,205,0.2); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .btn-ghost {
+    padding: 0.55rem 1.4rem;
+    background: transparent; border: 1px solid var(--glass-border);
+    border-radius: 50px; color: var(--text-muted);
+    font-size: 0.8rem; cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
+
+  .controls-row { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+
+  /* Cycle counter */
+  .cycle-badge {
+    padding: 0.3rem 1rem;
+    background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.25);
+    border-radius: 50px; font-size: 0.78rem; color: var(--gold);
+    letter-spacing: 0.06em;
+  }
+
+  /* ===== GYAN QUOTES ===== */
+  .quote-display {
+    min-height: 180px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center;
+    padding: 1rem; position: relative;
+  }
+  .quote-symbol {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 5rem; color: var(--gold); opacity: 0.15;
+    line-height: 0; position: absolute; top: 1.5rem; left: 1.5rem;
+  }
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.65rem);
+    font-weight: 300; font-style: italic;
+    line-height: 1.6; color: var(--text);
+    max-width: 600px; transition: opacity 0.4s ease;
+  }
+  .quote-source {
+    margin-top: 1.2rem; font-size: 0.78rem;
+    color: var(--gold); letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .quote-mantra {
+    margin-top: 1rem; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--accent); opacity: 0.8;
+    letter-spacing: 0.08em;
+  }
+  .quote-category-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+  .cat-btn {
+    padding: 0.3rem 0.9rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 50px; font-size: 0.75rem; color: var(--text-muted);
+    cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cat-btn:hover, .cat-btn.active {
+    background: var(--gold-dim); border-color: rgba(200,169,110,0.4);
+    color: var(--gold);
+  }
+
+  /* ===== MEDITATION TIMER ===== */
+  .timer-display {
+    text-align: center; padding: 2rem 0;
+  }
+  .timer-digital {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 14vw, 7rem);
+    font-weight: 300; letter-spacing: 0.06em;
+    background: linear-gradient(135deg, var(--text), var(--mint));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1;
+  }
+  .timer-label {
+    font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.14em;
+    margin-top: 0.5rem; text-transform: uppercase;
+  }
+
+  /* Progress arc */
+  .timer-arc-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; }
+  .timer-arc-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .timer-arc-bg { fill: none; stroke: var(--glass-border); stroke-width: 2; }
+  .timer-arc-fill { fill: none; stroke: url(#arcGrad); stroke-width: 2; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+  .timer-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+  .preset-row { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .preset-btn {
+    padding: 0.5rem 1.2rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 50px; font-size: 0.82rem; color: var(--text-muted);
+    cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .preset-btn:hover { color: var(--text); border-color: var(--indigo-light); }
+  .preset-btn.active {
+    background: rgba(92,107,192,0.2); border-color: var(--indigo);
+    color: var(--indigo-light);
+  }
+
+  .completion-msg {
+    display: none; text-align: center; padding: 1rem;
+    background: linear-gradient(135deg, rgba(128,203,196,0.08), rgba(149,117,205,0.08));
+    border: 1px solid rgba(128,203,196,0.2); border-radius: 16px;
+    margin-top: 1rem;
+  }
+  .completion-msg.show { display: block; animation: fadeIn 0.5s ease; }
+  .completion-msg p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--mint); }
+  .completion-msg small { font-size: 0.8rem; color: var(--text-muted); }
+
+  /* Sound toggle */
+  .ambient-row {
+    display: flex; gap: 0.5rem; justify-content: center;
+    margin-top: 1.5rem;
+  }
+  .sound-btn {
+    padding: 0.4rem 1rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 50px; font-size: 0.78rem; color: var(--text-muted);
+    cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .sound-btn.active { background: var(--glass-hover); border-color: rgba(200,169,110,0.4); color: var(--gold); }
+
+  /* Divider */
+  .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
+
+  /* Footer */
+  footer {
+    text-align: center; padding: 2rem 0; border-top: 1px solid var(--glass-border);
+    font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.06em;
+  }
+  footer span { color: var(--gold); opacity: 0.7; }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .glass-card { padding: 1.5rem 1.2rem; }
+    .breath-outer { width: 180px; height: 180px; }
+    .breath-circle { width: 95px; height: 95px; }
+  }
+
+  /* Scroll indicator line */
+  .progress-line {
+    position: fixed; top: 0; left: 0; height: 2px; z-index: 999;
+    background: linear-gradient(90deg, var(--indigo), var(--mint));
+    width: 0; transition: width 0.2s ease;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-line" id="progressLine"></div>
+<div class="aurora">
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <span class="brand-symbol">ॐ</span>
+    <h1>Adhyatmik Toolkit</h1>
+    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+  </header>
+
+  <nav class="nav-tabs" role="tablist">
+    <button class="tab-btn active" onclick="switchTab('breath', this)" role="tab">🌬 Breathing</button>
+    <button class="tab-btn" onclick="switchTab('gyan', this)" role="tab">✦ Gyan</button>
+    <button class="tab-btn" onclick="switchTab('timer', this)" role="tab">◎ Meditate</button>
+  </nav>
+
+  <!-- ===== BREATHING SECTION ===== -->
+  <section id="tab-breath" class="section active">
+    <div class="glass-card">
+      <h2 class="section-title">Mood-Based Breathing</h2>
+      <p class="section-sub">Choose your state · Choose your breath</p>
+
+      <div class="mood-row">
+        <button class="mood-btn active" onclick="setMood('relax', this)">🌿 Relax (4-4-6-2)</button>
+        <button class="mood-btn" onclick="setMood('stress', this)">💙 Stress (4-7-8-0)</button>
+        <button class="mood-btn" onclick="setMood('focus', this)">🔥 Focus (6-2-6-2)</button>
+        <button class="mood-btn" onclick="setMood('manual', this)">⚙ Manual</button>
+      </div>
+
+      <div class="breath-container">
+        <div class="breath-outer" id="breathOuter">
+          <div class="breath-ring ring-1"></div>
+          <div class="breath-ring ring-2"></div>
+          <div class="breath-ring ring-3"></div>
+          <div class="breath-circle" id="breathCircle">
+            <span class="breath-phase-icon" id="phaseIcon">🫁</span>
+          </div>
+        </div>
+
+        <div class="breath-instruction" id="breathInstruction">Press Start to begin</div>
+        <div class="breath-counter" id="breathCounter">— s</div>
+
+        <div class="phase-dots">
+          <div class="phase-dot" id="dot0" title="Inhale"></div>
+          <div class="phase-dot" id="dot1" title="Hold"></div>
+          <div class="phase-dot" id="dot2" title="Exhale"></div>
+          <div class="phase-dot" id="dot3" title="Hold"></div>
+        </div>
+
+        <div class="controls-row">
+          <button class="btn-primary" id="breathBtn" onclick="toggleBreath()">▶ Start</button>
+          <button class="btn-ghost" onclick="resetBreath()">↺ Reset</button>
+          <div class="cycle-badge" id="cycleBadge">Cycles: 0</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manual Mode -->
+    <div class="glass-card" id="manualCard" style="display:none;">
+      <h3 style="font-size:0.9rem;color:var(--text-muted);letter-spacing:0.06em;margin-bottom:1rem;">Manual Adjustment (seconds)</h3>
+      <div class="manual-grid">
+        <div class="slider-row">
+          <div class="slider-label">Inhale <span id="lbIn">4</span>s</div>
+          <input type="range" min="1" max="12" value="4" id="slIn" oninput="updateManual()">
+        </div>
+        <div class="slider-row">
+          <div class="slider-label">Hold In <span id="lbH1">0</span>s</div>
+          <input type="range" min="0" max="10" value="0" id="slH1" oninput="updateManual()">
+        </div>
+        <div class="slider-row">
+          <div class="slider-label">Exhale <span id="lbEx">6</span>s</div>
+          <input type="range" min="1" max="12" value="6" id="slEx" oninput="updateManual()">
+        </div>
+        <div class="slider-row">
+          <div class="slider-label">Hold Out <span id="lbH2">0</span>s</div>
+          <input type="range" min="0" max="8" value="0" id="slH2" oninput="updateManual()">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GYAN SECTION ===== -->
+  <section id="tab-gyan" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">Gyan — Spiritual Wisdom</h2>
+      <p class="section-sub">Timeless wisdom from the heart of Bharat</p>
+
+      <div class="quote-category-row">
+        <button class="cat-btn active" onclick="filterQuotes('all', this)">All</button>
+        <button class="cat-btn" onclick="filterQuotes('vedanta', this)">Vedanta</button>
+        <button class="cat-btn" onclick="filterQuotes('buddhism', this)">Buddhism</button>
+        <button class="cat-btn" onclick="filterQuotes('bhagavad', this)">Gita</button>
+        <button class="cat-btn" onclick="filterQuotes('sufi', this)">Sufi</button>
+      </div>
+
+      <div class="quote-display" id="quoteDisplay">
+        <div class="quote-symbol">"</div>
+        <p class="quote-text" id="quoteText">Loading wisdom...</p>
+        <div class="quote-source" id="quoteSource"></div>
+        <div class="quote-mantra" id="quoteMantra"></div>
+      </div>
+
+      <hr class="divider">
+      <div class="controls-row">
+        <button class="btn-primary" onclick="nextQuote()">✦ New Wisdom</button>
+        <button class="btn-ghost" onclick="copyQuote()">⎘ Copy</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMER SECTION ===== -->
+  <section id="tab-timer" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">Meditation Timer</h2>
+      <p class="section-sub">Distraction-free stillness · Sit. Breathe. Be.</p>
+
+      <div class="preset-row">
+        <button class="preset-btn active" onclick="setTimer(5, this)">5 min</button>
+        <button class="preset-btn" onclick="setTimer(10, this)">10 min</button>
+        <button class="preset-btn" onclick="setTimer(15, this)">15 min</button>
+        <button class="preset-btn" onclick="setTimer(20, this)">20 min</button>
+        <button class="preset-btn" onclick="setTimer(30, this)">30 min</button>
+      </div>
+
+      <div class="timer-arc-wrap">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" style="stop-color:#5c6bc0"/>
+              <stop offset="100%" style="stop-color:#80cbc4"/>
+            </linearGradient>
+          </defs>
+          <circle class="timer-arc-bg" cx="100" cy="100" r="90"/>
+          <circle class="timer-arc-fill" id="timerArc" cx="100" cy="100" r="90"
+            stroke-dasharray="565.49" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-center">
+          <div class="timer-digital" id="timerDisplay">05:00</div>
+          <div class="timer-label" id="timerLabel">minutes remaining</div>
+        </div>
+      </div>
+
+      <div class="controls-row" style="margin-bottom:1rem;">
+        <button class="btn-primary" id="timerBtn" onclick="toggleTimer()">▶ Begin</button>
+        <button class="btn-ghost" onclick="resetTimer()">↺ Reset</button>
+      </div>
+
+      <div class="completion-msg" id="completionMsg">
+        <p>🔔 Session Complete — नमस्ते</p>
+        <small>You have honored your practice. Carry this stillness forward.</small>
+      </div>
+
+      <hr class="divider">
+      <div class="ambient-row">
+        <span style="font-size:0.75rem;color:var(--text-dim);letter-spacing:0.06em;align-self:center;">AMBIENT:</span>
+        <button class="sound-btn active" onclick="setAmbient('none', this)">Silence</button>
+        <button class="sound-btn" onclick="setAmbient('om', this)">OM Tone</button>
+        <button class="sound-btn" onclick="setAmbient('bowl', this)">Singing Bowl</button>
+      </div>
+      <p style="text-align:center;font-size:0.72rem;color:var(--text-dim);margin-top:0.75rem;">Ambient sounds use Web Audio API · Works best with headphones</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Made with ❤ for <span>adhyatmikyatra.in</span></p>
+    <p style="margin-top:0.4rem;">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
+  </footer>
+</div>
+
+<script>
+// ===== TAB NAVIGATION =====
+function switchTab(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ===== SCROLL PROGRESS =====
+window.addEventListener('scroll', () => {
+  const el = document.getElementById('progressLine');
+  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+  el.style.width = Math.min(pct, 100) + '%';
+});
+
+// ===== BREATHING ENGINE =====
+const moods = {
+  relax:  { inhale: 4, hold1: 4, exhale: 6, hold2: 2 },
+  stress: { inhale: 4, hold1: 7, exhale: 8, hold2: 0 },
+  focus:  { inhale: 6, hold1: 2, exhale: 6, hold2: 2 },
+  manual: { inhale: 4, hold1: 0, exhale: 6, hold2: 0 }
+};
+const phases = [
+  { key: 'inhale', label: 'Inhale slowly...', icon: '🫁', scale: 1.45 },
+  { key: 'hold1',  label: 'Hold your breath...', icon: '🌕', scale: 1.45 },
+  { key: 'exhale', label: 'Exhale gently...', icon: '💨', scale: 0.75 },
+  { key: 'hold2',  label: 'Pause... rest...', icon: '🌑', scale: 0.75 }
+];
+
+let curMood = 'relax', breathRunning = false, breathInterval = null;
+let curPhaseIdx = 0, curSecs = 0, cycleCnt = 0;
+let breathScheduled = null;
+
+function setMood(mood, btn) {
+  curMood = mood;
+  document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('manualCard').style.display = mood === 'manual' ? 'block' : 'none';
+  if (mood === 'manual') updateManual();
+  resetBreath();
+}
+
+function updateManual() {
+  moods.manual = {
+    inhale: +document.getElementById('slIn').value,
+    hold1:  +document.getElementById('slH1').value,
+    exhale: +document.getElementById('slEx').value,
+    hold2:  +document.getElementById('slH2').value
+  };
+  document.getElementById('lbIn').textContent = moods.manual.inhale;
+  document.getElementById('lbH1').textContent = moods.manual.hold1;
+  document.getElementById('lbEx').textContent = moods.manual.exhale;
+  document.getElementById('lbH2').textContent = moods.manual.hold2;
+}
+
+function getPhaseDuration(idx) {
+  const m = moods[curMood];
+  return [m.inhale, m.hold1, m.exhale, m.hold2][idx];
+}
+
+function updateDots(activeIdx) {
+  for (let i = 0; i < 4; i++) {
+    const dot = document.getElementById('dot' + i);
+    dot.className = 'phase-dot' + (i < activeIdx ? ' done' : i === activeIdx ? ' active' : '');
+  }
+}
+
+function animateCircle(phaseIdx, duration) {
+  const circle = document.getElementById('breathCircle');
+  const targetScale = phases[phaseIdx].scale;
+  circle.style.transition = `transform ${duration}s linear`;
+  circle.style.transform = `scale(${targetScale})`;
+}
+
+function runBreathPhase() {
+  const dur = getPhaseDuration(curPhaseIdx);
+  if (dur === 0) {
+    curPhaseIdx = (curPhaseIdx + 1) % 4;
+    if (curPhaseIdx === 0) { cycleCnt++; document.getElementById('cycleBadge').textContent = 'Cycles: ' + cycleCnt; }
+    runBreathPhase(); return;
+  }
+
+  const p = phases[curPhaseIdx];
+  document.getElementById('breathInstruction').textContent = p.label;
+  document.getElementById('phaseIcon').textContent = p.icon;
+  updateDots(curPhaseIdx);
+  animateCircle(curPhaseIdx, dur);
+
+  curSecs = dur;
+  document.getElementById('breathCounter').textContent = curSecs + ' s';
+
+  clearInterval(breathInterval);
+  breathInterval = setInterval(() => {
+    curSecs--;
+    document.getElementById('breathCounter').textContent = curSecs + ' s';
+    if (curSecs <= 0) {
+      clearInterval(breathInterval);
+      curPhaseIdx = (curPhaseIdx + 1) % 4;
+      if (curPhaseIdx === 0) { cycleCnt++; document.getElementById('cycleBadge').textContent = 'Cycles: ' + cycleCnt; }
+      if (breathRunning) runBreathPhase();
+    }
+  }, 1000);
+}
+
+function toggleBreath() {
+  breathRunning = !breathRunning;
+  document.getElementById('breathBtn').textContent = breathRunning ? '⏸ Pause' : '▶ Resume';
+  if (breathRunning) runBreathPhase();
+  else clearInterval(breathInterval);
+}
+
+function resetBreath() {
+  breathRunning = false; clearInterval(breathInterval);
+  curPhaseIdx = 0; curSecs = 0; cycleCnt = 0;
+  document.getElementById('breathBtn').textContent = '▶ Start';
+  document.getElementById('breathInstruction').textContent = 'Press Start to begin';
+  document.getElementById('breathCounter').textContent = '— s';
+  document.getElementById('phaseIcon').textContent = '🫁';
+  document.getElementById('breathCircle').style.transform = 'scale(1)';
+  document.getElementById('breathCircle').style.transition = 'none';
+  document.getElementById('cycleBadge').textContent = 'Cycles: 0';
+  updateDots(-1);
+}
+
+// ===== GYAN QUOTES =====
+const quotes = [
+  { text: "You are not a drop in the ocean. You are the entire ocean in a drop.", source: "Rumi", mantra: "अहं ब्रह्मास्मि", cat: "sufi" },
+  { text: "When you realize there is nothing lacking, the whole world belongs to you.", source: "Lao Tzu · Tao Te Ching", mantra: "पूर्णमदः पूर्णमिदम्", cat: "vedanta" },
+  { text: "The soul is not born; nor does it die at any time. It has not come into being, does not come into being, and will not come into being. It is unborn, eternal, ever-existing, and primeval.", source: "Bhagavad Gita 2.20", mantra: "नायं हन्ति न हन्यते", cat: "bhagavad" },
+  { text: "Peace comes from within. Do not seek it without.", source: "Gautama Buddha", mantra: "सर्वे भवन्तु सुखिनः", cat: "buddhism" },
+  { text: "Silence is the language of God. All else is poor translation.", source: "Rumi", mantra: "मौनं सर्वार्थ साधनम्", cat: "sufi" },
+  { text: "The Self is the friend of the self for him who has conquered himself by the Self. But for one who has not conquered himself, the Self is hostile.", source: "Bhagavad Gita 6.6", mantra: "आत्मैव ह्यात्मनो बन्धुः", cat: "bhagavad" },
+  { text: "Three things cannot be long hidden: the sun, the moon, and the truth.", source: "Gautama Buddha", mantra: "सत्यमेव जयते", cat: "buddhism" },
+  { text: "Brahman is the only truth; the world is illusion; and there is ultimately no difference between Brahman and individual self.", source: "Adi Shankaracharya", mantra: "ब्रह्म सत्यं जगन्मिथ्या", cat: "vedanta" },
+  { text: "That which is the finest essence — this whole world has that as its soul. That is Reality. That is Atman. That art thou.", source: "Chandogya Upanishad", mantra: "तत् त्वम् असि", cat: "vedanta" },
+  { text: "Do not dwell in the past, do not dream of the future. Concentrate the mind on the present moment.", source: "Gautama Buddha", mantra: "एकाग्रता", cat: "buddhism" },
+  { text: "The heart that loves is always young.", source: "Kabir", mantra: "प्रेम ही ईश्वर है", cat: "sufi" },
+  { text: "Set your heart on doing good. Do it over and over again, and you will be filled with joy.", source: "Dhammapada", mantra: "करुणा", cat: "buddhism" },
+];
+
+let currentCat = 'all', lastIdx = -1;
+
+function filterQuotes(cat, btn) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  nextQuote();
+}
+
+function nextQuote() {
+  const pool = currentCat === 'all' ? quotes : quotes.filter(q => q.cat === currentCat);
+  if (!pool.length) return;
+  let idx; do { idx = Math.floor(Math.random() * pool.length); } while (idx === lastIdx && pool.length > 1);
+  lastIdx = idx;
+  const q = pool[idx];
+  const qt = document.getElementById('quoteText');
+  qt.style.opacity = '0';
+  setTimeout(() => {
+    qt.textContent = q.text;
+    document.getElementById('quoteSource').textContent = '— ' + q.source;
+    document.getElementById('quoteMantra').textContent = q.mantra;
+    qt.style.opacity = '1';
+  }, 300);
+}
+
+function copyQuote() {
+  const text = document.getElementById('quoteText').textContent + '\n— ' + document.getElementById('quoteSource').textContent;
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = event.target; btn.textContent = '✓ Copied'; setTimeout(() => btn.textContent = '⎘ Copy', 1500);
+  });
+}
+
+nextQuote();
+
+// ===== MEDITATION TIMER =====
+let timerTotal = 300, timerRemain = 300, timerRunning = false, timerInterval = null;
+const circumference = 2 * Math.PI * 90;
+
+function setTimer(min, btn) {
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  timerTotal = min * 60; timerRemain = timerTotal;
+  resetTimer();
+}
+
+function pad(n) { return String(n).padStart(2, '0'); }
+
+function updateTimerDisplay() {
+  const m = Math.floor(timerRemain / 60), s = timerRemain % 60;
+  document.getElementById('timerDisplay').textContent = pad(m) + ':' + pad(s);
+  const pct = timerRemain / timerTotal;
+  document.getElementById('timerArc').style.strokeDashoffset = circumference * (1 - pct);
+  document.getElementById('timerLabel').textContent = timerRemain > 0 ? 'remaining' : 'complete';
+}
+
+function toggleTimer() {
+  timerRunning = !timerRunning;
+  document.getElementById('timerBtn').textContent = timerRunning ? '⏸ Pause' : '▶ Resume';
+  document.getElementById('completionMsg').classList.remove('show');
+  if (timerRunning) {
+    timerInterval = setInterval(() => {
+      if (timerRemain > 0) { timerRemain--; updateTimerDisplay(); }
+      else {
+        clearInterval(timerInterval); timerRunning = false;
+        document.getElementById('timerBtn').textContent = '▶ Begin';
+        document.getElementById('completionMsg').classList.add('show');
+        playBell();
+      }
+    }, 1000);
+  } else clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  clearInterval(timerInterval); timerRunning = false; timerRemain = timerTotal;
+  document.getElementById('timerBtn').textContent = '▶ Begin';
+  document.getElementById('completionMsg').classList.remove('show');
+  updateTimerDisplay();
+}
+
+updateTimerDisplay();
+
+// ===== WEB AUDIO =====
+let audioCtx = null, ambientNode = null, ambientType = 'none';
+
+function getCtx() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return audioCtx;
+}
+
+function setAmbient(type, btn) {
+  document.querySelectorAll('.sound-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  ambientType = type;
+  if (ambientNode) { try { ambientNode.stop(); } catch(e){} ambientNode = null; }
+  if (type === 'om') playOM();
+  else if (type === 'bowl') playSingingBowl();
+}
+
+function playOM() {
+  const ctx = getCtx();
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = 'sine'; osc.frequency.setValueAtTime(136.1, ctx.currentTime);
+  gain.gain.setValueAtTime(0, ctx.currentTime);
+  gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 2);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(); ambientNode = osc;
+}
+
+function playSingingBowl() {
+  const ctx = getCtx();
+  function bowl() {
+    if (ambientType !== 'bowl') return;
+    const osc = ctx.createOscillator(), gain = ctx.createGain();
+    osc.type = 'sine'; osc.frequency.setValueAtTime(432, ctx.currentTime);
+    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 4);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 4.5);
+    setTimeout(bowl, 6000);
+  }
+  bowl();
+}
+
+function playBell() {
+  try {
+    const ctx = getCtx();
+    const osc = ctx.createOscillator(), gain = ctx.createGain();
+    osc.type = 'sine'; osc.frequency.setValueAtTime(528, ctx.currentTime);
+    gain.gain.setValueAtTime(0.3, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3);
+    osc.connect(gain); gain.connect(ctx.destination);
+    osc.start(); osc.stop(ctx.currentTime + 3.5);
+  } catch(e) {}
+}
+</script>
+</body>
+</html>
