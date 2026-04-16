@@ -42,7 +42,6 @@
     position: relative;
   }
 
-  /* Aurora background */
   .aurora {
     position: fixed; inset: 0; z-index: 0; pointer-events: none;
     overflow: hidden;
@@ -60,7 +59,6 @@
     100% { transform: translate(40px, 30px) scale(1.08); }
   }
 
-  /* Noise texture overlay */
   body::after {
     content: '';
     position: fixed; inset: 0; z-index: 1; pointer-events: none;
@@ -68,13 +66,9 @@
     opacity: 0.4;
   }
 
-  /* Layout */
   .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
 
-  /* Header */
-  header {
-    text-align: center; padding: 3rem 0 2rem;
-  }
+  header { text-align: center; padding: 3rem 0 2rem; }
   .brand-symbol {
     font-size: 2rem; color: var(--gold); letter-spacing: 0.3em;
     font-family: 'Cormorant Garamond', serif; font-weight: 300;
@@ -90,11 +84,9 @@
   }
   header p {
     margin-top: 0.75rem; color: var(--text-muted);
-    font-size: 0.9rem; letter-spacing: 0.08em;
-    font-weight: 300;
+    font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300;
   }
 
-  /* Nav tabs */
   .nav-tabs {
     display: flex; gap: 0.5rem; justify-content: center;
     margin: 1.5rem 0 2.5rem; flex-wrap: wrap;
@@ -114,17 +106,14 @@
     box-shadow: 0 0 20px rgba(92,107,192,0.2);
   }
 
-  /* Sections */
   .section { display: none; animation: fadeIn 0.4s ease; }
   .section.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
 
-  /* Glass card */
   .glass-card {
     background: var(--glass);
     border: 1px solid var(--glass-border);
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: 20px; padding: 2rem;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     margin-bottom: 1.5rem;
@@ -133,12 +122,11 @@
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.5rem; font-weight: 400;
-    color: var(--mint); letter-spacing: 0.04em;
-    margin-bottom: 0.3rem;
+    color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem;
   }
   .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
 
-  /* ===== BREATHING ENGINE ===== */
+  /* BREATHING */
   .mood-row { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .mood-btn {
     padding: 0.45rem 1.1rem;
@@ -147,24 +135,11 @@
     cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
   .mood-btn:hover { color: var(--text); border-color: var(--mint); }
-  .mood-btn.active {
-    background: var(--mint-glow); border-color: var(--mint); color: var(--mint);
-    box-shadow: 0 0 12px var(--mint-glow);
-  }
+  .mood-btn.active { background: var(--mint-glow); border-color: var(--mint); color: var(--mint); box-shadow: 0 0 12px var(--mint-glow); }
 
-  /* Breathing circle */
-  .breath-container {
-    display: flex; flex-direction: column; align-items: center;
-    gap: 2rem; padding: 1rem 0;
-  }
-  .breath-outer {
-    position: relative; width: 220px; height: 220px;
-    display: flex; align-items: center; justify-content: center;
-  }
-  .breath-ring {
-    position: absolute; border-radius: 50%; border: 1px solid;
-    animation: none; transition: transform 0s linear;
-  }
+  .breath-container { display: flex; flex-direction: column; align-items: center; gap: 2rem; padding: 1rem 0; }
+  .breath-outer { position: relative; width: 220px; height: 220px; display: flex; align-items: center; justify-content: center; }
+  .breath-ring { position: absolute; border-radius: 50%; border: 1px solid; animation: none; transition: transform 0s linear; }
   .ring-1 { width: 100%; height: 100%; border-color: rgba(128,203,196,0.12); }
   .ring-2 { width: 80%; height: 80%; border-color: rgba(128,203,196,0.18); }
   .ring-3 { width: 60%; height: 60%; border-color: rgba(128,203,196,0.25); }
@@ -181,50 +156,32 @@
   .breath-phase-icon { font-size: 1.6rem; }
 
   .breath-instruction {
-    text-align: center;
-    font-family: 'Cormorant Garamond', serif;
+    text-align: center; font-family: 'Cormorant Garamond', serif;
     font-size: 1.6rem; font-weight: 300; color: var(--text);
-    letter-spacing: 0.04em; min-height: 2.2rem;
-    transition: opacity 0.5s ease;
+    letter-spacing: 0.04em; min-height: 2.2rem; transition: opacity 0.5s ease;
   }
-  .breath-counter {
-    font-size: 0.85rem; color: var(--text-muted);
-    letter-spacing: 0.1em; margin-top: -0.5rem;
-  }
+  .breath-counter { font-size: 0.85rem; color: var(--text-muted); letter-spacing: 0.1em; margin-top: -0.5rem; }
 
   .phase-dots { display: flex; gap: 0.6rem; }
-  .phase-dot {
-    width: 8px; height: 8px; border-radius: 50%;
-    background: var(--glass-border); transition: all 0.3s;
-  }
+  .phase-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--glass-border); transition: all 0.3s; }
   .phase-dot.active { background: var(--mint); box-shadow: 0 0 8px var(--mint); }
   .phase-dot.done { background: rgba(128,203,196,0.4); }
 
-  /* Manual sliders */
   .manual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
   @media (max-width: 500px) { .manual-grid { grid-template-columns: 1fr; } }
   .slider-row { display: flex; flex-direction: column; gap: 0.4rem; }
   .slider-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.06em; display: flex; justify-content: space-between; }
   .slider-label span { color: var(--mint); }
-  input[type=range] {
-    width: 100%; height: 4px; appearance: none; background: var(--glass-border);
-    border-radius: 2px; outline: none; cursor: pointer;
-  }
-  input[type=range]::-webkit-slider-thumb {
-    appearance: none; width: 14px; height: 14px; border-radius: 50%;
-    background: var(--mint); cursor: pointer;
-    box-shadow: 0 0 8px var(--mint-glow);
-  }
+  input[type=range] { width: 100%; height: 4px; appearance: none; background: var(--glass-border); border-radius: 2px; outline: none; cursor: pointer; }
+  input[type=range]::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--mint); cursor: pointer; box-shadow: 0 0 8px var(--mint-glow); }
 
-  /* Buttons */
   .btn-primary {
     padding: 0.7rem 2rem;
     background: linear-gradient(135deg, rgba(92,107,192,0.4), rgba(149,117,205,0.35));
     border: 1px solid rgba(149,117,205,0.5);
     border-radius: 50px; color: var(--text);
     font-size: 0.85rem; letter-spacing: 0.08em;
-    cursor: pointer; transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
   .btn-primary:hover { background: linear-gradient(135deg, rgba(92,107,192,0.6), rgba(149,117,205,0.5)); box-shadow: 0 0 20px rgba(149,117,205,0.2); }
   .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
@@ -233,24 +190,47 @@
     padding: 0.55rem 1.4rem;
     background: transparent; border: 1px solid var(--glass-border);
     border-radius: 50px; color: var(--text-muted);
-    font-size: 0.8rem; cursor: pointer; transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
   .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: var(--text); }
 
-  .controls-row { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
-
-  /* Cycle counter */
-  .cycle-badge {
-    padding: 0.3rem 1rem;
-    background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.25);
-    border-radius: 50px; font-size: 0.78rem; color: var(--gold);
-    letter-spacing: 0.06em;
+  .btn-ai {
+    padding: 0.7rem 2rem;
+    background: linear-gradient(135deg, rgba(200,169,110,0.2), rgba(149,117,205,0.2));
+    border: 1px solid rgba(200,169,110,0.4);
+    border-radius: 50px; color: var(--gold);
+    font-size: 0.85rem; letter-spacing: 0.08em;
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
+  .btn-ai:hover { background: linear-gradient(135deg, rgba(200,169,110,0.35), rgba(149,117,205,0.3)); box-shadow: 0 0 20px rgba(200,169,110,0.15); }
+  .btn-ai:disabled { opacity: 0.4; cursor: not-allowed; }
 
-  /* ===== GYAN QUOTES ===== */
+  .controls-row { display: flex; gap: 1rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .cycle-badge { padding: 0.3rem 1rem; background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.25); border-radius: 50px; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.06em; }
+
+  /* GYAN SECTION */
+  .gyan-mood-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 0.7rem; margin-bottom: 1.5rem;
+  }
+  .gyan-mood-btn {
+    padding: 0.9rem 0.8rem;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 16px; cursor: pointer; transition: all 0.3s;
+    font-family: 'DM Sans', sans-serif; text-align: center;
+    display: flex; flex-direction: column; gap: 0.3rem; align-items: center;
+  }
+  .gyan-mood-btn:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.18); transform: translateY(-2px); }
+  .gyan-mood-btn.active {
+    background: linear-gradient(135deg, rgba(92,107,192,0.25), rgba(149,117,205,0.2));
+    border-color: var(--indigo); box-shadow: 0 0 15px rgba(92,107,192,0.15);
+  }
+  .gyan-mood-emoji { font-size: 1.6rem; }
+  .gyan-mood-label { font-size: 0.72rem; color: var(--text-muted); letter-spacing: 0.04em; }
+  .gyan-mood-btn.active .gyan-mood-label { color: var(--indigo-light); }
+
   .quote-display {
-    min-height: 180px; display: flex; flex-direction: column;
+    min-height: 200px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; text-align: center;
     padding: 1rem; position: relative;
   }
@@ -266,135 +246,78 @@
     line-height: 1.6; color: var(--text);
     max-width: 600px; transition: opacity 0.4s ease;
   }
-  .quote-source {
-    margin-top: 1.2rem; font-size: 0.78rem;
-    color: var(--gold); letter-spacing: 0.12em;
-    text-transform: uppercase;
+  .quote-source { margin-top: 1.2rem; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+  .quote-mantra { margin-top: 1rem; font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--accent); opacity: 0.8; letter-spacing: 0.08em; }
+
+  .ai-loading {
+    display: none; text-align: center; padding: 1rem;
+    font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.06em;
   }
-  .quote-mantra {
-    margin-top: 1rem; font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem; color: var(--accent); opacity: 0.8;
-    letter-spacing: 0.08em;
-  }
-  .quote-category-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
-  .cat-btn {
-    padding: 0.3rem 0.9rem;
-    background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 50px; font-size: 0.75rem; color: var(--text-muted);
-    cursor: pointer; transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .cat-btn:hover, .cat-btn.active {
-    background: var(--gold-dim); border-color: rgba(200,169,110,0.4);
-    color: var(--gold);
+  .ai-loading.show { display: block; }
+  .ai-badge {
+    display: inline-block; padding: 0.2rem 0.7rem;
+    background: linear-gradient(135deg, rgba(200,169,110,0.15), rgba(149,117,205,0.15));
+    border: 1px solid rgba(200,169,110,0.3); border-radius: 50px;
+    font-size: 0.7rem; color: var(--gold); letter-spacing: 0.08em;
+    margin-top: 0.8rem;
   }
 
-  /* ===== MEDITATION TIMER ===== */
-  .timer-display {
-    text-align: center; padding: 2rem 0;
-  }
-  .timer-digital {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(4rem, 14vw, 7rem);
-    font-weight: 300; letter-spacing: 0.06em;
-    background: linear-gradient(135deg, var(--text), var(--mint));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; line-height: 1;
-  }
-  .timer-label {
-    font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.14em;
-    margin-top: 0.5rem; text-transform: uppercase;
-  }
-
-  /* Progress arc */
-  .timer-arc-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; }
-  .timer-arc-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
-  .timer-arc-bg { fill: none; stroke: var(--glass-border); stroke-width: 2; }
-  .timer-arc-fill { fill: none; stroke: url(#arcGrad); stroke-width: 2; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
-  .timer-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-
+  /* TIMER */
   .preset-row { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .preset-btn {
     padding: 0.5rem 1.2rem;
     background: var(--glass); border: 1px solid var(--glass-border);
     border-radius: 50px; font-size: 0.82rem; color: var(--text-muted);
-    cursor: pointer; transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
+    cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif;
   }
   .preset-btn:hover { color: var(--text); border-color: var(--indigo-light); }
-  .preset-btn.active {
-    background: rgba(92,107,192,0.2); border-color: var(--indigo);
-    color: var(--indigo-light);
-  }
+  .preset-btn.active { background: rgba(92,107,192,0.2); border-color: var(--indigo); color: var(--indigo-light); }
 
-  .completion-msg {
-    display: none; text-align: center; padding: 1rem;
-    background: linear-gradient(135deg, rgba(128,203,196,0.08), rgba(149,117,205,0.08));
-    border: 1px solid rgba(128,203,196,0.2); border-radius: 16px;
-    margin-top: 1rem;
+  .timer-arc-wrap { position: relative; width: 200px; height: 200px; margin: 0 auto 1.5rem; }
+  .timer-arc-wrap svg { position: absolute; inset: 0; width: 100%; height: 100%; transform: rotate(-90deg); }
+  .timer-arc-bg { fill: none; stroke: var(--glass-border); stroke-width: 2; }
+  .timer-arc-fill { fill: none; stroke: url(#arcGrad); stroke-width: 2; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+  .timer-center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .timer-digital {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 14vw, 7rem); font-weight: 300; letter-spacing: 0.06em;
+    background: linear-gradient(135deg, var(--text), var(--mint));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1;
   }
+  .timer-label { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.14em; margin-top: 0.5rem; text-transform: uppercase; }
+
+  .completion-msg { display: none; text-align: center; padding: 1rem; background: linear-gradient(135deg, rgba(128,203,196,0.08), rgba(149,117,205,0.08)); border: 1px solid rgba(128,203,196,0.2); border-radius: 16px; margin-top: 1rem; }
   .completion-msg.show { display: block; animation: fadeIn 0.5s ease; }
   .completion-msg p { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--mint); }
   .completion-msg small { font-size: 0.8rem; color: var(--text-muted); }
 
-  /* Sound toggle */
-  .ambient-row {
-    display: flex; gap: 0.5rem; justify-content: center;
-    margin-top: 1.5rem;
-  }
-  .sound-btn {
-    padding: 0.4rem 1rem;
-    background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 50px; font-size: 0.78rem; color: var(--text-muted);
-    cursor: pointer; transition: all 0.3s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .sound-btn.active { background: var(--glass-hover); border-color: rgba(200,169,110,0.4); color: var(--gold); }
-
-  /* Divider */
   .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
 
-  /* Footer */
-  footer {
-    text-align: center; padding: 2rem 0; border-top: 1px solid var(--glass-border);
-    font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.06em;
-  }
-  footer span { color: var(--gold); opacity: 0.7; }
+  .progress-line { position: fixed; top: 0; left: 0; height: 2px; z-index: 999; background: linear-gradient(90deg, var(--indigo), var(--mint)); width: 0; transition: width 0.2s ease; }
 
-  /* Responsive */
+  .contact-icon {
+    width: 45px; height: 45px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--glass); border: 1px solid var(--glass-border);
+    color: var(--text-muted); font-size: 1.3rem;
+    text-decoration: none; transition: all 0.3s ease;
+  }
+  .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
+
+  .donate-section {
+    margin-top: 1.5rem; padding: 1.2rem 1.5rem;
+    background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(149,117,205,0.07));
+    border: 1px solid rgba(200,169,110,0.2); border-radius: 16px;
+    text-align: center;
+  }
+  .donate-section p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; letter-spacing: 0.05em; }
+
   @media (max-width: 600px) {
     .glass-card { padding: 1.5rem 1.2rem; }
     .breath-outer { width: 180px; height: 180px; }
     .breath-circle { width: 95px; height: 95px; }
-  }
-
-  /* Scroll indicator line */
-  .progress-line {
-    position: fixed; top: 0; left: 0; height: 2px; z-index: 999;
-    background: linear-gradient(90deg, var(--indigo), var(--mint));
-    width: 0; transition: width 0.2s ease;
-
-   .contact-icon {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  color: var(--text-muted);
-  font-size: 1.3rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.contact-icon:hover {
-  transform: translateY(-4px) scale(1.1);
-  color: #e1306c;
-  border-color: #e1306c;
-  box-shadow: 0 0 20px rgba(225,48,108,0.4);
-}
+    .gyan-mood-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
   }
 </style>
 </head>
@@ -420,19 +343,17 @@
     <button class="tab-btn" onclick="switchTab('timer', this)" role="tab">◎ Meditate</button>
   </nav>
 
-  <!-- ===== BREATHING SECTION ===== -->
+  <!-- BREATHING SECTION -->
   <section id="tab-breath" class="section active">
     <div class="glass-card">
       <h2 class="section-title">Mood-Based Breathing</h2>
       <p class="section-sub">Choose your state · Choose your breath</p>
-
       <div class="mood-row">
         <button class="mood-btn active" onclick="setMood('relax', this)">🌿 Relax (4-4-6-2)</button>
         <button class="mood-btn" onclick="setMood('stress', this)">💙 Stress (4-7-8-0)</button>
         <button class="mood-btn" onclick="setMood('focus', this)">🔥 Focus (6-2-6-2)</button>
         <button class="mood-btn" onclick="setMood('manual', this)">⚙ Manual</button>
       </div>
-
       <div class="breath-container">
         <div class="breath-outer" id="breathOuter">
           <div class="breath-ring ring-1"></div>
@@ -442,17 +363,14 @@
             <span class="breath-phase-icon" id="phaseIcon">🫁</span>
           </div>
         </div>
-
         <div class="breath-instruction" id="breathInstruction">Press Start to begin</div>
         <div class="breath-counter" id="breathCounter">— s</div>
-
         <div class="phase-dots">
           <div class="phase-dot" id="dot0" title="Inhale"></div>
           <div class="phase-dot" id="dot1" title="Hold"></div>
           <div class="phase-dot" id="dot2" title="Exhale"></div>
           <div class="phase-dot" id="dot3" title="Hold"></div>
         </div>
-
         <div class="controls-row">
           <button class="btn-primary" id="breathBtn" onclick="toggleBreath()">▶ Start</button>
           <button class="btn-ghost" onclick="resetBreath()">↺ Reset</button>
@@ -460,8 +378,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Manual Mode -->
     <div class="glass-card" id="manualCard" style="display:none;">
       <h3 style="font-size:0.9rem;color:var(--text-muted);letter-spacing:0.06em;margin-bottom:1rem;">Manual Adjustment (seconds)</h3>
       <div class="manual-grid">
@@ -485,41 +401,80 @@
     </div>
   </section>
 
-  <!-- ===== GYAN SECTION ===== -->
+  <!-- GYAN SECTION -->
   <section id="tab-gyan" class="section">
     <div class="glass-card">
-      <h2 class="section-title">Gyan — Spiritual Wisdom</h2>
-      <p class="section-sub">Timeless wisdom from the heart of Bharat</p>
+      <h2 class="section-title">Gyan — Aaj Kaisa Feel Ho Raha Hai?</h2>
+      <p class="section-sub">Apna mood chuniye · Wisdom aapke dil tak pahunchegi</p>
 
-      <div class="quote-category-row">
-        <button class="cat-btn active" onclick="filterQuotes('all', this)">All</button>
-        <button class="cat-btn" onclick="filterQuotes('vedanta', this)">Vedanta</button>
-        <button class="cat-btn" onclick="filterQuotes('buddhism', this)">Buddhism</button>
-        <button class="cat-btn" onclick="filterQuotes('bhagavad', this)">Gita</button>
-        <button class="cat-btn" onclick="filterQuotes('sufi', this)">Sufi</button>
+      <div class="gyan-mood-grid">
+        <button class="gyan-mood-btn active" onclick="selectGyanMood('lost', this)">
+          <span class="gyan-mood-emoji">😔</span>
+          <span class="gyan-mood-label">Feeling Lost</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('heartbreak', this)">
+          <span class="gyan-mood-emoji">💔</span>
+          <span class="gyan-mood-label">Heartbreak</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('anxious', this)">
+          <span class="gyan-mood-emoji">😰</span>
+          <span class="gyan-mood-label">Anxious</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('angry', this)">
+          <span class="gyan-mood-emoji">😤</span>
+          <span class="gyan-mood-label">Angry</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('empty', this)">
+          <span class="gyan-mood-emoji">🌫</span>
+          <span class="gyan-mood-label">Empty Inside</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('unmotivated', this)">
+          <span class="gyan-mood-emoji">😴</span>
+          <span class="gyan-mood-label">Unmotivated</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('grow', this)">
+          <span class="gyan-mood-emoji">🌱</span>
+          <span class="gyan-mood-label">Want to Grow</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('peace', this)">
+          <span class="gyan-mood-emoji">🙏</span>
+          <span class="gyan-mood-label">Seeking Peace</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('strength', this)">
+          <span class="gyan-mood-emoji">💪</span>
+          <span class="gyan-mood-label">Need Strength</span>
+        </button>
+        <button class="gyan-mood-btn" onclick="selectGyanMood('grateful', this)">
+          <span class="gyan-mood-emoji">✨</span>
+          <span class="gyan-mood-label">Grateful</span>
+        </button>
       </div>
 
       <div class="quote-display" id="quoteDisplay">
         <div class="quote-symbol">"</div>
-        <p class="quote-text" id="quoteText">Loading wisdom...</p>
+        <p class="quote-text" id="quoteText">Apna mood chuniye aur wisdom paiye...</p>
         <div class="quote-source" id="quoteSource"></div>
         <div class="quote-mantra" id="quoteMantra"></div>
+        <div class="ai-badge" id="aiBadge" style="display:none;">✦ AI Generated</div>
+      </div>
+
+      <div class="ai-loading" id="aiLoading">
+        <span style="opacity:0.6;">✦ &nbsp;</span>Wisdom dhundh raha hun aapke liye...
       </div>
 
       <hr class="divider">
       <div class="controls-row">
-        <button class="btn-primary" onclick="nextQuote()">✦ New Wisdom</button>
+        <button class="btn-primary" onclick="nextQuote()">✦ New Quote</button>
+        <button class="btn-ai" id="aiBtn" onclick="getAIWisdom()">🌟 AI Wisdom</button>
         <button class="btn-ghost" onclick="copyQuote()">⎘ Copy</button>
-      </div>
-    </div>
+      
   </section>
 
-  <!-- ===== TIMER SECTION ===== -->
+  <!-- TIMER SECTION -->
   <section id="tab-timer" class="section">
     <div class="glass-card">
       <h2 class="section-title">Meditation Timer</h2>
       <p class="section-sub">Distraction-free stillness · Sit. Breathe. Be.</p>
-
       <div class="preset-row">
         <button class="preset-btn active" onclick="setTimer(5, this)">5 min</button>
         <button class="preset-btn" onclick="setTimer(10, this)">10 min</button>
@@ -527,7 +482,6 @@
         <button class="preset-btn" onclick="setTimer(20, this)">20 min</button>
         <button class="preset-btn" onclick="setTimer(30, this)">30 min</button>
       </div>
-
       <div class="timer-arc-wrap">
         <svg viewBox="0 0 200 200">
           <defs>
@@ -545,58 +499,51 @@
           <div class="timer-label" id="timerLabel">minutes remaining</div>
         </div>
       </div>
-
       <div class="controls-row" style="margin-bottom:1rem;">
         <button class="btn-primary" id="timerBtn" onclick="toggleTimer()">▶ Begin</button>
         <button class="btn-ghost" onclick="resetTimer()">↺ Reset</button>
       </div>
-
       <div class="completion-msg" id="completionMsg">
         <p>🔔 Session Complete — नमस्ते</p>
         <small>You have honored your practice. Carry this stillness forward.</small>
       </div>
-
-      <hr class="divider">
-      
     </div>
   </section>
 
   <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
-
-  <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">
-    Made with ❤ for <span style="color:var(--gold);">YOU</span>
-  </p>
-
-  <div style="margin-top:1.5rem;">
     
-    <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:1rem;">
-      CONNECT WITH US
+    <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">
+      Made with ❤ for <span style="color:var(--gold);">YOU</span>
     </p>
 
-    <div style="display:flex; justify-content:center; gap:25px; align-items:center;">
-
-      <!-- EMAIL (ONLY TEXT, NO CLICK) -->
-      <span style="color:var(--mint); font-size:0.9rem; letter-spacing:0.05em;">
-        adhyatmikyatra@zohomail.in
-      </span>
-
-      <!-- INSTAGRAM ICON -->
-      <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
-      <i class="fa-brands fa-instagram fa-2x" style="color: rgb(225, 48, 108);"></i>      </a>
-
+    <div class="donate-section" style="max-width:400px; margin:1.5rem auto;">
+      <p>Agar yeh toolkit aapke kaam aayi, toh apni khushi se support karein 🌸</p>
+      <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_S4QyXobYceXrr6" async> </script> </form>
     </div>
-  </div>
 
-  <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">
-    प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace
-  </p>
-  <br>
-    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_S4QyXobYceXrr6" async> </script> </form>
+    <div style="margin-top:1.5rem;">
+      <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:1rem;">CONNECT WITH US</p>
+      <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
+        <span style="color:var(--mint); font-size:0.85rem; letter-spacing:0.05em;">
+          adhyatmikyatra@zohomail.in
+        </span>
+        <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon" title="Instagram">
+          <i class="fa-brands fa-instagram fa-lg" style="color:#e1306c;"></i>
+        </a>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">
+      प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace
+    </p>
   </footer>
 </div>
 
 <script>
-// ===== TAB NAVIGATION =====
+// ========== GEMINI API CONFIG ==========
+const GEMINI_API_KEY = "api key here"; // <-- Apni nayi Gemini API key yahan paste karein
+
+// ========== TAB NAVIGATION ==========
 function switchTab(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -604,14 +551,13 @@ function switchTab(id, btn) {
   btn.classList.add('active');
 }
 
-// ===== SCROLL PROGRESS =====
 window.addEventListener('scroll', () => {
   const el = document.getElementById('progressLine');
   const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
   el.style.width = Math.min(pct, 100) + '%';
 });
 
-// ===== BREATHING ENGINE =====
+// ========== BREATHING ENGINE ==========
 const moods = {
   relax:  { inhale: 4, hold1: 4, exhale: 6, hold2: 2 },
   stress: { inhale: 4, hold1: 7, exhale: 8, hold2: 0 },
@@ -627,7 +573,6 @@ const phases = [
 
 let curMood = 'relax', breathRunning = false, breathInterval = null;
 let curPhaseIdx = 0, curSecs = 0, cycleCnt = 0;
-let breathScheduled = null;
 
 function setMood(mood, btn) {
   curMood = mood;
@@ -677,16 +622,13 @@ function runBreathPhase() {
     if (curPhaseIdx === 0) { cycleCnt++; document.getElementById('cycleBadge').textContent = 'Cycles: ' + cycleCnt; }
     runBreathPhase(); return;
   }
-
   const p = phases[curPhaseIdx];
   document.getElementById('breathInstruction').textContent = p.label;
   document.getElementById('phaseIcon').textContent = p.icon;
   updateDots(curPhaseIdx);
   animateCircle(curPhaseIdx, dur);
-
   curSecs = dur;
   document.getElementById('breathCounter').textContent = curSecs + ' s';
-
   clearInterval(breathInterval);
   breathInterval = setInterval(() => {
     curSecs--;
@@ -720,39 +662,564 @@ function resetBreath() {
   updateDots(-1);
 }
 
-// ===== GYAN QUOTES =====
-const quotes = [
-  { text: "You are not a drop in the ocean. You are the entire ocean in a drop.", source: "Rumi", mantra: "अहं ब्रह्मास्मि", cat: "sufi" },
-  { text: "When you realize there is nothing lacking, the whole world belongs to you.", source: "Lao Tzu · Tao Te Ching", mantra: "पूर्णमदः पूर्णमिदम्", cat: "vedanta" },
-  { text: "The soul is not born; nor does it die at any time. It has not come into being, does not come into being, and will not come into being. It is unborn, eternal, ever-existing, and primeval.", source: "Bhagavad Gita 2.20", mantra: "नायं हन्ति न हन्यते", cat: "bhagavad" },
-  { text: "Peace comes from within. Do not seek it without.", source: "Gautama Buddha", mantra: "सर्वे भवन्तु सुखिनः", cat: "buddhism" },
-  { text: "Silence is the language of God. All else is poor translation.", source: "Rumi", mantra: "मौनं सर्वार्थ साधनम्", cat: "sufi" },
-  { text: "The Self is the friend of the self for him who has conquered himself by the Self. But for one who has not conquered himself, the Self is hostile.", source: "Bhagavad Gita 6.6", mantra: "आत्मैव ह्यात्मनो बन्धुः", cat: "bhagavad" },
-  { text: "Three things cannot be long hidden: the sun, the moon, and the truth.", source: "Gautama Buddha", mantra: "सत्यमेव जयते", cat: "buddhism" },
-  { text: "Brahman is the only truth; the world is illusion; and there is ultimately no difference between Brahman and individual self.", source: "Adi Shankaracharya", mantra: "ब्रह्म सत्यं जगन्मिथ्या", cat: "vedanta" },
-  { text: "That which is the finest essence — this whole world has that as its soul. That is Reality. That is Atman. That art thou.", source: "Chandogya Upanishad", mantra: "तत् त्वम् असि", cat: "vedanta" },
-  { text: "Do not dwell in the past, do not dream of the future. Concentrate the mind on the present moment.", source: "Gautama Buddha", mantra: "एकाग्रता", cat: "buddhism" },
-  { text: "The heart that loves is always young.", source: "Kabir", mantra: "प्रेम ही ईश्वर है", cat: "sufi" },
-  { text: "Set your heart on doing good. Do it over and over again, and you will be filled with joy.", source: "Dhammapada", mantra: "करुणा", cat: "buddhism" },
-];
+// ========== 500 CURATED QUOTES ==========
+const quoteBank = {
+  lost: [
+    { text: "Not all those who wander are lost.", source: "J.R.R. Tolkien", mantra: "खोजना ही मिलना है" },
+    { text: "Sometimes the wrong train takes you to the right station.", source: "Paulo Coelho", mantra: "हर राह मंजिल है" },
+    { text: "You are allowed to be both a masterpiece and a work in progress simultaneously.", source: "Sophia Bush", mantra: "अभी भी बन रहा हूँ" },
+    { text: "When you feel lost, sit in silence. You are not lost — you are arriving.", source: "Mooji", mantra: "मौन में मिलता है उत्तर" },
+    { text: "The soul that sees beauty may sometimes walk alone.", source: "Goethe", mantra: "एकाकी पर पूर्ण" },
+    { text: "No man ever steps in the same river twice, for it's not the same river and he's not the same man.", source: "Heraclitus", mantra: "परिवर्तन ही सत्य है" },
+    { text: "Sometimes you find yourself in the middle of nowhere, and sometimes in the middle of nowhere you find yourself.", source: "Unknown", mantra: "खुद को ढूंढो" },
+    { text: "It's okay not to know. Not knowing is the beginning of knowing.", source: "Sadhguru", mantra: "अज्ञान में भी ज्ञान है" },
+    { text: "The darkest night produces the brightest stars.", source: "Charles Spurgeon", mantra: "अंधेरे के बाद उजाला" },
+    { text: "You don't need to see the whole staircase, just take the first step.", source: "Martin Luther King Jr.", mantra: "एक कदम काफी है" },
+    { text: "Confusion is the beginning of understanding.", source: "Osho", mantra: "भ्रम से स्पष्टता की ओर" },
+    { text: "When I let go of what I am, I become what I might be.", source: "Lao Tzu", mantra: "छोड़ने में मिलता है" },
+    { text: "The wound is the place where the light enters you.", source: "Rumi", mantra: "घाव में भी रोशनी है" },
+    { text: "You are not a mistake. You are not a problem to be solved.", source: "Geneen Roth", mantra: "तुम पूर्ण हो" },
+    { text: "Getting lost is just another way of saying going exploring.", source: "Justina Chen", mantra: "हर भटकाव एक खोज है" },
+    { text: "Even the longest journey begins with a single step — and you have already taken it.", source: "Lao Tzu", mantra: "पहला कदम सबसे बड़ा है" },
+    { text: "Trust the timing of your life.", source: "Unknown", mantra: "समय पर भरोसा रखो" },
+    { text: "Out of clutter, find simplicity. From discord, find harmony. In the middle of difficulty lies opportunity.", source: "Albert Einstein", mantra: "कठिनाई में अवसर है" },
+    { text: "What you are looking for is already in you. You already are everything you are seeking.", source: "Thomas Merton", mantra: "तुम्हारे अंदर ही है सब" },
+    { text: "When you lose your direction, look at the stars within your heart.", source: "Sufi Saying", mantra: "अंदर की रोशनी देखो" },
+    { text: "The cave you fear to enter holds the treasure you seek.", source: "Joseph Campbell", mantra: "डर के आगे जीत है" },
+    { text: "Sometimes the most scenic roads in life are the detours you didn't mean to take.", source: "Angela N. Blount", mantra: "भटकाव भी रास्ता है" },
+    { text: "I am not lost, for I know where I am. But however, where I am may be lost.", source: "A.A. Milne", mantra: "हर जगह एक घर है" },
+    { text: "You cannot travel the path until you have become the path itself.", source: "Gautama Buddha", mantra: "तुम ही राह हो" },
+    { text: "Stars can't shine without darkness.", source: "D.H. Sidebottom", mantra: "अंधेरा तारों को जन्म देता है" },
+    { text: "If you feel lost, disappointed, hesitant, or weak — return to yourself. To who you are.", source: "Rumi", mantra: "खुद के पास लौट आओ" },
+    { text: "Maybe the journey isn't so much about becoming anything. Maybe it's about un-becoming everything that isn't really you.", source: "Unknown", mantra: "असली तुम बनो" },
+    { text: "In the middle of the journey of our life I came to myself within a dark wood where the straight way was lost.", source: "Dante Alighieri", mantra: "हर अंधेरे में रोशनी है" },
+    { text: "Your present situation is not your final destination. The best is yet to come.", source: "Unknown", mantra: "अभी और आगे जाना है" },
+    { text: "Being lost is worth the coming home.", source: "Neil Gaiman", mantra: "घर लौटने की खुशी" },
+    { text: "Sometimes we must lose ourselves to find ourselves.", source: "Sogyal Rinpoche", mantra: "खोने में मिलना है" },
+    { text: "Don't be afraid of being lost. Be afraid of not knowing you are.", source: "Maxime Lagacé", mantra: "जागरूकता सबसे बड़ी शक्ति" },
+    { text: "The only way out is through.", source: "Robert Frost", mantra: "आगे बढ़ते रहो" },
+    { text: "Perhaps the reason you feel lost is because you've been trying to find yourself in things that were never meant to hold you.", source: "Beau Taplin", mantra: "खुद में खोजो" },
+    { text: "Let your confusion be the beginning of a great adventure.", source: "Unknown", mantra: "भ्रम से शुरू होती है यात्रा" },
+    { text: "You're always a student, never a master. You have to keep moving forward.", source: "Conrad Hall", mantra: "सीखते रहो आगे बढ़ते रहो" },
+    { text: "Even when you feel lost in the dark, the morning is always coming.", source: "Unknown", mantra: "सुबह जरूर होगी" },
+    { text: "It doesn't matter where you are — you are nowhere compared to where you can be.", source: "Unknown", mantra: "संभावनाएं अनंत हैं" },
+    { text: "All that is gold does not glitter; not all those who wander are lost.", source: "J.R.R. Tolkien", mantra: "भटकाव में भी मूल्य है" },
+    { text: "You were put on this earth to achieve your greatest self, to live out your purpose, and to do it courageously.", source: "Steve Maraboli", mantra: "तुम्हारा उद्देश्य महान है" },
+    { text: "Wheresoever you go, go with all your heart.", source: "Confucius", mantra: "दिल से जियो" },
+    { text: "Sometimes the wrong path leads to the right place.", source: "Unknown", mantra: "हर राह में सीख है" },
+    { text: "Don't you know yet? It is your light that lights the worlds.", source: "Rumi", mantra: "तुम्हारी रोशनी से जगमगाती है दुनिया" },
+    { text: "The desire to reach the stars is ambitious. The desire to reach hearts is wise.", source: "Maya Angelou", mantra: "दिलों तक पहुंचो" },
+    { text: "You are braver than you believe, stronger than you seem, and smarter than you think.", source: "A.A. Milne", mantra: "तुम अपने से ज्यादा हो" },
+    { text: "Every experience in your life is being orchestrated to teach you something.", source: "Jack Canfield", mantra: "हर अनुभव एक शिक्षक है" },
+    { text: "The path is made by walking.", source: "Antonio Machado", mantra: "चलने से बनती है राह" },
+    { text: "It is during our darkest moments that we must focus to see the light.", source: "Aristotle", mantra: "अंधेरे में रोशनी ढूंढो" },
+    { text: "If you are depressed you are living in the past. If you are anxious you are living in the future. If you are at peace, you are living in the present.", source: "Lao Tzu", mantra: "वर्तमान में जियो" },
+    { text: "Sometimes being lost is the first step to being found.", source: "Unknown", mantra: "खोने के बाद ही मिलते हैं" }
+  ],
 
-let currentCat = 'all', lastIdx = -1;
+  heartbreak: [
+    { text: "The heart was made to be broken.", source: "Oscar Wilde", mantra: "टूटकर ही बनता है दिल" },
+    { text: "You don't need another human being to make your life complete, but let's be honest. Having your wounds kissed by someone who doesn't see them as disasters in your soul, but cracks to put their love into... that's the most calming thing in this world.", source: "Nikita Gill", mantra: "प्रेम ही असली औषधि है" },
+    { text: "Pain is inevitable. Suffering is optional.", source: "Haruki Murakami", mantra: "दर्द से परे जाओ" },
+    { text: "Let it hurt. Let it bleed. Let it heal. And let it go.", source: "Nikita Gill", mantra: "जाने दो" },
+    { text: "The way to heal a broken heart is to give it a reason to be grateful.", source: "Sufi Wisdom", mantra: "शुक्रगुजार रहो" },
+    { text: "Out of suffering have emerged the strongest souls; the most massive characters are seared with scars.", source: "Khalil Gibran", mantra: "घाव से बनती है ताकत" },
+    { text: "Your heart knows the way. Run in that direction.", source: "Rumi", mantra: "दिल की सुनो" },
+    { text: "Sometimes it takes a heartbreak to shake us awake and help us see we are worth so much more than we're settling for.", source: "Mandy Hale", mantra: "तुम बहुत कीमती हो" },
+    { text: "Don't cry when the sun is gone, because the tears won't let you see the stars.", source: "Violeta Parra", mantra: "तारे देखो सूरज के बाद" },
+    { text: "The emotion that can break your heart is sometimes the very one that heals it.", source: "Nicholas Sparks", mantra: "प्यार ही दवा है" },
+    { text: "No one ever told you that grief felt so like fear.", source: "C.S. Lewis", mantra: "दर्द में भी जीवन है" },
+    { text: "You will be okay. Not today, not tomorrow, but you will be okay.", source: "Unknown", mantra: "ठीक हो जाओगे" },
+    { text: "Heartbreak is not the end of love. It is love going deeper.", source: "Osho", mantra: "प्यार गहरा होता है" },
+    { text: "Every heart has its own ache.", source: "Thomas Fuller", mantra: "हर दिल की अपनी कहानी" },
+    { text: "She was a girl who knew how to be happy even when she was sad. And that's important.", source: "Marilyn Monroe", mantra: "दर्द में भी मुस्कुराओ" },
+    { text: "One day you will tell your story of how you overcame what you went through and it will be someone else's survival guide.", source: "Brené Brown", mantra: "तुम्हारी कहानी किसी की राह बनेगी" },
+    { text: "What hurts you today, makes you stronger tomorrow.", source: "Unknown", mantra: "दर्द ताकत बनता है" },
+    { text: "The most important thing in the world is to learn to give out love, and to let it come in.", source: "Morrie Schwartz", mantra: "प्यार देना और लेना सीखो" },
+    { text: "To be vulnerable is to be strong. Opening up is an act of courage.", source: "Unknown", mantra: "कमजोरी में ताकत है" },
+    { text: "Love is never lost. If not reciprocated, it will flow back and soften and purify the heart.", source: "Washington Irving", mantra: "प्यार कभी व्यर्थ नहीं जाता" },
+    { text: "Sometimes good things fall apart so better things can fall together.", source: "Marilyn Monroe", mantra: "बिखरने में भी बनना है" },
+    { text: "The broken heart — you think you will die, but you keep living, day after day after terrible day.", source: "Charles Dickens", mantra: "जिंदगी चलती रहती है" },
+    { text: "Grief is the price we pay for love.", source: "Queen Elizabeth II", mantra: "प्यार का मोल दर्द है" },
+    { text: "Rock bottom became the solid foundation on which I built my life.", source: "J.K. Rowling", mantra: "नीचे से ही उठते हैं" },
+    { text: "Your heart is the most precious thing you own. Guard it, but also let it love.", source: "Unknown", mantra: "दिल को प्यार करने दो" },
+    { text: "One must always be careful of blessings and cures in disguise.", source: "Cassandra Clare", mantra: "हर घटना में कुछ सीखना है" },
+    { text: "The cure for pain is in the pain itself.", source: "Rumi", mantra: "दर्द में ही दवा है" },
+    { text: "Love is a fire. But whether it is going to warm your hearth or burn down your house, you can never tell.", source: "Joan Crawford", mantra: "प्यार दोनों देता है" },
+    { text: "At some point you just have to let go of what you thought should happen and live in what is happening.", source: "Heather Hepler", mantra: "जो है उसे जियो" },
+    { text: "Be gentle with yourself. You are a child of the universe no less than the trees and the stars.", source: "Max Ehrmann", mantra: "खुद पर कोमल रहो" },
+    { text: "The strongest people are not those who show strength in front of us, but those who win battles we know nothing about.", source: "Unknown", mantra: "असली ताकत छुपी रहती है" },
+    { text: "Hearts are wild creatures, that's why our ribs are cages.", source: "Elalusz", mantra: "दिल को समझना मुश्किल है" },
+    { text: "We must be willing to let go of the life we planned so as to have the life that is waiting for us.", source: "Joseph Campbell", mantra: "बेहतर जिंदगी इंतजार कर रही है" },
+    { text: "It is okay to be angry. It is never okay to be cruel.", source: "Unknown", mantra: "गुस्सा जाहिर करो पर क्रूर मत बनो" },
+    { text: "Eventually all the pieces fall into place. Until then, laugh at the confusion.", source: "Unknown", mantra: "सब ठीक हो जाएगा" },
+    { text: "Love yourself first and everything else falls into line.", source: "Lucille Ball", mantra: "पहले खुद से प्यार करो" },
+    { text: "You are not broken. You are breaking through.", source: "Alex Myles", mantra: "टूट नहीं रहे बदल रहे हो" },
+    { text: "One of the most courageous things you can do is identify yourself, know who you are, what you believe in and where you want to go.", source: "Sheila Murray Bethel", mantra: "खुद को पहचानो" },
+    { text: "The most painful thing is losing yourself in the process of loving someone too much.", source: "Ernest Hemingway", mantra: "प्यार में खुद को मत खोओ" },
+    { text: "Maybe one day it will be okay again. That's all I want: for things to be okay again.", source: "Unknown", mantra: "सब ठीक होगा एक दिन" },
+    { text: "Even the darkest night will end and the sun will rise.", source: "Victor Hugo", mantra: "सुबह जरूर होगी" },
+    { text: "Don't cling to a mistake just because you spent a lot of time making it.", source: "Aubrey De Graf", mantra: "गलती को जाने दो" },
+    { text: "The one who loves you will make you feel like home.", source: "Rumi", mantra: "असली प्यार घर जैसा होता है" },
+    { text: "If it costs you your peace, it's too expensive.", source: "Unknown", mantra: "शांति की कीमत मत चुकाओ" },
+    { text: "Sometimes the person you fall for is not ready to catch you.", source: "Unknown", mantra: "सही इंसान सही वक्त पर मिलता है" },
+    { text: "To fall in love with yourself is the first secret to happiness.", source: "Robert Morley", mantra: "खुद से प्यार ही सच्चा प्यार है" },
+    { text: "Your task is not to seek for love, but merely to seek and find all the barriers within yourself that you have built against it.", source: "Rumi", mantra: "दिल के दरवाजे खोलो" },
+    { text: "When someone leaves, it's because someone better is coming.", source: "Unknown", mantra: "जाने वाले की जगह कोई बेहतर आता है" },
+    { text: "Loving yourself isn't vanity. It is sanity.", source: "Katrina Mayer", mantra: "खुद से प्यार करना जरूरी है" },
+    { text: "Pain makes you stronger, fear makes you braver, heartbreak makes you wiser.", source: "Unknown", mantra: "हर दर्द कुछ सिखाता है" },
+    { text: "Breakdowns can create breakthroughs. Things fall apart so things can fall together.", source: "Unknown", mantra: "टूटने से बनता है" }
+  ],
 
-function filterQuotes(cat, btn) {
-  currentCat = cat;
-  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  anxious: [
+    { text: "You don't have to control your thoughts. You just have to stop letting them control you.", source: "Dan Millman", mantra: "विचारों को देखो उनमें मत डूबो" },
+    { text: "Anxiety is the dizziness of freedom.", source: "Søren Kierkegaard", mantra: "स्वतंत्रता में ही घबराहट है" },
+    { text: "Worrying does not take away tomorrow's troubles. It takes away today's peace.", source: "Randy Armstrong", mantra: "आज की शांति बचाओ" },
+    { text: "Nothing in the universe can stop you from letting go and having a fresh start.", source: "Guy Finley", mantra: "नई शुरुआत हमेशा संभव है" },
+    { text: "Take a deep breath. It's just a bad day, not a bad life.", source: "Unknown", mantra: "एक सांस लो" },
+    { text: "Breathe. You are exactly where you need to be.", source: "Unknown", mantra: "तुम सही जगह हो" },
+    { text: "The greatest weapon against stress is our ability to choose one thought over another.", source: "William James", mantra: "सोच चुनना तुम्हारे हाथ में है" },
+    { text: "Don't believe every worried thought you have. Worried thoughts are notoriously inaccurate.", source: "Renee Jain", mantra: "हर चिंता सच नहीं होती" },
+    { text: "This too shall pass.", source: "Ancient Persian Proverb", mantra: "यह भी गुजर जाएगा" },
+    { text: "You are not your anxiety.", source: "Unknown", mantra: "तुम अपनी चिंता नहीं हो" },
+    { text: "The present moment is the only moment available to us, and it is the door to all moments.", source: "Thich Nhat Hanh", mantra: "अभी यहाँ रहो" },
+    { text: "Almost everything will work again if you unplug it for a few minutes, including you.", source: "Anne Lamott", mantra: "आराम करो खुद को रिस्टार्ट करो" },
+    { text: "Your anxiety is lying to you. You are safe. You are loved. You are okay.", source: "Unknown", mantra: "तुम सुरक्षित हो" },
+    { text: "You can't stop the waves, but you can learn to surf.", source: "Jon Kabat-Zinn", mantra: "लहरों पर सवार हो जाओ" },
+    { text: "Peace is the result of retraining your mind to process life as it is, rather than as you think it should be.", source: "Wayne Dyer", mantra: "मन को शांत करो" },
+    { text: "Tension is who you think you should be. Relaxation is who you are.", source: "Chinese Proverb", mantra: "खुद बनो तनाव छोड़ो" },
+    { text: "If you want to conquer the anxiety of life, live in the moment, live in the breath.", source: "Amit Ray", mantra: "सांस में जियो" },
+    { text: "Nothing is permanent. Don't stress yourself too much, because no matter how bad the situation is, it will change.", source: "Unknown", mantra: "कुछ भी स्थायी नहीं है" },
+    { text: "You are allowed to be anxious. But you are not required to believe everything you feel.", source: "Unknown", mantra: "हर भावना सच नहीं होती" },
+    { text: "The only moment you can live in is this one.", source: "Eckhart Tolle", mantra: "यह क्षण ही सब है" },
+    { text: "Life is ten percent what you experience and ninety percent how you respond to it.", source: "Dorothy M. Neddermeyer", mantra: "प्रतिक्रिया तुम्हारे हाथ में है" },
+    { text: "Give your stress wings and let it fly away.", source: "Terri Guillemets", mantra: "चिंता को उड़ने दो" },
+    { text: "Calm mind brings inner strength and self-confidence.", source: "Dalai Lama", mantra: "शांत मन में ताकत है" },
+    { text: "Slow down. Calm down. Don't worry. Don't hurry. Trust the process.", source: "Alexandra Stoddard", mantra: "प्रक्रिया पर भरोसा रखो" },
+    { text: "You are not in the storm. You are the sky, observing the storm.", source: "Pema Chödrön", mantra: "तुम तूफान नहीं आकाश हो" },
+    { text: "Anxiety doesn't define you. It's something you experience, not who you are.", source: "Unknown", mantra: "चिंता तुम नहीं हो" },
+    { text: "When anxious, uneasy and bad thoughts come, I go to the sea, and the sea drowns them out.", source: "Rainer Maria Rilke", mantra: "प्रकृति के पास जाओ" },
+    { text: "Sometimes the most important thing in a whole day is the rest we take between two deep breaths.", source: "Etty Hillesum", mantra: "दो सांसों के बीच आराम करो" },
+    { text: "You must learn to let go. Release the stress. You were never in control anyway.", source: "Steve Maraboli", mantra: "नियंत्रण छोड़ो शांति पाओ" },
+    { text: "Inhale deeply. Hold. Exhale. The world continues to exist.", source: "Unknown", mantra: "सांस लो दुनिया चल रही है" },
+    { text: "The mind is like water. When it's turbulent, it's difficult to see. When it's calm, everything becomes clear.", source: "Prasad Mahes", mantra: "मन को शांत करो" },
+    { text: "Your mind will answer most questions if you learn to relax and wait for the answer.", source: "William S. Burroughs", mantra: "इंतजार करो जवाब आएगा" },
+    { text: "Nothing can disturb your peace unless you let it.", source: "Unknown", mantra: "शांति तुम्हारे हाथ में है" },
+    { text: "Anxiety is a thin stream of fear trickling through the mind. If encouraged, it cuts a channel into which all other thoughts are drained.", source: "Arthur Somers Roche", mantra: "डर को बढ़ने मत दो" },
+    { text: "Fear is a reaction. Courage is a decision.", source: "Winston Churchill", mantra: "साहस एक निर्णय है" },
+    { text: "Don't anticipate trouble, or worry about what may never happen. Keep in the sunlight.", source: "Benjamin Franklin", mantra: "रोशनी में रहो" },
+    { text: "My anxiety doesn't come from thinking about the future but from wanting to control it.", source: "Hugh Prather", mantra: "नियंत्रण की चाह छोड़ो" },
+    { text: "Be still. Stillness reveals the secrets of eternity.", source: "Lao Tzu", mantra: "स्थिर रहो राज मिलेंगे" },
+    { text: "You are the sky. Everything else is just the weather.", source: "Pema Chödrön", mantra: "तुम आकाश हो" },
+    { text: "Rule your mind or it will rule you.", source: "Horace", mantra: "मन को काबू करो" },
+    { text: "In the middle of every difficulty lies opportunity.", source: "Albert Einstein", mantra: "कठिनाई में अवसर है" },
+    { text: "Whatever is meant to be will always find its way.", source: "Unknown", mantra: "जो होना है वो होगा" },
+    { text: "One day at a time. One breath at a time. One step at a time.", source: "Unknown", mantra: "एक दिन एक सांस एक कदम" },
+    { text: "You are a diamond, pressure is just part of your process.", source: "Unknown", mantra: "दबाव हीरा बनाता है" },
+    { text: "Not every storm comes to disrupt your life. Some come to clear your path.", source: "Unknown", mantra: "तूफान रास्ता साफ करता है" },
+    { text: "Anxiety is practicing failure in advance.", source: "Seth Godin", mantra: "अभी सफलता की सोचो" },
+    { text: "Sometimes what you're most afraid of doing is the very thing that will set you free.", source: "Unknown", mantra: "डर का सामना करो" },
+    { text: "Feel the feeling but don't become the emotion.", source: "Unknown", mantra: "भावना महसूस करो उसमें मत डूबो" },
+    { text: "Rest is not idleness, and to lie sometimes on the grass on a summer day is by no means a waste of time.", source: "John Lubbock", mantra: "आराम भी जरूरी है" },
+    { text: "Your life is not defined by your anxiety. It is defined by how you live despite it.", source: "Unknown", mantra: "चिंता के बावजूद जियो" }
+  ],
+
+  angry: [
+    { text: "Anger is an acid that can do more harm to the vessel in which it is stored than to anything on which it is poured.", source: "Mark Twain", mantra: "क्रोध खुद को जलाता है" },
+    { text: "For every minute you remain angry, you give up sixty seconds of peace of mind.", source: "Ralph Waldo Emerson", mantra: "क्रोध में शांति खोते हो" },
+    { text: "You will not be punished for your anger; you will be punished by your anger.", source: "Gautama Buddha", mantra: "क्रोध का दंड तुम खुद भोगते हो" },
+    { text: "Holding onto anger is like drinking poison and expecting the other person to die.", source: "Gautama Buddha", mantra: "क्रोध छोड़ो जीवन पाओ" },
+    { text: "The best fighter is never angry.", source: "Lao Tzu", mantra: "शांत योद्धा सबसे शक्तिशाली" },
+    { text: "Speak when you are angry and you will make the best speech you will ever regret.", source: "Ambrose Bierce", mantra: "क्रोध में मत बोलो" },
+    { text: "Anger is just anger. It isn't good. It isn't bad. It just is. What you do with it is what matters.", source: "Jim Butcher", mantra: "क्रोध को सही दिशा दो" },
+    { text: "Between stimulus and response there is a space. In that space is our power to choose our response.", source: "Viktor Frankl", mantra: "प्रतिक्रिया से पहले रुको" },
+    { text: "When anger rises, think of the consequences.", source: "Confucius", mantra: "परिणाम सोचो" },
+    { text: "There is nothing that wastes the body like worry, and one who has any faith in God should be ashamed to worry about anything whatsoever.", source: "Mahatma Gandhi", mantra: "ईश्वर पर भरोसा रखो" },
+    { text: "Do not let the behavior of others destroy your inner peace.", source: "Dalai Lama", mantra: "अपनी शांति बचाओ" },
+    { text: "If you are patient in one moment of anger, you will escape a hundred days of sorrow.", source: "Chinese Proverb", mantra: "एक पल की सहनशीलता" },
+    { text: "Anger is a wind which blows out the lamp of the mind.", source: "Robert Green Ingersoll", mantra: "क्रोध विवेक को बुझाता है" },
+    { text: "Forgiveness is not an occasional act; it is a constant attitude.", source: "Martin Luther King Jr.", mantra: "क्षमा एक जीवनशैली है" },
+    { text: "The weak can never forgive. Forgiveness is the attribute of the strong.", source: "Mahatma Gandhi", mantra: "क्षमा में ताकत है" },
+    { text: "Be slow to anger, for anger is the enemy of justice.", source: "Thomas Jefferson", mantra: "धैर्य से न्याय मिलता है" },
+    { text: "Anybody can become angry — that is easy, but to be angry with the right person and to the right degree and at the right time is not within everybody's power.", source: "Aristotle", mantra: "सही क्रोध बुद्धिमानी है" },
+    { text: "Letting go of anger is not weakness. It is wisdom.", source: "Unknown", mantra: "क्रोध छोड़ना ज्ञान है" },
+    { text: "When you feel angry, stop. Take a breath. Ask yourself: will this matter in five years?", source: "Unknown", mantra: "पाँच साल बाद क्या फर्क पड़ेगा" },
+    { text: "Peace is not the absence of conflict but the ability to handle it by peaceful means.", source: "Ronald Reagan", mantra: "शांति से संघर्ष सुलझाओ" },
+    { text: "Before you speak, let your words pass through three gates: Is it true? Is it necessary? Is it kind?", source: "Sufi Saying", mantra: "बोलने से पहले सोचो" },
+    { text: "Rage is a powerful energy that — with wisdom and compassion — can be transformed into fierce compassion.", source: "Tara Brach", mantra: "क्रोध को करुणा में बदलो" },
+    { text: "Your anger is a gift. It tells you something is wrong. But it is you who must act wisely.", source: "Unknown", mantra: "क्रोध संदेश लाता है" },
+    { text: "He who angers you conquers you.", source: "Elizabeth Kenny", mantra: "क्रोधित मत होओ शत्रु जीत जाएगा" },
+    { text: "The moment you get angry is the moment you lose.", source: "Unknown", mantra: "क्रोध हार है" },
+    { text: "People won't remember what you said or did. They will remember how you made them feel.", source: "Maya Angelou", mantra: "एहसास याद रहता है" },
+    { text: "Take the high road. It's less crowded there.", source: "Unknown", mantra: "ऊंचा रास्ता चुनो" },
+    { text: "You are not your emotions. You can feel without becoming.", source: "Unknown", mantra: "भावना महसूस करो उसमें खो मत जाओ" },
+    { text: "No one can make you angry without your permission.", source: "Eleanor Roosevelt", mantra: "तुम्हारी भावनाएं तुम्हारी जिम्मेदारी हैं" },
+    { text: "I have decided to stick with love. Hate is too great a burden to bear.", source: "Martin Luther King Jr.", mantra: "नफरत बोझ है प्यार चुनो" },
+    { text: "Grudges are for those who insist that they are owed something; forgiveness, however, is for those who are substantial enough to move on.", source: "Criss Jami", mantra: "आगे बढ़ो" },
+    { text: "Even a happy life cannot be without a measure of darkness, and the word 'happy' would lose its meaning if it were not balanced by sadness.", source: "Carl Jung", mantra: "संतुलन जरूरी है" },
+    { text: "Breathe. It's just a bad moment — not a bad life.", source: "Unknown", mantra: "एक सांस लो" },
+    { text: "When you react, you let others control you. When you respond, you are in control.", source: "Bohdi Sanders", mantra: "प्रतिक्रिया नहीं उत्तर दो" },
+    { text: "Returning hate for hate multiplies hate. Only love can drive out hate.", source: "Martin Luther King Jr.", mantra: "नफरत को प्यार से हराओ" },
+    { text: "Sometimes it is better to lose and do the right thing than to win and do the wrong thing.", source: "Tony Blair", mantra: "सही करना जरूरी है जीतना नहीं" },
+    { text: "Resentment is like taking poison and waiting for the other person to die.", source: "Malachy McCourt", mantra: "द्वेष खुद को जहर देना है" },
+    { text: "I am not what happened to me. I am what I choose to become.", source: "Carl Jung", mantra: "तुम अपना चुनाव हो" },
+    { text: "Anger is only one letter short of danger.", source: "Eleanor Roosevelt", mantra: "क्रोध खतरा है" },
+    { text: "If you want to make peace with your enemy, you have to work with your enemy. Then he becomes your partner.", source: "Nelson Mandela", mantra: "दुश्मन को साथी बनाओ" },
+    { text: "Understanding is deeper than knowledge. There are many people who know you, but very few who understand you.", source: "Unknown", mantra: "समझना जानने से गहरा है" },
+    { text: "The truth will set you free. But first it will make you miserable.", source: "James A. Garfield", mantra: "सच्चाई मुक्त करती है" },
+    { text: "Let your anger out safely — scream into a pillow, go for a run, write it down — then let it go.", source: "Unknown", mantra: "क्रोध को सुरक्षित बाहर करो" },
+    { text: "You cannot shake hands with a clenched fist.", source: "Indira Gandhi", mantra: "मुट्ठी खोलो शांति पाओ" },
+    { text: "Conquer anger by love.", source: "Dhammapada", mantra: "क्रोध को प्रेम से जीतो" },
+    { text: "Anger is never without a reason, but seldom with a good one.", source: "Benjamin Franklin", mantra: "कारण ढूंढो" },
+    { text: "The soul that sees beauty may sometimes walk alone.", source: "Goethe", mantra: "शांत रहो सुंदरता देखो" },
+    { text: "Silence is a fence around wisdom.", source: "German Proverb", mantra: "मौन बुद्धिमानी की बाड़ है" },
+    { text: "Step back. Breathe deeply. Respond with wisdom, not emotion.", source: "Unknown", mantra: "भावना नहीं बुद्धि से जवाब दो" },
+    { text: "The best revenge is massive success and moving on.", source: "Unknown", mantra: "सफलता ही सबसे बड़ा जवाब है" }
+  ],
+
+  empty: [
+    { text: "In the depth of winter, I finally learned that within me there lay an invincible summer.", source: "Albert Camus", mantra: "अंदर अजेय ग्रीष्म है" },
+    { text: "Emptiness is not the absence of everything. It is the presence of infinite possibility.", source: "Zen Saying", mantra: "खालीपन में संभावनाएं हैं" },
+    { text: "You don't have to be positive all the time. It's perfectly okay to feel sad, angry, annoyed, frustrated, scared or anxious. Having feelings doesn't make you a negative person. It makes you human.", source: "Lori Deschene", mantra: "भावनाएं होना स्वाभाविक है" },
+    { text: "When you feel empty, you are being refilled.", source: "Unknown", mantra: "खालीपन भराव की शुरुआत है" },
+    { text: "Perhaps the emptiness you feel is not nothing — it is the space where something sacred is about to grow.", source: "Unknown", mantra: "खालीपन में कुछ पवित्र जन्म लेगा" },
+    { text: "The lotus flower blooms most beautifully from the deepest mud.", source: "Buddhist Proverb", mantra: "कीचड़ में कमल खिलता है" },
+    { text: "Sometimes, you need to be alone. Not to be lonely, but to enjoy your free time being yourself.", source: "Unknown", mantra: "अकेले रहना बुरा नहीं" },
+    { text: "In the void there is infinite creative potential.", source: "Deepak Chopra", mantra: "शून्य में सृजन है" },
+    { text: "Nothingness lies coiled in the heart of being — like a worm.", source: "Jean-Paul Sartre", mantra: "शून्य अस्तित्व का हिस्सा है" },
+    { text: "What feels like the end is often the beginning.", source: "Unknown", mantra: "अंत में शुरुआत है" },
+    { text: "Your emptiness is the womb of your creativity.", source: "Osho", mantra: "खालीपन सृजन की कोख है" },
+    { text: "You feel empty because you are full of what you need to let go.", source: "Unknown", mantra: "छोड़ो तो भरोगे" },
+    { text: "Even the sun goes down and the night comes. The emptiness of night makes dawn possible.", source: "Unknown", mantra: "रात के बाद सुबह होती है" },
+    { text: "You will have a void in your life until you pour yourself into it.", source: "Unknown", mantra: "खुद को खोज में लगाओ" },
+    { text: "When we can no longer change a situation, we are challenged to change ourselves.", source: "Viktor Frankl", mantra: "खुद को बदलो" },
+    { text: "It's a terrible thing, I think, in life to wait until you're ready. I have this feeling now that actually no one is ever ready to do anything.", source: "Hugh Laurie", mantra: "तैयार कभी नहीं होते बस करते हैं" },
+    { text: "Perhaps everything terrible is in its deepest being something that needs our love.", source: "Rainer Maria Rilke", mantra: "हर बुरी बात में प्यार की जरूरत है" },
+    { text: "We are not human beings having a spiritual experience. We are spiritual beings having a human experience.", source: "Pierre Teilhard de Chardin", mantra: "तुम आत्मा हो" },
+    { text: "Just when the caterpillar thought the world was over, it became a butterfly.", source: "Unknown", mantra: "रूपांतरण हो रहा है" },
+    { text: "The quieter you become, the more you are able to hear.", source: "Rumi", mantra: "शांत होने पर सुनाई देता है" },
+    { text: "Empty yourself and let the universe fill you.", source: "Sufi Wisdom", mantra: "खाली होने पर ब्रह्मांड भरता है" },
+    { text: "This feeling is temporary. You are not broken. You are just in between versions of yourself.", source: "Unknown", mantra: "तुम बदल रहे हो" },
+    { text: "When you go through a hard period, when everything seems to oppose you, when you feel you cannot even bear one more minute, never give up! Because it is the time and place that the course will divert.", source: "Rumi", mantra: "अभी मत रुको" },
+    { text: "The soul becomes dyed with the color of its thoughts.", source: "Marcus Aurelius", mantra: "विचार रंग देते हैं आत्मा को" },
+    { text: "Sometimes I need only to stand wherever I am to be blessed.", source: "Mary Oliver", mantra: "बस यहाँ होना काफी है" },
+    { text: "Everything is within your power, and your power is within you.", source: "Janice Trachtman", mantra: "ताकत अंदर है" },
+    { text: "You matter. Even when it doesn't feel like it.", source: "Unknown", mantra: "तुम मायने रखते हो" },
+    { text: "Hold on. Even the darkest night will give way to morning.", source: "Unknown", mantra: "थामे रहो" },
+    { text: "You are enough. You have always been enough. You will always be enough.", source: "Unknown", mantra: "तुम पर्याप्त हो" },
+    { text: "The meaning of life is to find your gift. The purpose of life is to give it away.", source: "Pablo Picasso", mantra: "उपहार खोजो और दो" },
+    { text: "Sometimes crying or laughing are the only options left — and laughing feels better.", source: "Ashly Lorenzana", mantra: "हँसी सबसे अच्छी दवा है" },
+    { text: "You are loved more than you know.", source: "Unknown", mantra: "तुम से प्यार किया जाता है" },
+    { text: "Even on your worst days, you are still someone's reason to smile.", source: "Unknown", mantra: "तुम किसी की खुशी हो" },
+    { text: "Rest is not giving up. It's a sacred act of self-love.", source: "Unknown", mantra: "आराम प्यार है" },
+    { text: "What drains your soul deserves to be left behind.", source: "Unknown", mantra: "जो थकाए उसे छोड़ दो" },
+    { text: "When life gets blurry, adjust your focus.", source: "Unknown", mantra: "नजरिया बदलो" },
+    { text: "An empty lantern provides no light. Self-care is the fuel that allows your light to shine brightly.", source: "Unknown", mantra: "खुद का ख्याल रखो" },
+    { text: "In the middle of difficulty lies opportunity. In emptiness lies space for creation.", source: "Unknown", mantra: "खालीपन में सृजन है" },
+    { text: "You are not hollow. You are deep. There is a difference.", source: "Unknown", mantra: "तुम गहरे हो खाली नहीं" },
+    { text: "Your silence is not nothing. It's the universe resting, preparing for something beautiful.", source: "Unknown", mantra: "मौन तैयारी है" },
+    { text: "Go within every day and find the inner strength so that the world will not blow your candle out.", source: "Katherine Dunham", mantra: "अंदर की ताकत जगाओ" },
+    { text: "The bravest thing I ever did was continuing my life when I wanted to die.", source: "Juliette Lewis", mantra: "जीते रहना साहस है" },
+    { text: "You survived yesterday. You can survive today.", source: "Unknown", mantra: "आज भी जी लोगे" },
+    { text: "One small crack does not mean that you are broken, it means that you were put to the test and you didn't fall apart.", source: "Linda Poindexter", mantra: "दरार में ताकत है" },
+    { text: "Even the most beautiful flowers need time to bloom in the dark.", source: "Unknown", mantra: "अंधेरे में भी खिलते हैं फूल" },
+    { text: "You are a collection of every beautiful moment you've ever felt — even if you've forgotten them.", source: "Unknown", mantra: "तुम खूबसूरत लम्हों का संग्रह हो" },
+    { text: "The darkest hour is just before the dawn.", source: "Thomas Fuller", mantra: "सबसे गहरा अंधेरा सुबह से पहले होता है" },
+    { text: "Be gentle with yourself — you are a child of the universe, no less than the trees and stars.", source: "Max Ehrmann", mantra: "खुद पर कोमल रहो" },
+    { text: "Sometimes feeling numb is your soul's way of saying: 'I need rest, not answers.'", source: "Unknown", mantra: "आराम चाहिए तुम्हारी आत्मा को" },
+    { text: "You don't have to earn rest. Rest is your birthright.", source: "Unknown", mantra: "आराम तुम्हारा हक है" }
+  ],
+
+  unmotivated: [
+    { text: "You don't have to be great to start, but you have to start to be great.", source: "Zig Ziglar", mantra: "शुरुआत ही महानता है" },
+    { text: "The secret of getting ahead is getting started.", source: "Mark Twain", mantra: "बस शुरू करो" },
+    { text: "Action is the antidote to despair.", source: "Joan Baez", mantra: "करना ही दवा है" },
+    { text: "You miss 100% of the shots you don't take.", source: "Wayne Gretzky", mantra: "कोशिश करो" },
+    { text: "Just do it — even if it's bad. Bad work is better than no work.", source: "Unknown", mantra: "कर डालो" },
+    { text: "Your future self is watching you right now through memories.", source: "Aubrey De Graf", mantra: "भविष्य का 'तुम' देख रहा है" },
+    { text: "A year from now you may wish you had started today.", source: "Karen Lamb", mantra: "आज शुरू करो" },
+    { text: "Motivation is what gets you started. Habit is what keeps you going.", source: "Jim Ryun", mantra: "आदत बनाओ" },
+    { text: "Do it now. Sometimes 'later' becomes 'never'.", source: "Unknown", mantra: "अभी करो" },
+    { text: "Start where you are. Use what you have. Do what you can.", source: "Arthur Ashe", mantra: "अभी जहाँ हो वहाँ से शुरू करो" },
+    { text: "The only way to do great work is to love what you do. If you haven't found it yet, keep looking.", source: "Steve Jobs", mantra: "प्यार से करो" },
+    { text: "You don't have to see the whole staircase — just take the first step.", source: "Martin Luther King Jr.", mantra: "पहला कदम काफी है" },
+    { text: "Success is not final. Failure is not fatal. It is the courage to continue that counts.", source: "Winston Churchill", mantra: "जारी रहो" },
+    { text: "I am not a product of my circumstances. I am a product of my decisions.", source: "Stephen Covey", mantra: "तुम्हारे निर्णय तुम्हें बनाते हैं" },
+    { text: "The difference between who you are and who you want to be is what you do.", source: "Unknown", mantra: "करना ही अंतर है" },
+    { text: "Successful people do what unsuccessful people are not willing to do. Don't wish it were easier; wish you were better.", source: "Jim Rohn", mantra: "खुद को बेहतर बनाओ" },
+    { text: "The way to get started is to quit talking and begin doing.", source: "Walt Disney", mantra: "बोलना बंद करो करना शुरू करो" },
+    { text: "If you are working on something that you really care about, you don't have to be pushed. The vision pulls you.", source: "Steve Jobs", mantra: "सपना खुद खींचता है" },
+    { text: "Dream big. Start small. Act now.", source: "Robin Sharma", mantra: "बड़ा सोचो छोटा करो अभी शुरू करो" },
+    { text: "You've been assigned this mountain to show others it can be moved.", source: "Unknown", mantra: "पहाड़ हटाने के लिए मिला है" },
+    { text: "Hard days are the best because that's when champions are made.", source: "Gabby Douglas", mantra: "कठिन दिन चैंपियन बनाते हैं" },
+    { text: "Don't count the days; make the days count.", source: "Muhammad Ali", mantra: "दिनों को सार्थक बनाओ" },
+    { text: "We must embrace pain and burn it as fuel for our journey.", source: "Kenji Miyazawa", mantra: "दर्द को ऊर्जा बनाओ" },
+    { text: "The question isn't who is going to let me — it's who is going to stop me.", source: "Ayn Rand", mantra: "रोकने वाला कोई नहीं" },
+    { text: "Energy and persistence conquer all things.", source: "Benjamin Franklin", mantra: "लगन से सब मिलता है" },
+    { text: "It's not whether you get knocked down; it's whether you get up.", source: "Vince Lombardi", mantra: "उठना जरूरी है" },
+    { text: "Champions keep playing until they get it right.", source: "Billie Jean King", mantra: "सही होने तक करते रहो" },
+    { text: "Courage doesn't always roar. Sometimes courage is the quiet voice at the end of the day saying 'I will try again tomorrow.'", source: "Mary Anne Radmacher", mantra: "कल फिर कोशिश करूंगा" },
+    { text: "The only limit to our realization of tomorrow will be our doubts of today.", source: "Franklin D. Roosevelt", mantra: "शक छोड़ो संभावना देखो" },
+    { text: "You've got to get up every morning with determination if you're going to go to bed with satisfaction.", source: "George Lorimer", mantra: "दृढ़ता से शुरुआत करो" },
+    { text: "Even the smallest step in the right direction is still progress.", source: "Unknown", mantra: "छोटा कदम भी प्रगति है" },
+    { text: "The secret to a rich life is having more beginnings than endings.", source: "David Weinbaum", mantra: "नई शुरुआत करो" },
+    { text: "Consistency is the key. Motivation fades, habits remain.", source: "Unknown", mantra: "नियमितता ही रहस्य है" },
+    { text: "You can't build a reputation on what you are going to do.", source: "Henry Ford", mantra: "कर के दिखाओ" },
+    { text: "The time is always right to do what is right.", source: "Martin Luther King Jr.", mantra: "सही काम का सही वक्त अभी है" },
+    { text: "Someone is sitting in the shade today because someone planted a tree a long time ago.", source: "Warren Buffett", mantra: "आज लगाओ कल छाया मिलेगी" },
+    { text: "Make each day your masterpiece.", source: "John Wooden", mantra: "हर दिन को बेहतरीन बनाओ" },
+    { text: "The hardest part is starting. Once you begin, it gets easier.", source: "Unknown", mantra: "शुरुआत करो आसान हो जाएगा" },
+    { text: "Done is better than perfect.", source: "Sheryl Sandberg", mantra: "करना परफेक्ट से बेहतर है" },
+    { text: "What we fear doing most is usually what we most need to do.", source: "Timothy Ferriss", mantra: "डर से आगे जाओ" },
+    { text: "Small daily improvements are the key to staggering long-term results.", source: "Robin Sharma", mantra: "रोज थोड़ा बेहतर बनो" },
+    { text: "Forget all the reasons why it won't work and believe the one reason why it will.", source: "Unknown", mantra: "एक कारण काफी है" },
+    { text: "With the new day comes new strength and new thoughts.", source: "Eleanor Roosevelt", mantra: "नया दिन नई ताकत" },
+    { text: "If you want something you've never had, you must be willing to do something you've never done.", source: "Thomas Jefferson", mantra: "नया करो नया पाओ" },
+    { text: "Big journeys begin with a single step.", source: "Lao Tzu", mantra: "पहला कदम सबसे बड़ा है" },
+    { text: "Your life does not get better by chance. It gets better by change.", source: "Jim Rohn", mantra: "बदलाव से जिंदगी बेहतर होती है" },
+    { text: "Whether you think you can or you think you can't — you're right.", source: "Henry Ford", mantra: "सोच ही सच बनती है" },
+    { text: "Push yourself because no one else is going to do it for you.", source: "Unknown", mantra: "खुद को आगे धकेलो" },
+    { text: "The man who moves a mountain begins by carrying away small stones.", source: "Confucius", mantra: "पत्थर उठाने से पहाड़ हटता है" },
+    { text: "Believe you can and you're halfway there.", source: "Theodore Roosevelt", mantra: "विश्वास करो आधा काम हो गया" }
+  ],
+
+  grow: [
+    { text: "The only way to do great work is to love what you do.", source: "Steve Jobs", mantra: "प्यार से करो महान काम होगा" },
+    { text: "Growth is painful. Change is painful. But nothing is as painful as staying stuck somewhere you don't belong.", source: "Mandy Hale", mantra: "बढ़ो रुकना दर्दनाक है" },
+    { text: "What you get by achieving your goals is not as important as what you become by achieving your goals.", source: "Zig Ziglar", mantra: "बनना पाने से ज्यादा जरूरी है" },
+    { text: "Life is growth. If we stop growing, technically and spiritually, we are as good as dead.", source: "Morihei Ueshiba", mantra: "बढ़ते रहो" },
+    { text: "We must always change, renew, rejuvenate ourselves; otherwise we harden.", source: "Goethe", mantra: "बदलते रहो" },
+    { text: "Personal development is the belief that you are worth the effort, time, and energy needed to develop yourself.", source: "Denis Waitley", mantra: "तुम खुद को बेहतर बनाने के काबिल हो" },
+    { text: "Don't go through life — grow through life.", source: "Eric Butterworth", mantra: "जीवन से गुजरो मत उसमें बढ़ो" },
+    { text: "The only person you are destined to become is the person you decide to be.", source: "Ralph Waldo Emerson", mantra: "तुम खुद को बनाते हो" },
+    { text: "Be patient with yourself. Self-growth is tender; it's holy ground. There's no greater investment.", source: "Stephen Covey", mantra: "धैर्य रखो विकास हो रहा है" },
+    { text: "You are never too old to set another goal or to dream a new dream.", source: "C.S. Lewis", mantra: "नए सपने देखो" },
+    { text: "Your life is your garden, your thoughts are the seeds.", source: "Rumi", mantra: "विचार बीज हैं" },
+    { text: "The unexamined life is not worth living.", source: "Socrates", mantra: "खुद को जांचते रहो" },
+    { text: "Education is the most powerful weapon which you can use to change the world.", source: "Nelson Mandela", mantra: "शिक्षा सबसे बड़ा हथियार है" },
+    { text: "The key is not to prioritize what's on your schedule, but to schedule your priorities.", source: "Stephen Covey", mantra: "जरूरी को पहले करो" },
+    { text: "Do not wait to strike till the iron is hot; but make it hot by striking.", source: "William Butler Yeats", mantra: "करने से अवसर बनता है" },
+    { text: "In any moment of decision, the best thing you can do is the right thing. The worst thing you can do is nothing.", source: "Theodore Roosevelt", mantra: "सही काम करो" },
+    { text: "The mind is not a vessel to be filled but a fire to be kindled.", source: "Plutarch", mantra: "मन एक आग है जलाओ उसे" },
+    { text: "Knowing yourself is the beginning of all wisdom.", source: "Aristotle", mantra: "खुद को जानना ज्ञान की शुरुआत है" },
+    { text: "It is not the strongest of the species that survive, nor the most intelligent, but the one most responsive to change.", source: "Charles Darwin", mantra: "बदलाव को अपनाओ" },
+    { text: "Intellectual growth should commence at birth and cease only at death.", source: "Albert Einstein", mantra: "सीखना जीवन भर चलता है" },
+    { text: "The more that you read, the more things you will know.", source: "Dr. Seuss", mantra: "पढ़ो और जानो" },
+    { text: "Once you stop learning, you start dying.", source: "Albert Einstein", mantra: "सीखना बंद मत करो" },
+    { text: "The beautiful thing about learning is that no one can take it away from you.", source: "B.B. King", mantra: "ज्ञान तुम्हारा है" },
+    { text: "Try to learn something about everything and everything about something.", source: "Thomas Huxley", mantra: "सीखते रहो" },
+    { text: "An investment in knowledge pays the best interest.", source: "Benjamin Franklin", mantra: "ज्ञान में निवेश करो" },
+    { text: "Challenges are what make life interesting. Overcoming them is what makes life meaningful.", source: "Joshua J. Marine", mantra: "चुनौतियाँ जीवन को अर्थ देती हैं" },
+    { text: "The secret of change is to focus all of your energy not on fighting the old, but on building the new.", source: "Socrates", mantra: "नया बनाने में ऊर्जा लगाओ" },
+    { text: "You grow most in areas where you are most willing to be uncomfortable.", source: "Unknown", mantra: "असुविधा में विकास है" },
+    { text: "Be so good they can't ignore you.", source: "Steve Martin", mantra: "इतने अच्छे बनो कि नजरअंदाज न हो सको" },
+    { text: "He who is not courageous enough to take risks will accomplish nothing in life.", source: "Muhammad Ali", mantra: "जोखिम लो" },
+    { text: "The expert in anything was once a beginner.", source: "Helen Hayes", mantra: "हर विशेषज्ञ कभी शुरुआती था" },
+    { text: "Comfort is the enemy of achievement.", source: "Farrah Gray", mantra: "आराम उपलब्धि का दुश्मन है" },
+    { text: "The first step toward success is taken when you refuse to be a captive of the environment in which you first find yourself.", source: "Mark Caine", mantra: "माहौल से आगे बढ़ो" },
+    { text: "If you want to fly, you have to give up what weighs you down.", source: "Roy T. Bennett", mantra: "बोझ छोड़ो उड़ो" },
+    { text: "Great things never came from comfort zones.", source: "Unknown", mantra: "सुविधा क्षेत्र से बाहर जाओ" },
+    { text: "Every artist was first an amateur.", source: "Ralph Waldo Emerson", mantra: "शुरुआत सबकी होती है" },
+    { text: "We are what we repeatedly do. Excellence then is not an act, but a habit.", source: "Aristotle", mantra: "हम जो बार-बार करते हैं वही हम हैं" },
+    { text: "The greatest glory in living lies not in never falling, but in rising every time we fall.", source: "Nelson Mandela", mantra: "गिरकर उठो" },
+    { text: "Life begins at the end of your comfort zone.", source: "Neale Donald Walsch", mantra: "जिंदगी असुविधा में शुरू होती है" },
+    { text: "Your potential is endless. Go do what you were created to do.", source: "Unknown", mantra: "तुम्हारी संभावनाएं अनंत हैं" },
+    { text: "Strive for progress, not perfection.", source: "Unknown", mantra: "परफेक्शन नहीं प्रगति चाहो" },
+    { text: "If you're not growing, you're dying.", source: "Tony Robbins", mantra: "बढ़ो या बिखरो" },
+    { text: "The more you know, the more you realize you don't know.", source: "Aristotle", mantra: "जानते जाओ विनम्र होते जाओ" },
+    { text: "Success is not the key to happiness. Happiness is the key to success.", source: "Albert Schweitzer", mantra: "खुशी सफलता की चाबी है" },
+    { text: "Plant seeds of happiness, hope, success, and love; it will all come back to you in abundance.", source: "Steve Maraboli", mantra: "अच्छाई बोओ अच्छाई काटो" },
+    { text: "The only impossible journey is the one you never begin.", source: "Tony Robbins", mantra: "शुरुआत ही यात्रा है" },
+    { text: "Be yourself — everyone else is already taken.", source: "Oscar Wilde", mantra: "खुद बनो" },
+    { text: "In order to be irreplaceable, one must always be different.", source: "Coco Chanel", mantra: "अलग बनो अनमोल बनो" },
+    { text: "The purpose of life is not to be happy — it is to be useful, to be honorable, to be compassionate.", source: "Ralph Waldo Emerson", mantra: "उपयोगी बनो" },
+    { text: "Your time is limited — don't waste it living someone else's life.", source: "Steve Jobs", mantra: "अपनी जिंदगी जियो" }
+  ],
+
+  peace: [
+    { text: "Peace comes from within. Do not seek it without.", source: "Gautama Buddha", mantra: "शांति अंदर है" },
+    { text: "If you are peaceful, you are happy.", source: "Thich Nhat Hanh", mantra: "शांति ही सुख है" },
+    { text: "Do not let the behavior of others destroy your inner peace.", source: "Dalai Lama", mantra: "अपनी शांति बचाओ" },
+    { text: "When the mind is still, the beauty of the Self is seen reflected in it.", source: "Ramana Maharshi", mantra: "शांत मन में स्वयं दिखता है" },
+    { text: "Silence is the language of God; all else is poor translation.", source: "Rumi", mantra: "मौन ईश्वर की भाषा है" },
+    { text: "Nothing is worth more than this day.", source: "Goethe", mantra: "यह दिन अनमोल है" },
+    { text: "True peace is not merely the absence of tension — it is the presence of justice.", source: "Martin Luther King Jr.", mantra: "शांति न्याय का परिणाम है" },
+    { text: "Peace is not something you wish for; it's something you make, something you do, something you are.", source: "Robert Fulghum", mantra: "शांति बनाओ" },
+    { text: "The present moment always will have been.", source: "Eckhart Tolle", mantra: "यह क्षण सदा रहेगा" },
+    { text: "Serenity is not freedom from the storm, but peace amid the storm.", source: "Unknown", mantra: "तूफान में भी शांत रहो" },
+    { text: "You find peace not by rearranging the circumstances of your life but by realizing who you are at the deepest level.", source: "Eckhart Tolle", mantra: "खुद को जानो शांति मिलेगी" },
+    { text: "You don't need to leave your room. Remain sitting at your table and listen. Just wait, be quiet, still and solitary. The world will freely offer itself to you.", source: "Franz Kafka", mantra: "शांत बैठो दुनिया आएगी" },
+    { text: "When you realize there is nothing lacking, the whole world belongs to you.", source: "Lao Tzu", mantra: "सब मिला हुआ है" },
+    { text: "Be here now.", source: "Ram Dass", mantra: "अभी यहाँ रहो" },
+    { text: "The quieter you become, the more you are able to hear.", source: "Rumi", mantra: "शांत हो सुनो" },
+    { text: "Let go and let God.", source: "Sufi Proverb", mantra: "छोड़ दो ईश्वर पर" },
+    { text: "You are the sky. Everything else is just weather.", source: "Pema Chödrön", mantra: "तुम आकाश हो" },
+    { text: "Thousands of candles can be lighted from a single candle, and the life of the candle will not be shortened. Happiness never decreases by being shared.", source: "Gautama Buddha", mantra: "खुशी बांटने से बढ़ती है" },
+    { text: "In the stillness, I am whole.", source: "Unknown", mantra: "स्थिरता में पूर्णता है" },
+    { text: "Set peace of mind as your highest goal and organize your life around it.", source: "Brian Tracy", mantra: "शांति सबसे बड़ा लक्ष्य है" },
+    { text: "Peace is always beautiful.", source: "Walt Whitman", mantra: "शांति हमेशा सुंदर होती है" },
+    { text: "The nearer a man comes to a calm mind, the closer he is to strength.", source: "Marcus Aurelius", mantra: "शांत मन में ताकत है" },
+    { text: "The secret of health for both mind and body is not to mourn for the past, worry about the future, or anticipate troubles, but to live the present moment wisely and earnestly.", source: "Gautama Buddha", mantra: "वर्तमान में जियो" },
+    { text: "Nothing can bring you peace but yourself.", source: "Ralph Waldo Emerson", mantra: "शांति खुद से आती है" },
+    { text: "Peace is the result of retraining your mind to process life as it is, rather than as you think it should be.", source: "Wayne Dyer", mantra: "जैसा है वैसा स्वीकारो" },
+    { text: "If there is no enemy within, the enemy outside can do us no harm.", source: "African Proverb", mantra: "अंदर का दुश्मन नहीं तो बाहर का कुछ नहीं" },
+    { text: "Renew yourself completely each day; do it again, and again, and forever again.", source: "Chinese Proverb", mantra: "हर दिन नया जन्म" },
+    { text: "The more tranquil a man becomes, the greater is his success, his influence, his power for good.", source: "James Allen", mantra: "शांत व्यक्ति महान होता है" },
+    { text: "Breathing in, I calm body and mind. Breathing out, I smile.", source: "Thich Nhat Hanh", mantra: "सांस लो शांत होओ मुस्कुराओ" },
+    { text: "Even if you are on the right track, you will get run over if you just sit there.", source: "Will Rogers", mantra: "सही राह पर भी चलते रहो" },
+    { text: "If you are irritated by every rub, how will your mirror be polished?", source: "Rumi", mantra: "घर्षण से चमक आती है" },
+    { text: "Quiet the mind and the soul will speak.", source: "Ma Jaya Sati Bhagavati", mantra: "मन शांत करो आत्मा बोलेगी" },
+    { text: "I am at peace with God. My conflict is with Man.", source: "Charlie Chaplin", mantra: "ईश्वर से शांति" },
+    { text: "The most precious gift we can offer anyone is our attention.", source: "Thich Nhat Hanh", mantra: "ध्यान सबसे बड़ा उपहार है" },
+    { text: "Life is a series of natural and spontaneous changes. Don't resist them.", source: "Lao Tzu", mantra: "बदलाव को स्वीकारो" },
+    { text: "Muddy water is best cleared by leaving it alone.", source: "Alan Watts", mantra: "खुद ही साफ होगा" },
+    { text: "True happiness arises from the arising of good, from the sense of contentment.", source: "Gautama Buddha", mantra: "संतोष में सुख है" },
+    { text: "Be content with what you have; rejoice in the way things are. When you realize there is nothing lacking, the whole world belongs to you.", source: "Lao Tzu", mantra: "संतोष ही धन है" },
+    { text: "In returning and rest you shall be saved; in quietness and trust shall be your strength.", source: "Isaiah 30:15", mantra: "विश्राम में शक्ति है" },
+    { text: "Harmony makes small things grow; lack of it makes great things decay.", source: "Sallust", mantra: "सामंजस्य में वृद्धि है" },
+    { text: "Blessed are the peacemakers, for they will be called children of God.", source: "Matthew 5:9", mantra: "शांतिदूत ईश्वर के पुत्र हैं" },
+    { text: "Peace begins with a smile.", source: "Mother Teresa", mantra: "मुस्कान से शुरू होती है शांति" },
+    { text: "The soul that sees beauty may sometimes walk alone.", source: "Goethe", mantra: "शांति में सौंदर्य है" },
+    { text: "Inner peace is the key: if you have inner peace, the external problems do not affect your deep sense of peace.", source: "Dalai Lama", mantra: "अंदर शांति हो तो बाहर कुछ नहीं" },
+    { text: "Stillness speaks.", source: "Eckhart Tolle", mantra: "स्थिरता बोलती है" },
+    { text: "When you own your breath, nobody can steal your peace.", source: "Unknown", mantra: "सांस तुम्हारी शांति तुम्हारी" },
+    { text: "Not all storms come to disrupt your life; some come to clear your path.", source: "Unknown", mantra: "तूफान रास्ता साफ करता है" },
+    { text: "The present moment is where life can be found, and if you don't arrive there, you miss your appointment with life.", source: "Thich Nhat Hanh", mantra: "अभी जियो" },
+    { text: "May all beings be happy. May all beings be free from suffering.", source: "Buddhist Metta Prayer", mantra: "सर्वे भवन्तु सुखिनः" },
+    { text: "A heart at peace gives life to the body.", source: "Proverbs 14:30", mantra: "शांत हृदय जीवन देता है" }
+  ],
+
+  strength: [
+    { text: "You are stronger than you think.", source: "A.A. Milne", mantra: "तुम सोचते हो उससे ज्यादा मजबूत हो" },
+    { text: "Strength does not come from physical capacity. It comes from an indomitable will.", source: "Mahatma Gandhi", mantra: "ताकत इच्छाशक्ति में है" },
+    { text: "He who has a why to live for can bear almost any how.", source: "Friedrich Nietzsche", mantra: "उद्देश्य ही ताकत है" },
+    { text: "I am not afraid of storms, for I am learning how to sail my ship.", source: "Louisa May Alcott", mantra: "तूफान से डरो मत" },
+    { text: "Fall seven times, stand up eight.", source: "Japanese Proverb", mantra: "सात बार गिरो आठ बार उठो" },
+    { text: "The human capacity for burden is like bamboo — far more flexible than you'd ever believe at first glance.", source: "Jodi Picoult", mantra: "तुम बहुत झेल सकते हो" },
+    { text: "You have power over your mind — not outside events. Realize this, and you will find strength.", source: "Marcus Aurelius", mantra: "मन पर ताकत है बाहर नहीं" },
+    { text: "Tough times never last, but tough people do.", source: "Robert H. Schuller", mantra: "मुश्किल वक्त बीतता है मजबूत इंसान नहीं" },
+    { text: "What lies behind us and what lies before us are tiny matters compared to what lies within us.", source: "Ralph Waldo Emerson", mantra: "असली ताकत अंदर है" },
+    { text: "You were given this life because you are strong enough to live it.", source: "Unknown", mantra: "यह जिंदगी तुम्हें दी गई क्योंकि तुम काबिल हो" },
+    { text: "The world breaks everyone, and afterward, some are strong at the broken places.", source: "Ernest Hemingway", mantra: "टूटने के बाद मजबूती आती है" },
+    { text: "With great power comes great responsibility — and you have more power than you know.", source: "Unknown", mantra: "तुम्हारे पास अपार शक्ति है" },
+    { text: "I can be changed by what happens to me. But I refuse to be reduced by it.", source: "Maya Angelou", mantra: "मैं टूटूंगा नहीं" },
+    { text: "The bamboo that bends is stronger than the oak that resists.", source: "Japanese Proverb", mantra: "लचीलापन ताकत है" },
+    { text: "Out of difficulties grow miracles.", source: "Jean de la Bruyère", mantra: "कठिनाई में चमत्कार होते हैं" },
+    { text: "Hard times always reveal true friends and true strength.", source: "Unknown", mantra: "कठिन समय असली पहचान करवाता है" },
+    { text: "Difficulties mastered are opportunities won.", source: "Winston Churchill", mantra: "मुश्किलें जीतना अवसर पाना है" },
+    { text: "The gem cannot be polished without friction, nor man perfected without trials.", source: "Chinese Proverb", mantra: "घर्षण से हीरा बनता है" },
+    { text: "Your struggle is part of your story. Don't skip it.", source: "Unknown", mantra: "संघर्ष तुम्हारी कहानी का हिस्सा है" },
+    { text: "Scars are proof that you were stronger than what tried to hurt you.", source: "Unknown", mantra: "निशान ताकत के प्रमाण हैं" },
+    { text: "Courage is not the absence of fear, but the triumph over it.", source: "Nelson Mandela", mantra: "साहस डर पर जीत है" },
+    { text: "Every champion was once a contender who refused to give up.", source: "Rocky Balboa", mantra: "हार मत मानो" },
+    { text: "I never lose. Either I win or I learn.", source: "Nelson Mandela", mantra: "हार से भी सीखते हैं" },
+    { text: "In the middle of difficulty lies opportunity.", source: "Albert Einstein", mantra: "मुश्किल में मौका है" },
+    { text: "The strongest people are those who win battles we know nothing about.", source: "Unknown", mantra: "असली ताकत छुपी रहती है" },
+    { text: "You have survived 100% of your worst days so far.", source: "Unknown", mantra: "तुमने सब पार किया है" },
+    { text: "When you come to the edge of all the light you know, and are about to step off into the darkness of the unknown, faith is knowing one of two things will happen: you will find something solid to stand on, or you will be taught how to fly.", source: "Edward Teller", mantra: "या तो टिकोगे या उड़ोगे" },
+    { text: "Press forward. Do not stop, do not linger in your journey, but strive for the mark set before you.", source: "George Whitefield", mantra: "आगे बढ़ते रहो" },
+    { text: "A hero is no braver than an ordinary man, but he is brave five minutes longer.", source: "Ralph Waldo Emerson", mantra: "पाँच मिनट और" },
+    { text: "It's not about how hard you can hit. It's about how hard you can get hit and keep moving forward.", source: "Rocky Balboa", mantra: "मार खाओ चलते रहो" },
+    { text: "Do not pray for an easy life; pray for the strength to endure a difficult one.", source: "Bruce Lee", mantra: "ताकत माँगो आसान जिंदगी नहीं" },
+    { text: "You were made for more than this moment.", source: "Unknown", mantra: "तुम इससे बड़े हो" },
+    { text: "The most courageous act is still to think for yourself. Aloud.", source: "Coco Chanel", mantra: "खुद सोचो बोलो" },
+    { text: "Strength is not about never breaking down. It's about getting back up.", source: "Unknown", mantra: "उठना ही ताकत है" },
+    { text: "When you're in a dark place, you sometimes tend to think you've been buried. Perhaps you've been planted.", source: "Unknown", mantra: "दफन नहीं बोया गया है तुम" },
+    { text: "Even the darkest night will end and the sun will rise.", source: "Victor Hugo", mantra: "रात बीतेगी सूरज उगेगा" },
+    { text: "The greatest mistake you can make in life is to be continually fearing you will make one.", source: "Elbert Hubbard", mantra: "गलती के डर से मत रुको" },
+    { text: "Your setbacks are your setups for something greater.", source: "Unknown", mantra: "पीछे हटना आगे बढ़ने की तैयारी है" },
+    { text: "Keep going. Your hardest times often lead to the greatest moments of your life.", source: "Roy T. Bennett", mantra: "चलते रहो सबसे अच्छा आगे है" },
+    { text: "Nothing is impossible to a willing heart.", source: "John Heywood", mantra: "इच्छाशक्ति से कुछ भी संभव है" },
+    { text: "I am not what happened to me. I am what I choose to become.", source: "Carl Jung", mantra: "मैं अपना चुनाव हूँ" },
+    { text: "It does not matter how slowly you go as long as you do not stop.", source: "Confucius", mantra: "धीरे चलो रुको मत" },
+    { text: "The only one who can tell you 'you can't win' is you — and you don't have to listen.", source: "Jessica Ennis", mantra: "खुद पर विश्वास रखो" },
+    { text: "I've learned that finishing a marathon isn't just an athletic achievement. It's a state of mind.", source: "John Hanc", mantra: "मन की जीत सबसे बड़ी जीत है" },
+    { text: "Lions do not lose sleep over the opinions of sheep.", source: "Unknown", mantra: "दूसरों की राय पर मत जियो" },
+    { text: "Fire is the test of gold; adversity, of strong men.", source: "Seneca", mantra: "कठिनाई में असली सोना बनता है" },
+    { text: "Be like a tree. Stay grounded, keep growing, and know when to let your leaves go.", source: "Unknown", mantra: "जड़ें मजबूत रखो" },
+    { text: "The greatest test of courage on earth is to bear defeat without losing heart.", source: "Robert Green Ingersoll", mantra: "हार में भी हिम्मत रखो" },
+    { text: "Victory is always possible for the person who refuses to stop fighting.", source: "Napoleon Hill", mantra: "लड़ते रहो जीत मिलेगी" },
+    { text: "Strength grows in the moments when you think you can't go on but you keep going anyway.", source: "Unknown", mantra: "रुकने का मन हो तब ही ताकत मिलती है" }
+  ],
+
+  grateful: [
+    { text: "Gratitude turns what we have into enough.", source: "Anonymous", mantra: "शुक्रगुजारी से पर्याप्त बन जाता है" },
+    { text: "When you are grateful, fear disappears and abundance appears.", source: "Tony Robbins", mantra: "कृतज्ञता में प्रचुरता है" },
+    { text: "Gratitude is the fairest blossom which springs from the soul.", source: "Henry Ward Beecher", mantra: "आत्मा का सुंदरतम फूल" },
+    { text: "Count your blessings, not your problems.", source: "Unknown", mantra: "आशीर्वाद गिनो समस्याएं नहीं" },
+    { text: "Joy is the simplest form of gratitude.", source: "Karl Barth", mantra: "आनंद कृतज्ञता का सरल रूप है" },
+    { text: "The more grateful I am, the more beauty I see.", source: "Mary Davis", mantra: "कृतज्ञता में सौंदर्य दिखता है" },
+    { text: "In ordinary life we hardly realize that we receive a great deal more than we give.", source: "Dietrich Bonhoeffer", mantra: "हम जितना देते हैं उससे ज्यादा मिलता है" },
+    { text: "Enough is a feast.", source: "Buddhist Proverb", mantra: "जो है वो पर्याप्त है" },
+    { text: "Be thankful for what you have; you'll end up having more. If you concentrate on what you don't have, you will never, ever have enough.", source: "Oprah Winfrey", mantra: "जो है उसके लिए शुक्रगुजार रहो" },
+    { text: "When you arise in the morning, think of what a privilege it is to be alive.", source: "Marcus Aurelius", mantra: "जीवित होना भाग्य है" },
+    { text: "The secret of happiness is to count your blessings while others are adding up their troubles.", source: "William Penn", mantra: "आशीर्वाद गिनो" },
+    { text: "Enjoy the little things in life, for one day you may look back and realize they were the big things.", source: "Robert Brault", mantra: "छोटी खुशियाँ ही बड़ी होती हैं" },
+    { text: "Not what we say about our blessings, but how we live them is the real measure of our thanksgiving.", source: "W.T. Purkiser", mantra: "कृतज्ञता जीकर दिखाओ" },
+    { text: "Gratitude is a powerful catalyst for happiness. It's the spark that lights a fire of joy in your soul.", source: "Amy Collette", mantra: "कृतज्ञता खुशी जलाती है" },
+    { text: "If you look at what you have in life, you'll always have more. If you look at what you don't have, you'll never have enough.", source: "Oprah Winfrey", mantra: "जो है वो देखो" },
+    { text: "Appreciation is a wonderful thing. It makes what is excellent in others belong to us as well.", source: "Voltaire", mantra: "सराहना करो" },
+    { text: "Two kinds of gratitude: the sudden kind we feel for what we take, the larger kind we feel for what we give.", source: "Edwin Arlington Robinson", mantra: "देने में कृतज्ञता है" },
+    { text: "Gratitude is the memory of the heart.", source: "Jean-Baptiste Massieu", mantra: "कृतज्ञता दिल की याद है" },
+    { text: "The roots of all goodness lie in the soil of appreciation for goodness.", source: "Dalai Lama", mantra: "अच्छाई की सराहना सब जड़ों की जड़ है" },
+    { text: "Walk as if you are kissing the Earth with your feet.", source: "Thich Nhat Hanh", mantra: "धरती को प्यार से चलो" },
+    { text: "Let us be grateful to the people who make us happy.", source: "Marcel Proust", mantra: "खुश करने वालों का शुक्रिया" },
+    { text: "Gratitude is not only the greatest of virtues but the parent of all the others.", source: "Cicero", mantra: "कृतज्ञता सब गुणों की माँ है" },
+    { text: "As we express our gratitude, we must never forget that the highest appreciation is not to utter words, but to live by them.", source: "John F. Kennedy", mantra: "कृतज्ञता जियो" },
+    { text: "Gratitude opens the door to the power, the wisdom, the creativity of the universe.", source: "Deepak Chopra", mantra: "कृतज्ञता ब्रह्मांड का द्वार खोलती है" },
+    { text: "When we focus on our gratitude, the tide of disappointment goes out and the tide of love rushes in.", source: "Kristin Armstrong", mantra: "कृतज्ञता में प्यार आता है" },
+    { text: "The thankful heart will find in every hour some heavenly blessings.", source: "Henry Ward Beecher", mantra: "हर पल में आशीर्वाद है" },
+    { text: "Gratitude makes sense of our past, brings peace for today, and creates a vision for tomorrow.", source: "Melody Beattie", mantra: "कृतज्ञता भूत वर्तमान भविष्य सँवारती है" },
+    { text: "Today, I choose to live with gratitude for the love that fills my heart, the peace that rests within my spirit.", source: "Unknown", mantra: "आज कृतज्ञता चुनता हूँ" },
+    { text: "If you can't be happy with what you have, how can you be happy with more?", source: "Unknown", mantra: "जो है उसमें खुश रहो" },
+    { text: "Life isn't perfect but it's still good.", source: "Unknown", mantra: "जिंदगी परफेक्ट नहीं पर अच्छी है" },
+    { text: "In everything give thanks.", source: "1 Thessalonians 5:18", mantra: "हर चीज के लिए शुक्रिया" },
+    { text: "You don't have to be great to start, but you have to start to be great. And for everything on the way — be grateful.", source: "Unknown", mantra: "हर कदम का शुक्रिया" },
+    { text: "Enough is truly a feast when the heart is full.", source: "Unknown", mantra: "दिल भरा हो तो पर्याप्त भी दावत है" },
+    { text: "A moment of gratitude makes a difference in your attitude.", source: "Bruce Wilkinson", mantra: "एक पल का शुक्रिया बदलाव लाता है" },
+    { text: "The world has enough beautiful mountains and meadows, spectacular skies and serene lakes. It has enough lush forests, flowered fields and sandy beaches. What the world needs more of is people to appreciate and enjoy it.", source: "Michael Josephson", mantra: "सौंदर्य को सराहो" },
+    { text: "Start each day with a grateful heart.", source: "Unknown", mantra: "कृतज्ञता से दिन शुरू करो" },
+    { text: "For every beauty there is an eye somewhere to see it.", source: "Ivan Panin", mantra: "हर सौंदर्य के लिए एक नजर है" },
+    { text: "Look deep into nature and then you will understand everything better.", source: "Albert Einstein", mantra: "प्रकृति में सब समझ आती है" },
+    { text: "The earth has music for those who listen.", source: "William Shakespeare", mantra: "धरती गाती है सुनने वालों के लिए" },
+    { text: "What a wonderful life I've had! I only wish I'd realized it sooner.", source: "Colette", mantra: "कितनी सुंदर जिंदगी है" },
+    { text: "There is always, always, always something to be thankful for.", source: "Unknown", mantra: "हमेशा कुछ न कुछ शुक्रिया के लिए होता है" },
+    { text: "Good things are happening. Open your eyes and see them.", source: "Unknown", mantra: "अच्छाई हो रही है देखो" },
+    { text: "You are alive. That's the miracle you keep overlooking.", source: "Unknown", mantra: "जीवित होना सबसे बड़ा चमत्कार है" },
+    { text: "Gratitude can transform common days into thanksgivings, turn routine jobs into joy, and change ordinary opportunities into blessings.", source: "William Arthur Ward", mantra: "कृतज्ञता सब बदल देती है" },
+    { text: "The practice of gratitude as a tool for happiness is in acknowledgment of the good you already have.", source: "Unknown", mantra: "जो अच्छा है उसे पहचानो" },
+    { text: "Kindness is the language which the deaf can hear and the blind can see.", source: "Mark Twain", mantra: "दयालुता सब तक पहुँचती है" },
+    { text: "Give thanks for the little, and you will find a lot.", source: "Hausa Proverb", mantra: "छोटे के लिए शुक्रिया बड़ा मिलता है" },
+    { text: "A single act of kindness throws out roots in all directions, and the roots spring up and make new trees.", source: "Amelia Earhart", mantra: "एक दयालुता पेड़ बन जाती है" },
+    { text: "The most beautiful things in the world cannot be seen or even touched — they must be felt with the heart.", source: "Helen Keller", mantra: "सुंदर चीजें दिल से महसूस होती हैं" },
+    { text: "Happiness is not something ready-made. It comes from your own actions.", source: "Dalai Lama", mantra: "खुशी कर्म से मिलती है" }
+  ]
+};
+
+// ========== GYAN STATE ==========
+let currentGyanMood = 'lost';
+let lastQuoteIdx = -1;
+let lastWasAI = false;
+
+function selectGyanMood(mood, btn) {
+  currentGyanMood = mood;
+  document.querySelectorAll('.gyan-mood-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   nextQuote();
 }
 
 function nextQuote() {
-  const pool = currentCat === 'all' ? quotes : quotes.filter(q => q.cat === currentCat);
-  if (!pool.length) return;
-  let idx; do { idx = Math.floor(Math.random() * pool.length); } while (idx === lastIdx && pool.length > 1);
-  lastIdx = idx;
+  const pool = quoteBank[currentGyanMood] || quoteBank.lost;
+  let idx;
+  do { idx = Math.floor(Math.random() * pool.length); } while (idx === lastQuoteIdx && pool.length > 1);
+  lastQuoteIdx = idx;
+  lastWasAI = false;
+
   const q = pool[idx];
   const qt = document.getElementById('quoteText');
   qt.style.opacity = '0';
+  document.getElementById('aiBadge').style.display = 'none';
+
   setTimeout(() => {
     qt.textContent = q.text;
     document.getElementById('quoteSource').textContent = '— ' + q.source;
@@ -761,16 +1228,98 @@ function nextQuote() {
   }, 300);
 }
 
+// ========== GEMINI AI WISDOM ==========
+async function getAIWisdom() {
+  const btn = document.getElementById('aiBtn');
+  const loading = document.getElementById('aiLoading');
+  const qt = document.getElementById('quoteText');
+
+  const moodLabels = {
+    lost: 'feeling lost and confused about life direction',
+    heartbreak: 'going through heartbreak and emotional pain',
+    anxious: 'feeling anxious, stressed and overwhelmed',
+    angry: 'feeling angry and frustrated',
+    empty: 'feeling empty, numb and hollow inside',
+    unmotivated: 'feeling unmotivated, lazy and uninspired',
+    grow: 'wanting to grow personally and spiritually',
+    peace: 'seeking inner peace and calm',
+    strength: 'needing strength and courage to face challenges',
+    grateful: 'feeling grateful and wanting to celebrate life'
+  };
+
+  btn.disabled = true;
+  loading.classList.add('show');
+  qt.style.opacity = '0.3';
+
+  const prompt = `A person is ${moodLabels[currentGyanMood]}. 
+
+Give them ONE powerful, deeply moving quote or wisdom — from ancient scriptures (Bhagavad Gita, Upanishads, Quran, Bible, Dhammapada), Sufi masters (Rumi, Hafiz, Kabir), or great thinkers (Marcus Aurelius, Buddha, Osho, Sadhguru, Rabindranath Tagore, Chanakya).
+
+The wisdom should feel like it was written specifically for this person in this exact moment. It must pierce the heart, not sound generic.
+
+Respond ONLY in this exact JSON format, nothing else:
+{
+  "quote": "The actual wisdom quote here",
+  "source": "Author Name / Source",
+  "mantra": "A short Sanskrit or meaningful phrase (3-5 words)"
+}`;
+
+  try {
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.9, maxOutputTokens: 300 }
+        })
+      }
+    );
+
+    const data = await response.json();
+    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+    const cleaned = raw.replace(/```json|```/g, '').trim();
+    const parsed = JSON.parse(cleaned);
+
+    qt.style.opacity = '0';
+    setTimeout(() => {
+      qt.textContent = parsed.quote;
+      document.getElementById('quoteSource').textContent = '— ' + parsed.source;
+      document.getElementById('quoteMantra').textContent = parsed.mantra;
+      document.getElementById('aiBadge').style.display = 'inline-block';
+      qt.style.opacity = '1';
+      lastWasAI = true;
+    }, 300);
+
+  } catch (err) {
+    qt.style.opacity = '0';
+    setTimeout(() => {
+      qt.textContent = 'AI wisdom unavailable right now. Please add your Gemini API key or try again.';
+      document.getElementById('quoteSource').textContent = '';
+      document.getElementById('quoteMantra').textContent = '';
+      qt.style.opacity = '1';
+    }, 300);
+  }
+
+  loading.classList.remove('show');
+  btn.disabled = false;
+}
+
 function copyQuote() {
-  const text = document.getElementById('quoteText').textContent + '\n— ' + document.getElementById('quoteSource').textContent;
+  const text = document.getElementById('quoteText').textContent +
+    '\n' + document.getElementById('quoteSource').textContent;
   navigator.clipboard.writeText(text).then(() => {
-    const btn = event.target; btn.textContent = '✓ Copied'; setTimeout(() => btn.textContent = '⎘ Copy', 1500);
+    const btn = event.target;
+    btn.textContent = '✓ Copied';
+    setTimeout(() => btn.textContent = '⎘ Copy', 1500);
   });
 }
 
+// Load first quote
 nextQuote();
 
-// ===== MEDITATION TIMER =====
+// ========== MEDITATION TIMER ==========
 let timerTotal = 300, timerRemain = 300, timerRunning = false, timerInterval = null;
 const circumference = 2 * Math.PI * 90;
 
@@ -817,47 +1366,11 @@ function resetTimer() {
 
 updateTimerDisplay();
 
-// ===== WEB AUDIO =====
-let audioCtx = null, ambientNode = null, ambientType = 'none';
-
+// ========== BELL SOUND ==========
+let audioCtx = null;
 function getCtx() {
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
   return audioCtx;
-}
-
-function setAmbient(type, btn) {
-  document.querySelectorAll('.sound-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  ambientType = type;
-  if (ambientNode) { try { ambientNode.stop(); } catch(e){} ambientNode = null; }
-  if (type === 'om') playOM();
-  else if (type === 'bowl') playSingingBowl();
-}
-
-function playOM() {
-  const ctx = getCtx();
-  const osc = ctx.createOscillator();
-  const gain = ctx.createGain();
-  osc.type = 'sine'; osc.frequency.setValueAtTime(136.1, ctx.currentTime);
-  gain.gain.setValueAtTime(0, ctx.currentTime);
-  gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 2);
-  osc.connect(gain); gain.connect(ctx.destination);
-  osc.start(); ambientNode = osc;
-}
-
-function playSingingBowl() {
-  const ctx = getCtx();
-  function bowl() {
-    if (ambientType !== 'bowl') return;
-    const osc = ctx.createOscillator(), gain = ctx.createGain();
-    osc.type = 'sine'; osc.frequency.setValueAtTime(432, ctx.currentTime);
-    gain.gain.setValueAtTime(0.12, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 4);
-    osc.connect(gain); gain.connect(ctx.destination);
-    osc.start(); osc.stop(ctx.currentTime + 4.5);
-    setTimeout(bowl, 6000);
-  }
-  bowl();
 }
 
 function playBell() {
