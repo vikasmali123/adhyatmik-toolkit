@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Adhyatmik Toolkit</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0d14; --bg2: #11141f; --bg3: #181c2a;
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0;
+    --indigo-light: #7986cb; --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
+    --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
+  .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
+  .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
+  .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2rem; }
+  .brand-symbol { font-size: 2rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.5rem; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
+
+  .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
+  .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
+  .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
+  .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
+
+  .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+  .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
+
+  /* ABOUT STYLES */
+  .story-text {
+    font-size: 0.92rem; color: var(--text-muted);
+    line-height: 1.9; margin-bottom: 1.2rem;
+  }
+  .story-text em { color: var(--mint); font-style: normal; }
+  .story-text strong { color: var(--text); font-weight: 500; }
+
+  .big-opening {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 300;
+    color: var(--text); line-height: 1.5;
+    margin-bottom: 1.5rem; font-style: italic;
+  }
+
+  .highlight-box {
+    padding: 1.4rem 1.6rem;
+    background: linear-gradient(135deg, rgba(128,203,196,0.06), rgba(149,117,205,0.06));
+    border-left: 3px solid var(--mint); border-radius: 0 12px 12px 0;
+    margin: 1.5rem 0;
+  }
+  .highlight-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-style: italic; color: var(--text); line-height: 1.7; }
+  .highlight-box small { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; display: block; margin-top: 0.5rem; }
+
+  .values-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+  @media (max-width: 540px) { .values-grid { grid-template-columns: 1fr; } }
+  .value-item { padding: 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 14px; }
+  .value-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+  .value-title { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; font-weight: 500; }
+  .value-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
+
+  .missing-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin: 1rem 0; }
+  .missing-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .missing-list li .x { color: #ef5350; flex-shrink: 0; }
+  .missing-list li .check { color: var(--mint); flex-shrink: 0; }
+
+  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); font-size: 1.3rem; text-decoration: none; transition: all 0.3s ease; }
+  .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
+
+  @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } }
+  @media (max-width: 600px) { .glass-card { padding: 1.5rem 1.2rem; } }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <span class="brand-symbol">ॐ</span>
+    <h1>Adhyatmik Toolkit</h1>
+    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+  </header>
+
+  <nav class="site-navbar">
+    <a href="index.html"   class="site-nav-link">🏠 Home</a>
+    <a href="ebook.html"   class="site-nav-link">📖 Ebook</a>
+    <a href="wisdom.html"  class="site-nav-link">✦ Wisdom</a>
+    <a href="about.html"   class="site-nav-link active">🙏 About</a>
+    <a href="contact.html" class="site-nav-link">💛 Support</a>
+  </nav>
+
+  <!-- OPENING -->
+  <div class="glass-card">
+    <p class="big-opening">"Yeh site ek tool nahi hai — yeh ek dost ki tarah hai jo raat ke 2 baje bhi available hai."</p>
+
+    <p class="story-text">
+      Mujhe yaad hai woh raat — kaafi gehri thi, aur mann band hone ka naam nahi le raha tha. 
+      Mobile uthaya, <em>Google kiya</em> "how to stop overthinking" — aur jo mila woh tha: 
+      <strong>10 tips, 5 steps, do this, do that.</strong>
+    </p>
+    <p class="story-text">
+      Kisi ne nahi pucha ki kaisa feel ho raha hai. Koi emotional connection nahi. 
+      Sirf information. Sirf text. 
+      <em>Bilkul waise jaise koi doctor sirf prescription de de aur andar ka dard na samjhe.</em>
+    </p>
+    <p class="story-text">
+      Uss raat mujhe ehsas hua — <strong>internet par spiritual content ka ek bada vacuum hai.</strong> 
+      Ya to bahut heavy Sanskrit-heavy hai jo common insaan ko samajh nahi aata, 
+      ya to itna generic hai ki dil tak pohanchta hi nahi.
+    </p>
+
+    <div class="highlight-box">
+      <p>"Koi nahi tha jo seedha baat kare — na bakwaas, na jargon, na performance. Bas dil se dil tak."</p>
+      <small>— Yahi kami thi. Yahi wajah bani Adhyatmik Yatra ki.</small>
+    </div>
+  </div>
+
+  <!-- WHY WE BUILT THIS -->
+  <div class="glass-card">
+    <h2 class="section-title">Dusri Sites Mein Kya Kami Thi?</h2>
+    <p class="section-sub">Sachchi baat — jo humne khud mehsoos ki</p>
+
+    <ul class="missing-list">
+      <li><span class="x">✗</span> Spiritual sites ya to bahut bhari hoti hain — pooja-path, rituals, Sanskrit — aam insaan connect nahi kar paata</li>
+      <li><span class="x">✗</span> Mental health blogs sirf symptoms discuss karte hain, solutions nahi — ya solutions itne clinical hote hain ki feel hi nahi aata</li>
+      <li><span class="x">✗</span> Motivational content sirf "be positive" kehta hai — jo already dard mein hai usse aur akela feel karata hai</li>
+      <li><span class="x">✗</span> Koi ek jagah nahi thi jahan breathing exercise, quotes, meditation timer — sab ek saath milein — aur sab practical bhi hoon</li>
+      <li><span class="x">✗</span> Hindi mein genuine, emotional, relatable content — bahut kam mila</li>
+    </ul>
+
+    <div class="divider"></div>
+
+    <p class="story-text" style="margin-bottom:0.8rem;"><strong style="color:var(--mint);">Toh humne banaya —</strong></p>
+
+    <ul class="missing-list">
+      <li><span class="check">✓</span> Ek jagah jahan breathing exercise, mood-based wisdom, meditation timer — sab milein</li>
+      <li><span class="check">✓</span> Quotes jo aapke exact mood ke liye honge — lost, heartbreak, anxious, angry — aapki baat samjhein</li>
+      <li><span class="check">✓</span> Bhasha aisi jo dil tak pohanche — na bahut heavy, na bahut filmy</li>
+      <li><span class="check">✓</span> Ancient wisdom ko modern life mein laya — Gita, Buddha, Rumi — par seedhi bhasha mein</li>
+      <li><span class="check">✓</span> Koi judgement nahi, koi steps nahi — bas ek saath hona</li>
+    </ul>
+  </div>
+
+  <!-- OUR VALUES -->
+  <div class="glass-card">
+    <h2 class="section-title">Humare Vishwaas</h2>
+    <p class="section-sub">Jo cheezein hum sach mein maante hain</p>
+
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon">🙏</div>
+        <div class="value-title">Authenticity pehle</div>
+        <div class="value-desc">Hum sirf woh share karte hain jo humne khud jeeyaa hai. Koi copy-paste nahi, koi dikhaawa nahi.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">💙</div>
+        <div class="value-title">Har insaan valuable hai</div>
+        <div class="value-desc">Chahe tum kisi bhi jagah ho apni zindagi mein — tum kisi bhi din yahaan aao, hum yahaan hain.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">🌱</div>
+        <div class="value-title">Growth, judgment nahi</div>
+        <div class="value-desc">Yahan koi galat nahi hai, koi judge nahi karta. Bas ek safe jagah hai — apne saath honest hone ki.</div>
+      </div>
+      <div class="value-item">
+        <div class="value-icon">✦</div>
+        <div class="value-title">Ancient + Modern</div>
+        <div class="value-desc">5000 saal ki wisdom ko aaj ki bhasha mein — kyunki sach samay se pare hota hai.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="glass-card" style="text-align:center;">
+    <p style="font-family:'Cormorant Garamond',serif; font-size:clamp(1.2rem,3vw,1.6rem); font-weight:300; font-style:italic; color:var(--text); line-height:1.7; max-width:540px; margin:0 auto 1.2rem;">
+      "Hum ek platform nahi hain. Hum ek saath hain — un logon ka, jo dhundhte hain, jo thak jaate hain, jo phir bhi uthte hain."
+    </p>
+    <p style="font-size:0.82rem; color:var(--text-muted); line-height:1.8; max-width:480px; margin:0 auto;">
+      Agar kabhi lagey ki koi nahi samjha — toh yaad rakhna, <em style="color:var(--mint);">yeh jagah tumhari hai.</em> 
+      Hamesha thi. Hamesha rahegi. 🙏
+    </p>
+    <div style="margin-top:1.8rem;">
+      <a href="contact.html" style="padding:0.7rem 2rem; background:linear-gradient(135deg,rgba(92,107,192,0.35),rgba(149,117,205,0.3)); border:1px solid rgba(149,117,205,0.5); border-radius:50px; color:var(--text); font-size:0.85rem; text-decoration:none; letter-spacing:0.06em; transition:all 0.3s;">
+        💛 Hum Se Baat Karo
+      </a>
+    </div>
+  </div>
+
+  <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
+    <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
+    <div style="margin-top:1.2rem;">
+      <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:0.8rem;">CONNECT WITH US</p>
+      <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
+        <span style="color:var(--mint); font-size:0.85rem;">adhyatmikyatra@zohomail.in</span>
+        <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
+          <i class="fa-brands fa-instagram fa-lg" style="color:#e1306c;"></i>
+        </a>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
+  </footer>
+</div>
+</body>
+</html>

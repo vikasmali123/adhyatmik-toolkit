@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wisdom — Adhyatmik Toolkit</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0d14; --bg2: #11141f; --bg3: #181c2a;
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0;
+    --indigo-light: #7986cb; --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
+    --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; animation-delay: 0s; }
+  .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
+  .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
+  .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2rem; }
+  .brand-symbol { font-size: 2rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.5rem; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
+
+  .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
+  .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
+  .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
+  .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
+
+  .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+
+  /* FILTER TABS */
+  .filter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .filter-btn { padding: 0.38rem 1rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 50px; font-size: 0.75rem; color: var(--text-muted); cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .filter-btn:hover, .filter-btn.active { background: var(--mint-glow); border-color: var(--mint); color: var(--mint); }
+
+  /* ARTICLE GRID */
+  .articles-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { .articles-grid { grid-template-columns: 1fr; } }
+
+  .article-card {
+    background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border);
+    border-radius: 18px; padding: 1.4rem; cursor: pointer;
+    transition: all 0.3s ease; text-decoration: none; display: block;
+    position: relative; overflow: hidden;
+  }
+  .article-card::before {
+    content: ''; position: absolute; inset: 0; border-radius: 18px;
+    background: linear-gradient(135deg, rgba(92,107,192,0.0), rgba(128,203,196,0.0));
+    transition: all 0.3s;
+  }
+  .article-card:hover { border-color: rgba(128,203,196,0.3); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(0,0,0,0.2); }
+  .article-card:hover::before { background: linear-gradient(135deg, rgba(92,107,192,0.05), rgba(128,203,196,0.05)); }
+
+  .article-tag { font-size: 0.68rem; color: var(--mint); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .article-title { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--text); line-height: 1.4; margin-bottom: 0.6rem; }
+  .article-excerpt { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+  .article-meta { font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.05em; display: flex; justify-content: space-between; align-items: center; }
+  .read-more { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.06em; }
+
+  /* COMING SOON badge */
+  .badge-soon { display: inline-block; padding: 0.15rem 0.6rem; background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.25); border-radius: 50px; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.06em; margin-left: 0.5rem; }
+
+  /* INTRO BANNER */
+  .wisdom-intro { text-align: center; padding: 2rem 1rem; margin-bottom: 0.5rem; }
+  .wisdom-intro .big-quote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 4vw, 2rem); font-style: italic; color: var(--text); line-height: 1.6; max-width: 600px; margin: 0 auto 0.8rem; }
+  .wisdom-intro .big-source { font-size: 0.78rem; color: var(--gold); letter-spacing: 0.12em; }
+
+  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); font-size: 1.3rem; text-decoration: none; transition: all 0.3s ease; }
+  .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
+
+  @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } }
+</style>
+</head>
+<body>
+
+<div class="aurora">
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <span class="brand-symbol">ॐ</span>
+    <h1>Adhyatmik Toolkit</h1>
+    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+  </header>
+
+  <nav class="site-navbar">
+    <a href="index.html"   class="site-nav-link">🏠 Home</a>
+    <a href="ebook.html"   class="site-nav-link">📖 Ebook</a>
+    <a href="wisdom.html"  class="site-nav-link active">✦ Wisdom</a>
+    <a href="about.html"   class="site-nav-link">🙏 About</a>
+    <a href="contact.html" class="site-nav-link">💛 Support</a>
+  </nav>
+
+  <!-- INTRO -->
+  <div class="glass-card">
+    <div class="wisdom-intro">
+      <p class="big-quote">"Jab hum sochte hain ki hum seekh rahe hain, tab hum sacchi mein jeena shuru karte hain."</p>
+      <p class="big-source">— Adhyatmik Yatra</p>
+    </div>
+    <p style="text-align:center; font-size:0.85rem; color:var(--text-muted); line-height:1.8; max-width:580px; margin:0 auto;">
+      Yahan milenge woh articles jo sirf padhe nahi jaate — <em style="color:var(--mint);">feel</em> kiye jaate hain. Overthinking, anxiety, relationships, spirituality, self-growth — seedhi baat, seedha dil tak.
+    </p>
+  </div>
+
+  <!-- ARTICLES -->
+  <div class="glass-card">
+    <h2 class="section-title">✦ Wisdom Articles</h2>
+    <p class="section-sub">Apne mann ki baat iss mein dhundho</p>
+
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterArticles('all', this)">All</button>
+      <button class="filter-btn" onclick="filterArticles('mind', this)">🧠 Mann</button>
+      <button class="filter-btn" onclick="filterArticles('spiritual', this)">🕉 Adhyatma</button>
+      <button class="filter-btn" onclick="filterArticles('life', this)">🌱 Zindagi</button>
+      <button class="filter-btn" onclick="filterArticles('love', this)">💙 Rishte</button>
+    </div>
+
+    <div class="articles-grid" id="articlesGrid">
+
+      <a href="#" class="article-card" data-cat="mind">
+        <div class="article-tag">🧠 Mann</div>
+        <div class="article-title">Overthinking Band Karne Ke 5 Tarike Jo Actually Kaam Karte Hain</div>
+        <div class="article-excerpt">Sab kehte hain "zyada mat socho" — par koi nahi batata kaise. Yahan hai woh tarika jo dimag ki loop ko turant rok sakta hai.</div>
+        <div class="article-meta"><span>5 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="spiritual">
+        <div class="article-tag">🕉 Adhyatma</div>
+        <div class="article-title">Bhagavad Gita Ka Woh Ek Shlok Jo Zindagi Badal Deta Hai</div>
+        <div class="article-excerpt">Chapter 2, shlok 47 — "Karam karo, phal ki chinta mat karo." Sunne mein aasan, jeena mushkil. Aaj samjhte hain.</div>
+        <div class="article-meta"><span>7 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="life">
+        <div class="article-tag">🌱 Zindagi</div>
+        <div class="article-title">Akela Hona Aur Lonely Hona — Yeh Dono Bahut Alag Hain</div>
+        <div class="article-excerpt">Bheed mein hoke bhi tanha feel karna — ya akele hoke bhi puri tarah complete hona. Farq samjho.</div>
+        <div class="article-meta"><span>4 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="mind">
+        <div class="article-tag">🧠 Mann</div>
+        <div class="article-title">Anxiety Ko Samjho — Dushman Nahi, Sandesh Hai Yeh</div>
+        <div class="article-excerpt">Jab dil tez dhakta hai, haath kaampte hain — woh tumhara dushman nahi, tumhara rakshak hai kuch bolne ki koshish karta hua.</div>
+        <div class="article-meta"><span>6 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="love">
+        <div class="article-tag">💙 Rishte</div>
+        <div class="article-title">Toxic Relationship Chhod Paana Itna Mushkil Kyun Hota Hai?</div>
+        <div class="article-excerpt">Jo dard deta hai usse pyaar karna — yeh weakness nahi, insaan ki fitrat hai. Par ek point aata hai jab jaana zaroori ho jaata hai.</div>
+        <div class="article-meta"><span>8 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="spiritual">
+        <div class="article-tag">🕉 Adhyatma</div>
+        <div class="article-title">Meditation Kyun Fail Hoti Hai — Aur Sahi Tarika Kya Hai</div>
+        <div class="article-excerpt">"Mann nahi rukta" — yeh sabse common shikayat hai. Meditation ka matlab mann rokna nahi hota. Seedha samjhate hain.</div>
+        <div class="article-meta"><span>5 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="life">
+        <div class="article-tag">🌱 Zindagi</div>
+        <div class="article-title">Log Kya Sochenge — Iss Ek Darr Ne Kitni Zindagiyan Rok Di Hain</div>
+        <div class="article-excerpt">Log sochenge, log bolenge, log judge karenge — aur fir log bhool bhi jaayenge. Par tumhari zindagi wahan ki wahan ruk jaayegi.</div>
+        <div class="article-meta"><span>5 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="love">
+        <div class="article-tag">💙 Rishte</div>
+        <div class="article-title">Khud Se Pyaar Karna Selfishness Nahi — Zaroorat Hai</div>
+        <div class="article-excerpt">Jab tak khud se pyaar nahi karoge, kisi aur ka pyaar bhi poora nahi lagega. Self-love ka matlab narcissism nahi hai.</div>
+        <div class="article-meta"><span>6 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="spiritual">
+        <div class="article-tag">🕉 Adhyatma</div>
+        <div class="article-title">Rumi Ki Wo Baat Jo 800 Saal Baad Bhi Dil Ko Chhooti Hai</div>
+        <div class="article-excerpt">Jalal ad-Din Rumi — ek aise insaan jo 13vi sadi mein tumhare dard ko samajh ke likh gaye. Aaj bhi har lafz taza lagta hai.</div>
+        <div class="article-meta"><span>7 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="mind">
+        <div class="article-tag">🧠 Mann</div>
+        <div class="article-title">Neend Nahi Aati? Raat Ka Woh Andhera Aur Tumhare Vichar</div>
+        <div class="article-excerpt">Raat ke 2 baje ki woh akela feeling — jab sab so rahe hote hain aur tumhara dil jagta rehta hai.</div>
+        <div class="article-meta"><span>5 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="life">
+        <div class="article-tag">🌱 Zindagi</div>
+        <div class="article-title">Failure Ke Baad Wapas Kaise Uthein — Practical Guide</div>
+        <div class="article-excerpt">Har chamkane wali cheez ke peeche kitne andhere rahe hain — yeh log nahi dikhate. Asli recovery kaise hoti hai?</div>
+        <div class="article-meta"><span>6 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+      <a href="#" class="article-card" data-cat="spiritual">
+        <div class="article-tag">🕉 Adhyatma</div>
+        <div class="article-title">Shukar Guzari — Woh Ek Aadat Jo Sab Badal Deti Hai</div>
+        <div class="article-excerpt">Gratitude ko log underestimate karte hain. Par science aur spirituality dono kehti hain — yeh sabse powerful shift hai.</div>
+        <div class="article-meta"><span>4 min read</span><span class="read-more">Padhein →</span></div>
+      </a>
+
+    </div>
+
+    <div style="text-align:center; margin-top:1.5rem;">
+      <p style="font-size:0.78rem; color:var(--text-dim); letter-spacing:0.05em;">
+        ✦ &nbsp; Aur articles aate rehenge — hum likhte rehte hain, tum padhte rehna &nbsp; ✦
+      </p>
+    </div>
+  </div>
+
+  <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
+    <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
+    <div style="margin-top:1.2rem;">
+      <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:0.8rem;">CONNECT WITH US</p>
+      <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
+        <span style="color:var(--mint); font-size:0.85rem;">adhyatmikyatra@zohomail.in</span>
+        <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
+          <i class="fa-brands fa-instagram fa-lg" style="color:#e1306c;"></i>
+        </a>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
+  </footer>
+</div>
+
+<script>
+function filterArticles(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.article-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>
