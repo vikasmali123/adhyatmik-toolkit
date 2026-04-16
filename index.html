@@ -319,6 +319,35 @@
     .breath-circle { width: 95px; height: 95px; }
     .gyan-mood-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
   }
+
+  /* ===== SITE NAVBAR ===== */
+  .site-navbar {
+    display: flex; justify-content: center; gap: 0.25rem;
+    flex-wrap: wrap; padding: 0.55rem 0.8rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px; margin: 0 auto 2.5rem;
+    max-width: 580px; backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: relative; z-index: 10;
+  }
+  .site-nav-link {
+    padding: 0.42rem 1rem; border-radius: 50px;
+    color: var(--text-muted); font-size: 0.78rem;
+    letter-spacing: 0.05em; text-decoration: none;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.3s ease; white-space: nowrap;
+  }
+  .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
+  .site-nav-link.active {
+    background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25));
+    color: var(--text); border: 1px solid var(--indigo);
+    box-shadow: 0 0 16px rgba(92,107,192,0.15);
+  }
+  @media (max-width: 500px) {
+    .site-navbar { gap: 0.15rem; padding: 0.4rem; }
+    .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; }
+  }
 </style>
 </head>
 <body>
@@ -336,6 +365,14 @@
     <h1>Adhyatmik Toolkit</h1>
     <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
   </header>
+
+  <nav class="site-navbar">
+    <a href="index.html"   class="site-nav-link active">🏠 Home</a>
+    <a href="ebook.html"   class="site-nav-link">📖 Ebook</a>
+    <a href="wisdom.html"  class="site-nav-link">✦ Wisdom</a>
+    <a href="about.html"   class="site-nav-link">🙏 About</a>
+    <a href="contact.html" class="site-nav-link">💛 Support</a>
+  </nav>
 
   <nav class="nav-tabs" role="tablist">
     <button class="tab-btn active" onclick="switchTab('breath', this)" role="tab">🌬 Breathing</button>
@@ -404,8 +441,8 @@
   <!-- GYAN SECTION -->
   <section id="tab-gyan" class="section">
     <div class="glass-card">
-      <h2 class="section-title">Gyan </h2>
-      <p class="section-sub">choose How’re you feeling today? and Wisdom will come</p>
+      <h2 class="section-title">Gyan — Aaj Kaisa Feel Ho Raha Hai?</h2>
+      <p class="section-sub">Apna mood chuniye · Wisdom aapke dil tak pahunchegi</p>
 
       <div class="gyan-mood-grid">
         <button class="gyan-mood-btn active" onclick="selectGyanMood('lost', this)">
@@ -452,7 +489,7 @@
 
       <div class="quote-display" id="quoteDisplay">
         <div class="quote-symbol">"</div>
-        <p class="quote-text" id="quoteText">How’re you feeling today?, choose and find the wisdom ...</p>
+        <p class="quote-text" id="quoteText">Apna mood chuniye aur wisdom paiye...</p>
         <div class="quote-source" id="quoteSource"></div>
         <div class="quote-mantra" id="quoteMantra"></div>
         <div class="ai-badge" id="aiBadge" style="display:none;">✦ AI Generated</div>
@@ -464,10 +501,14 @@
 
       <hr class="divider">
       <div class="controls-row">
-        <button class="btn-primary" onclick="nextQuote()">✦ New Quote</button>
+        <button class="btn-primary" onclick="nextQuote()">✦ Naya Quote</button>
         <button class="btn-ai" id="aiBtn" onclick="getAIWisdom()">🌟 AI Wisdom</button>
         <button class="btn-ghost" onclick="copyQuote()">⎘ Copy</button>
-      
+      </div>
+      <p style="text-align:center;font-size:0.7rem;color:var(--text-dim);margin-top:1rem;letter-spacing:0.04em;">
+        * AI Wisdom uses Gemini API for live, personalized insights
+      </p>
+    </div>
   </section>
 
   <!-- TIMER SECTION -->
@@ -511,14 +552,18 @@
   </section>
 
   <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
-    
+    <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-muted); font-weight:300; letter-spacing:0.04em; margin-bottom:0.5rem;">
+      Yeh safar aapka hai — hum bas saath hain 🙏
+    </p>
     <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">
       Made with ❤ for <span style="color:var(--gold);">YOU</span>
     </p>
 
     <div class="donate-section" style="max-width:400px; margin:1.5rem auto;">
-      <p>If this space helped you slow down and breathe, your support keeps it alive. 🌿</p>
-      <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_S4QyXobYceXrr6" async> </script> </form>
+      <p>Agar yeh toolkit aapke kaam aayi, toh apni khushi se support karein 🌸</p>
+      <form>
+        <script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_S4QyXobYceXrr6" async></script>
+      </form>
     </div>
 
     <div style="margin-top:1.5rem;">
@@ -541,7 +586,7 @@
 
 <script>
 // ========== GEMINI API CONFIG ==========
-const GEMINI_API_KEY = "api key here"; // <-- Apni nayi Gemini API key yahan paste karein
+const GEMINI_API_KEY = "YOUR_API_KEY_HERE"; // <-- Apni nayi Gemini API key yahan paste karein
 
 // ========== TAB NAVIGATION ==========
 function switchTab(id, btn) {
