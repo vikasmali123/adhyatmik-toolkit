@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stop Overthinking — Adhyatmik Toolkit</title>
+<title>Ebook — Adhyatmik Toolkit</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,9 +11,10 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0b0d14; --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
-    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0; --indigo-light: #7986cb;
-    --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --bg: #0b0d14; --bg2: #11141f; --bg3: #181c2a;
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0;
+    --indigo-light: #7986cb; --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
     --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
     --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
   }
@@ -21,7 +22,7 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
   .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
-  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; animation-delay: 0s; }
   .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
   .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
   @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
@@ -32,64 +33,104 @@
   header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
   header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
 
+  /* SITE NAVBAR */
   .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
   .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
   .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
   .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
 
+  /* PAGE STYLES */
   .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
   .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
   .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
 
-  /* BACK */
-  .back-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.1rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; text-decoration: none; transition: all 0.3s; margin-bottom: 1.5rem; font-family: 'DM Sans', sans-serif; }
-  .back-link:hover { color: var(--accent); border-color: var(--accent); }
-
-  /* HERO */
-  .ebook-hero { text-align: center; padding: 2.5rem 1rem; background: linear-gradient(135deg, rgba(149,117,205,0.1), rgba(92,107,192,0.08)); border: 1px solid rgba(149,117,205,0.25); border-radius: 24px; margin-bottom: 1.5rem; }
-  .hero-emoji { font-size: 5rem; display: block; margin-bottom: 1rem; animation: float 4s ease-in-out infinite; }
+  /* EBOOK HERO */
+  .ebook-hero {
+    text-align: center; padding: 2.5rem 1rem;
+    background: linear-gradient(135deg, rgba(92,107,192,0.08), rgba(200,169,110,0.08));
+    border: 1px solid rgba(200,169,110,0.2); border-radius: 24px;
+    margin-bottom: 1.5rem; position: relative; overflow: hidden;
+  }
+  .ebook-hero::before {
+    content: '📖'; font-size: 5rem; display: block;
+    margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(200,169,110,0.3));
+    animation: float 4s ease-in-out infinite;
+  }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .ebook-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 400; background: linear-gradient(135deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.3; margin-bottom: 0.8rem; }
-  .ebook-tagline { font-size: 0.9rem; color: var(--text-muted); max-width: 440px; margin: 0 auto 1.5rem; line-height: 1.8; }
-  .price-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.8rem; background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.4); border-radius: 50px; font-size: 1rem; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
-  .buy-btn { display: inline-block; padding: 0.9rem 2.8rem; background: linear-gradient(135deg, rgba(149,117,205,0.5), rgba(92,107,192,0.4)); border: 1px solid rgba(149,117,205,0.6); border-radius: 50px; color: var(--text); font-size: 1rem; letter-spacing: 0.08em; text-decoration: none; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; box-shadow: 0 0 30px rgba(149,117,205,0.2); }
-  .buy-btn:hover { background: linear-gradient(135deg, rgba(149,117,205,0.7), rgba(92,107,192,0.6)); box-shadow: 0 0 50px rgba(149,117,205,0.35); transform: translateY(-2px); }
+  .ebook-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 400;
+    background: linear-gradient(135deg, var(--gold), var(--mint));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; line-height: 1.3; margin-bottom: 0.8rem;
+  }
+  .ebook-tagline { font-size: 0.9rem; color: var(--text-muted); max-width: 420px; margin: 0 auto 1.5rem; line-height: 1.7; }
+  .price-badge {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.6rem;
+    background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.4);
+    border-radius: 50px; font-size: 1rem; color: var(--gold);
+    font-family: 'Cormorant Garamond', serif; font-weight: 600;
+    letter-spacing: 0.06em; margin-bottom: 1.5rem;
+  }
 
-  /* PAIN POINTS */
-  .pain-box { padding: 1.5rem; background: rgba(149,117,205,0.06); border: 1px solid rgba(149,117,205,0.2); border-radius: 16px; margin-bottom: 1rem; }
-  .pain-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text); line-height: 1.7; text-align: center; }
+  .buy-btn {
+    display: inline-block; padding: 0.9rem 2.8rem;
+    background: linear-gradient(135deg, rgba(200,169,110,0.4), rgba(149,117,205,0.35));
+    border: 1px solid rgba(200,169,110,0.6); border-radius: 50px;
+    color: var(--text); font-size: 1rem; letter-spacing: 0.08em;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.3s ease; font-family: 'DM Sans', sans-serif;
+    box-shadow: 0 0 30px rgba(200,169,110,0.15);
+  }
+  .buy-btn:hover { background: linear-gradient(135deg, rgba(200,169,110,0.6), rgba(149,117,205,0.5)); box-shadow: 0 0 40px rgba(200,169,110,0.3); transform: translateY(-2px); }
 
-  /* FEATURES */
+  /* WHAT YOU GET */
   .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
   @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
-  .feature-item { padding: 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 16px; display: flex; gap: 0.8rem; align-items: flex-start; }
+  .feature-item {
+    padding: 1.2rem; background: rgba(255,255,255,0.02);
+    border: 1px solid var(--glass-border); border-radius: 16px;
+    display: flex; gap: 0.8rem; align-items: flex-start;
+  }
   .feature-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
   .feature-text h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; font-weight: 500; }
   .feature-text p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
 
-  /* FOR LIST */
+  /* WHO IS THIS FOR */
   .for-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
   .for-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-  .for-list li::before { content: '✦'; color: var(--accent); flex-shrink: 0; margin-top: 0.1rem; }
+  .for-list li::before { content: '✦'; color: var(--mint); flex-shrink: 0; margin-top: 0.1rem; }
 
-  /* TESTIMONIALS */
-  .testimonial { padding: 1.5rem; text-align: center; background: linear-gradient(135deg, rgba(149,117,205,0.06), rgba(92,107,192,0.06)); border: 1px solid rgba(149,117,205,0.18); border-radius: 16px; margin-top: 0.8rem; }
+  /* TESTIMONIAL */
+  .testimonial {
+    padding: 1.5rem; text-align: center;
+    background: linear-gradient(135deg, rgba(128,203,196,0.05), rgba(149,117,205,0.05));
+    border: 1px solid rgba(128,203,196,0.15); border-radius: 16px;
+    margin-top: 0.5rem;
+  }
   .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text); line-height: 1.7; }
   .testimonial small { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.08em; margin-top: 0.8rem; display: block; }
 
+  /* CTA BOTTOM */
   .cta-bottom { text-align: center; padding: 2rem 1rem; }
-  .cta-bottom p { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.8; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-bottom p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; }
 
-  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
+  /* CONTACT ICON */
+  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); font-size: 1.3rem; text-decoration: none; transition: all 0.3s ease; }
   .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
 
-  @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } .glass-card { padding: 1.5rem 1.2rem; } }
+  @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } }
+  @media (max-width: 600px) { .glass-card { padding: 1.5rem 1.2rem; } }
 </style>
 </head>
 <body>
+
 <div class="aurora">
-  <div class="aurora-orb"></div><div class="aurora-orb"></div><div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
 </div>
 
 <div class="wrapper">
@@ -107,135 +148,113 @@
     <a href="contact.html" class="site-nav-link">💛 Support</a>
   </nav>
 
-  <a href="ebook.html" class="back-link">← Dono Ebooks Dekhein</a>
-
   <!-- HERO -->
   <div class="ebook-hero">
-    <span class="hero-emoji">🧠</span>
-    <div class="ebook-title">"Stop Overthinking"<br>Find Inner Peace</div>
-    <p class="ebook-tagline">Yeh koi solution nahi deti — yeh aapko woh dikhati hai jahan se problem shuru hoti hai. Kyunki jab tak jad nahi samjha, patte kaatne se kuch nahi hoga.</p>
+    <div class="ebook-title">"Stop Overthinking" Find Inner Peace</div>
+    <p class="ebook-tagline">Yeh koi solution nahi deti, Yeh aapko woh dikhata hai jahan se problem shuru hoti hai..</p>
     <div class="price-badge">✦ &nbsp; Sirf ₹99 mein &nbsp; ✦</div>
     <br>
-    <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">🧠 Abhi Kharido — ₹99</a>
+    <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">📖 Buy Now ₹99</a>
     <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access after payment · Secure checkout via Razorpay</p>
-  </div>
-
-  <!-- PAIN OPENING -->
-  <div class="glass-card">
-    <div class="pain-box">
-      <p>"Raat ke 2 baje, sab so rahe hain — aur tum apne hi vicharaon ke saath akele baithe ho. Wahi looping thoughts, wahi 'kya hoga agar...' — aur koi nahi samjhata ki yeh band kaise karein."</p>
-    </div>
-    <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.8; margin-top:1rem;">
-      Agar yeh ek baar bhi tumhara waqt raha hai — toh yeh ebook tumhare liye hai. Yeh tumhe 10 tips nahi degi. Yeh tumhe woh samajh degi jo overthinking ki <em style="color:var(--accent);">asli wajah</em> hai — aur woh ek cheez jo sach mein kaam karti hai.
-    </p>
   </div>
 
   <!-- WHAT YOU GET -->
   <div class="glass-card">
     <h2 class="section-title">Is Ebook Mein Kya Milega?</h2>
-    <p class="section-sub">Sirf theory nahi — woh samajh jo andar se badlaav laati hai</p>
+    <p class="section-sub">Sirf theory nahi — practical wisdom jo kaam aati hai</p>
+
     <div class="features-grid">
       <div class="feature-item">
         <div class="feature-icon">🧠</div>
         <div class="feature-text">
-          <h4>Overthinking Ki Jad</h4>
-          <p>Yeh samajhna ki overthinking problem nahi, ek aadat kaise ban jaati hai — aur woh dheere-dheere aapko khud se door karti jaati hai.</p>
+          <h4>Overthinking ki Jad</h4>
+          <p>Samjho ki overthinking problem nahi, ek aadat kaise ban jaati hai, aur kaise woh dheere dheere aapko khud se door karti hai.</p>
         </div>
       </div>
       <div class="feature-item">
         <div class="feature-icon">🌙</div>
         <div class="feature-text">
-          <h4>Raat Ki Bechaini</h4>
-          <p>Woh sach jo raat ke silence mein saamne aata hai — jab mann rukta nahi, aur aap khud se bhaagte rehte ho.</p>
+          <h4>Raat ki Bechaini</h4>
+          <p>Woh sach jo raat ke silence me saamne aata hai, jab mann rukta nahi, aur aap khud se bhaagte rehte ho.</p>
         </div>
       </div>
       <div class="feature-item">
         <div class="feature-icon">💭</div>
         <div class="feature-text">
-          <h4>Vichar Ko Dekhna</h4>
-          <p>Yeh samajhna ki aap apne thoughts nahi hain — aur unse ladna hi unhe aur strong banata hai.</p>
+          <h4>Vichar ko Dekhna</h4>
+          <p>Yeh samajhna ki aap apne thoughts nahi ho aur unse ladna hi unhe strong banata hai.</p>
         </div>
       </div>
       <div class="feature-item">
-        <div class="feature-icon">⚡</div>
+        <div class="feature-icon">🫁</div>
         <div class="feature-text">
-          <h4>Andar Ka Conflict</h4>
-          <p>Overthinking aapko ek invisible court mein khada kar deti hai — jahan aap hi judge hain aur aap hi guilty.</p>
+          <h4>Andar ka Conflict</h4>
+          <p>Kaise overthinking aapko ek invisible court me khada kar deti hai ,jahan aap hi judge ho, aur aap hi guilty.</p>
         </div>
       </div>
       <div class="feature-item">
         <div class="feature-icon">📿</div>
         <div class="feature-text">
           <h4>Real Spiritual Insight</h4>
-          <p>Yeh koi technique nahi — yeh ek nazariya hai jo dheere-dheere aapka rishta apne mann se badalta hai.</p>
+          <p>Yeh koi technique nahi, yeh ek nazariya hai jo dheere dheere aapka rishta apne mann se badalta hai.</p>
         </div>
       </div>
       <div class="feature-item">
-        <div class="feature-icon">🌱</div>
+        <div class="feature-icon">✍️</div>
         <div class="feature-text">
-          <h4>Slow But Real Change</h4>
-          <p>Yeh ebook turant change ka promise nahi karti — par ek aisi samajh deti hai jo dheere-dheere sab badal deti hai.</p>
+          <h4>Slow Change</h4>
+          <p>Yeh ebook turant change ka promise nahi karti, par ek aisi samajh deti hai jo dheere dheere sab badal deti hai.</p>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- WHO IS IT FOR -->
+  <!-- WHO IS THIS FOR -->
   <div class="glass-card">
     <h2 class="section-title">Yeh Ebook Aapke Liye Hai Agar...</h2>
-    <p class="section-sub">Khud se puchho — kitni cheezein match karti hain?</p>
+    <p class="section-sub">Khud se puchho, kitni cheezein match karti hain?</p>
+
     <ul class="for-list">
-      <li>Raat ko sote waqt mann band nahi hota — ek ke baad ek vichar aate rehte hain</li>
-      <li>Choti si cheez par ghanton sochte rehte ho — "kya hoga agar..." waali loop mein</li>
-      <li>Log bolte hain "zyada mat socho" — par koi nahi batata ki kaise band karein</li>
-      <li>Anxiety feel karte ho par usse naam nahi de paate</li>
-      <li>Meditation try ki, par mann nahi ruka toh chhod diya</li>
-      <li>Apne thoughts se khud hi thak jaate ho — shaant rehna chahte ho</li>
+      <li>Raat ko sote waqt mann bund nahi hota, ek ke baad ek vichar aate rehte hain</li>
+      <li>Choti si cheez par ghanton sochte rehte ho, "kya hoga agar..." waali loop mein</li>
+      <li>Log bolte hain "zyada mat socho" par koi nahi batata ki kaise band karo</li>
+      <li>Anxiety aur stress ko feel karte ho par naam nahi de paate</li>
+      <li>Meditation try ki, par mann nahi rukta toh chhod diya</li>
+      <li>Apne thoughts se khud hi thak jaate ho shaant rehna chahte ho</li>
       <li>Spirituality mein interest hai par kahan se shuru karein samajh nahi aata</li>
     </ul>
   </div>
 
-  <!-- TESTIMONIALS -->
+  <!-- TESTIMONIAL -->
   <div class="glass-card">
     <h2 class="section-title">Padhne Walon Ne Kya Kaha</h2>
-    <p class="section-sub">Unke alfaz — unka anubhav</p>
+    <p class="section-sub">Unke alfaz, unka anubhav</p>
+
     <div class="testimonial">
       <p>"Pehli baar kisi ne itni seedhi bhasha mein samjhaya. Laga koi meri baat sun raha hai. Raat wali neend ab bahut better hai."</p>
       <small>— Reader, Jaipur</small>
     </div>
-    <div class="testimonial">
-      <p>"Maine pehle socha tha ₹99 mein kya milega — par is ebook ne meri life ki ek ahem cheez badal di. Overthinking ka pattern ab samajh aata hai."</p>
+
+    <div class="testimonial" style="margin-top:1rem;">
+      <p>"Maine pehle socha tha ₹99 mein kya milega par yaar, is ebook ne meri life ki ek ahem cheez badal di. Overthinking ka pattern ab samajh aata hai."</p>
       <small>— Reader, Delhi</small>
-    </div>
-    <div class="testimonial">
-      <p>"Bahut baar socha tha ye sab padhna kaam nahi aata. Par yahan jo likha tha — woh meri baat thi. Literally meri baat."</p>
-      <small>— Reader, Mumbai</small>
     </div>
   </div>
 
   <!-- BOTTOM CTA -->
   <div class="glass-card">
     <div class="cta-bottom">
-      <p>Sirf ₹99 mein — ek chai se bhi kam. Aur aapko milega woh samajh jo aapka rishta apne mann se hamesha ke liye badal degi.</p>
-      <em style="display:block; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--mint); margin-bottom:1.5rem; line-height:1.6;">
-        "Bas ek chhoti si shuruat. Baaki sab dheere-dheere."
-      </em>
-      <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">🧠 Abhi Kharido — ₹99</a>
-      <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access · Secure Razorpay payment</p>
+      <p>For just ₹99, less than the cost of a cup of tea. But what you gain is control over your mind, better sleep, and inner peace.. <br><br>
+      <em style="color:var(--mint); font-family:'Cormorant Garamond',serif; font-size:1.1rem;">Bas ek chhoti si shuruat. Baaki sab dheerey dheerey.</em></p>
+      <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">📖 Buy Now ₹99</a>
+      <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access after payment</p>
     </div>
-  </div>
-
-  <!-- ALSO SEE -->
-  <div style="text-align:center; padding:1rem; background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; margin-bottom:1.5rem;">
-    <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;">Rishton ke baare mein bhi kuch sochna hai?</p>
-    <a href="ebook-rishte.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1.4rem; background:var(--glass); border:1px solid rgba(128,203,196,0.3); border-radius:50px; color:var(--mint); font-size:0.8rem; text-decoration:none; transition:all 0.3s;">
-      💙 Rishte Kaise Sudharen — Ebook Bhi Dekhein →
-    </a>
   </div>
 
   <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
     <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
     <div style="margin-top:1.2rem;">
+      <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:0.8rem;">CONNECT WITH US</p>
       <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
         <span style="color:var(--mint); font-size:0.85rem;">adhyatmikyatra@zohomail.in</span>
         <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
