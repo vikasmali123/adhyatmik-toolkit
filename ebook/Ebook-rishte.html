@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>रिश्ते कैसे सुधारें — Adhyatmik Toolkit</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0d14; --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0; --indigo-light: #7986cb;
+    --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
+    --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
+  .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #00bfa5; top: 20%; right: -100px; animation-delay: -6s; }
+  .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #7c4dff; bottom: -50px; left: 30%; animation-delay: -12s; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
+  .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2rem; }
+  .brand-symbol { font-size: 2rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.5rem; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
+
+  .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
+  .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
+  .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
+  .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
+
+  .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.45rem 1.1rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; text-decoration: none; transition: all 0.3s; margin-bottom: 1.5rem; font-family: 'DM Sans', sans-serif; }
+  .back-link:hover { color: var(--mint); border-color: var(--mint); }
+
+  /* HERO */
+  .ebook-hero { text-align: center; padding: 2.5rem 1rem; background: linear-gradient(135deg, rgba(128,203,196,0.1), rgba(92,107,192,0.08)); border: 1px solid rgba(128,203,196,0.25); border-radius: 24px; margin-bottom: 1.5rem; }
+  .hero-emoji { font-size: 5rem; display: block; margin-bottom: 1rem; animation: float 4s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .ebook-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 400; background: linear-gradient(135deg, var(--mint), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.3; margin-bottom: 0.8rem; }
+  .ebook-tagline { font-size: 0.9rem; color: var(--text-muted); max-width: 460px; margin: 0 auto 1.5rem; line-height: 1.8; }
+  .price-badge { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.8rem; background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.4); border-radius: 50px; font-size: 1rem; color: var(--gold); font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: 0.06em; margin-bottom: 1.5rem; }
+  .buy-btn { display: inline-block; padding: 0.9rem 2.8rem; background: linear-gradient(135deg, rgba(128,203,196,0.4), rgba(92,107,192,0.35)); border: 1px solid rgba(128,203,196,0.6); border-radius: 50px; color: var(--text); font-size: 1rem; letter-spacing: 0.08em; text-decoration: none; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; box-shadow: 0 0 30px rgba(128,203,196,0.15); }
+  .buy-btn:hover { background: linear-gradient(135deg, rgba(128,203,196,0.6), rgba(92,107,192,0.5)); box-shadow: 0 0 50px rgba(128,203,196,0.3); transform: translateY(-2px); }
+
+  /* PAIN */
+  .pain-box { padding: 1.5rem; background: rgba(128,203,196,0.06); border: 1px solid rgba(128,203,196,0.2); border-radius: 16px; margin-bottom: 1rem; }
+  .pain-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text); line-height: 1.7; text-align: center; }
+
+  /* CHAPTERS */
+  .chapters-list { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
+  .chapter-item { display: flex; align-items: flex-start; gap: 1rem; padding: 1rem 1.2rem; background: rgba(255,255,255,0.02); border: 1px solid var(--glass-border); border-radius: 14px; transition: all 0.3s; }
+  .chapter-item:hover { border-color: rgba(128,203,196,0.25); }
+  .chapter-num { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--mint); opacity: 0.6; flex-shrink: 0; line-height: 1; margin-top: 0.1rem; }
+  .chapter-info h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.25rem; font-weight: 500; }
+  .chapter-info p { font-size: 0.76rem; color: var(--text-muted); line-height: 1.5; }
+
+  /* FOR LIST */
+  .for-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
+  .for-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+  .for-list li::before { content: '💙'; flex-shrink: 0; margin-top: 0.05rem; font-size: 0.8rem; }
+
+  /* TESTIMONIALS */
+  .testimonial { padding: 1.5rem; text-align: center; background: linear-gradient(135deg, rgba(128,203,196,0.06), rgba(92,107,192,0.06)); border: 1px solid rgba(128,203,196,0.18); border-radius: 16px; margin-top: 0.8rem; }
+  .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text); line-height: 1.7; }
+  .testimonial small { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.08em; margin-top: 0.8rem; display: block; }
+
+  /* EXCERPT */
+  .excerpt-box { padding: 1.5rem; background: rgba(255,255,255,0.02); border-left: 3px solid var(--mint); border-radius: 0 14px 14px 0; margin: 1rem 0; }
+  .excerpt-box p { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; font-style: italic; }
+  .excerpt-box small { font-size: 0.72rem; color: var(--mint); letter-spacing: 0.08em; display: block; margin-top: 0.5rem; }
+
+  .cta-bottom { text-align: center; padding: 2rem 1rem; }
+
+  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
+  .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
+
+  @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } .glass-card { padding: 1.5rem 1.2rem; } }
+</style>
+</head>
+<body>
+<div class="aurora">
+  <div class="aurora-orb"></div><div class="aurora-orb"></div><div class="aurora-orb"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <span class="brand-symbol">ॐ</span>
+    <h1>Adhyatmik Toolkit</h1>
+    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+  </header>
+
+  <nav class="site-navbar">
+    <a href="index.html"   class="site-nav-link">🏠 Home</a>
+    <a href="ebook.html"   class="site-nav-link active">📖 Ebook</a>
+    <a href="wisdom.html"  class="site-nav-link">✦ Wisdom</a>
+    <a href="about.html"   class="site-nav-link">🙏 About</a>
+    <a href="contact.html" class="site-nav-link">💛 Support</a>
+  </nav>
+
+  <a href="ebook.html" class="back-link">← Dono Ebooks Dekhein</a>
+
+  <!-- HERO -->
+  <div class="ebook-hero">
+    <span class="hero-emoji">💙</span>
+    <div class="ebook-title">रिश्ते कैसे सुधारें?<br><span style="font-size:0.75em; opacity:0.85;">Jab Rishta Tootne Lage</span></div>
+    <p class="ebook-tagline">Yeh un logon ke liye nahi hai jinki shaadi toot rahi hai — yeh un logon ke liye hai jo ek-doosre ke paas hote hue bhi akela feel karte hain.</p>
+    <div class="price-badge">✦ &nbsp; Sirf ₹99 mein &nbsp; ✦</div>
+    <br>
+    <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">💙 Abhi Kharido — ₹99</a>
+    <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access after payment · Secure checkout via Razorpay</p>
+  </div>
+
+  <!-- PAIN OPENING -->
+  <div class="glass-card">
+    <div class="pain-box">
+      <p>"Kya tumhein yaad hai woh din — jab phone ki ek ring bajte hi chehere par muskaan aa jaati thi? Jab ghanton baatein karne ke baad bhi lagta tha ki abhi bahut kuch kehna baaki hai?"</p>
+    </div>
+    <p style="font-size:0.88rem; color:var(--text-muted); line-height:1.8; margin-top:1rem;">
+      Phir dheere-dheere waqt badla. Shadi hui, zimmedaariyaan aayi — aur unhi zimmedaariyaon ke neeche woh <em style="color:var(--mint);">'muskaan'</em> kahin dab gayi. Aaj tum ek hi ghar mein ho, ek hi bistar par — lekin woh 'judao' kahin kho gaya hai.
+    </p>
+    <div class="excerpt-box">
+      <p>"Shaadi koi aisi vastu nahi hai jise aapne 'pa' liya hai — balki yeh ek poudhe ki tarah hai jise aapko har roz paani dena hoga."</p>
+      <small>— Ebook se, Adhyatmik Yatra</small>
+    </div>
+  </div>
+
+  <!-- CHAPTERS -->
+  <div class="glass-card">
+    <h2 class="section-title">Is Ebook Mein Kya Hai?</h2>
+    <p class="section-sub">6 chapters — seedhe dil ki baat · 30 pages · Har ek sach mein</p>
+    <div class="chapters-list">
+      <div class="chapter-item">
+        <div class="chapter-num">01</div>
+        <div class="chapter-info">
+          <h4>'Main' Se 'Hum' Tak Ka Adhura Safar</h4>
+          <p>Shaadi ke baad pehchaan kyun kho jaati hai — aur woh deewar kab aur kaise banti hai jinhe hum dekhna bhi band kar dete hain.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">02</div>
+        <div class="chapter-info">
+          <h4>Ankahin Shikaayaton Ka Dher</h4>
+          <p>Woh baatein jo hum daba dete hain "chhoti si baat hai, kya jhagda karna" — aur phir wahi shikaayatein andar se rishta khaane lagti hain.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">03</div>
+        <div class="chapter-info">
+          <h4>Samvad Ya Vivaad?</h4>
+          <p>Bolne aur sunne ke beech ka woh baarik fark — jo ek jhagde ko samvad mein badal sakta hai ya phir sab kuch barbaad kar sakta hai.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">04</div>
+        <div class="chapter-info">
+          <h4>Romance Ka Punarjanm</h4>
+          <p>Zimmedaariyaon ke beech khoya hua woh 'pehla wala' ehsaas — aur use wapas laane ke liye sirf chhote-chhote kadam kaafi hain.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">05</div>
+        <div class="chapter-info">
+          <h4>Maafi Aur Maafinaama</h4>
+          <p>Ego ki haar ya pyaar ki jeet? Sach yeh hai — maafi maangna aapko chhota nahi banata, balki yeh dikhata hai ki rishta aapke liye ego se zyaada keemat rakhta hai.</p>
+        </div>
+      </div>
+      <div class="chapter-item">
+        <div class="chapter-num">06</div>
+        <div class="chapter-info">
+          <h4>Nayi Shuruaat</h4>
+          <p>Har din ek-doosre ko dobara chunne ka wada — kyunki rishta koi ek din ka kaam nahi, yeh ek muscle ki tarah hai jise roz train karna padta hai.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO IS IT FOR -->
+  <div class="glass-card">
+    <h2 class="section-title">Yeh Ebook Aapke Liye Hai Agar...</h2>
+    <p class="section-sub">Dil par haath rakhein aur sochein</p>
+    <ul class="for-list">
+      <li>Ek hi ghar mein rehte hain — par andar se akela feel hota hai</li>
+      <li>Chhoti-chhoti baaton par jhagda ho jaata hai, phir yaad bhi nahi rehta kyun shuru hua</li>
+      <li>Partner ki taareef kabhi-kabhi yaad hi nahi aati — criticism zyaada aasaan lagti hai</li>
+      <li>Raat ko peethe ferkar sote hain is umeed mein ki kal sab theek ho jaayega</li>
+      <li>Pyaar hai — par woh connection, woh spark kahin kho gaya hai</li>
+      <li>Dil mein bahut kuch hai kehne ko — par shabda nahi aate, ya darr hai reaction ka</li>
+      <li>Rishte ko bachana chahte hain — par samajh nahi aata shuruat kahaan se karein</li>
+    </ul>
+  </div>
+
+  <!-- EXCERPT 2 -->
+  <div class="glass-card">
+    <h2 class="section-title">Ek Jhalak — Ebook Se</h2>
+    <p class="section-sub">Yeh likhte waqt dil mein aap hi the</p>
+    <div class="excerpt-box">
+      <p>"Rishton mein zeher tab nahi ghulta jab hum ladte hain — balki tab ghulta hai jab hum ek-doosre par 'label' lagaane lagte hain. 'Tum hamesha...' aur 'tum kabhi nahi...' — yeh do phrases ek aisi deewar khadi kar dete hain jise laanghna mushkil ho jaata hai."</p>
+      <small>— Chapter 2, Ankahin Shikaayatein</small>
+    </div>
+    <div class="excerpt-box">
+      <p>"Maafi ka matlab yeh nahi ki jo hua woh sahi tha — maafi ka matlab hai ki ab aap us 'bojh' ko dhote-dhote thak chuke hain aur apni peeth se use utaarna chahte hain."</p>
+      <small>— Chapter 5, Maafi Aur Maafinaama</small>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="glass-card">
+    <h2 class="section-title">Padhne Walon Ne Kya Kaha</h2>
+    <p class="section-sub">Real reactions — real log</p>
+    <div class="testimonial">
+      <p>"Mujhe laga tha ki koi nahi samjhega. Phir yeh ebook padhi — aur laga kisi ne hamare ghar ke andar jhank ke likha hai. Husband ko bhi padhne diya. Kai cheezein clear ho gayi."</p>
+      <small>— Reader, Lucknow</small>
+    </div>
+    <div class="testimonial">
+      <p>"Sirf ₹99 ka ek decision — aur usne humara do mahine purana jhagda khatam kar diya. Chapter 3 ne sach mein aankh khol di. Shukriya."</p>
+      <small>— Reader, Pune</small>
+    </div>
+    <div class="testimonial">
+      <p>"Maine socha tha ki rishte theek karna sirf doosre ki zimmedaari hai. Is ebook ne dikhaya ki pehla kadam mujhe hi uthana tha."</p>
+      <small>— Reader, Ahmedabad</small>
+    </div>
+  </div>
+
+  <!-- BOTTOM CTA -->
+  <div class="glass-card">
+    <div class="cta-bottom">
+      <p>Sirf ₹99 — ek chai se bhi kam ki keemat mein woh samajh jo shayad ek rishte ko bachaa le. Ek baar padho. Phir apne partner ke saath baitho.</p>
+      <em style="display:block; font-family:'Cormorant Garamond',serif; font-size:1.2rem; color:var(--mint); margin-bottom:1.5rem; line-height:1.6;">
+        "Jao, unke paas baitho. Shayad ek chhota sa 'shukriya' hi aapke rishte ki nayi neev rakh de."
+      </em>
+      <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">💙 Abhi Kharido — ₹99</a>
+      <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access · Secure Razorpay payment</p>
+    </div>
+  </div>
+
+  <!-- ALSO SEE -->
+  <div style="text-align:center; padding:1rem; background:var(--glass); border:1px solid var(--glass-border); border-radius:16px; margin-bottom:1.5rem;">
+    <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:0.8rem;">Mann ka bhi kuch kaam karna hai?</p>
+    <a href="ebook-overthinking.html" style="display:inline-flex; align-items:center; gap:0.5rem; padding:0.55rem 1.4rem; background:var(--glass); border:1px solid rgba(149,117,205,0.3); border-radius:50px; color:var(--accent); font-size:0.8rem; text-decoration:none; transition:all 0.3s;">
+      🧠 Stop Overthinking — Ebook Bhi Dekhein →
+    </a>
+  </div>
+
+  <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
+    <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
+    <div style="margin-top:1.2rem;">
+      <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
+        <span style="color:var(--mint); font-size:0.85rem;">adhyatmikyatra@zohomail.in</span>
+        <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
+          <i class="fa-brands fa-instagram fa-lg" style="color:#e1306c;"></i>
+        </a>
+      </div>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
+  </footer>
+</div>
+</body>
+</html>
