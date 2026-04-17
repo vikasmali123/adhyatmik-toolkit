@@ -266,7 +266,7 @@ function shareArticle() {
     navigator.clipboard.writeText(window.location.href).then(() => {
       const btn = document.querySelector('.btn-share');
       btn.textContent = '✓ Link Copy Ho Gaya!';
-      setTimeout(() => btn.textContent = '⎘ Share Karein', 2000);
+      setTimeout(() => btn.textContent = '⎘ Share', 2000);
     });
   }
 }
