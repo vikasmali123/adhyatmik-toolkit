@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ebook — Adhyatmik Toolkit</title>
+<title>Ebooks — Adhyatmik Toolkit</title>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -11,10 +11,9 @@
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
-    --bg: #0b0d14; --bg2: #11141f; --bg3: #181c2a;
-    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
-    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0;
-    --indigo-light: #7986cb; --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --bg: #0b0d14; --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0; --indigo-light: #7986cb;
+    --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
     --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
     --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
   }
@@ -22,7 +21,7 @@
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
   .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
-  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; animation-delay: 0s; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
   .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
   .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
   @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
@@ -33,104 +32,111 @@
   header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
   header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
 
-  /* SITE NAVBAR */
   .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
   .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
   .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
   .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
 
-  /* PAGE STYLES */
-  .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
-  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
-  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
-  .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
+  /* INTRO */
+  .intro-text { text-align: center; margin-bottom: 2.5rem; }
+  .intro-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 300; color: var(--text); margin-bottom: 0.8rem; }
+  .intro-text p { font-size: 0.88rem; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; }
 
-  /* EBOOK HERO */
-  .ebook-hero {
-    text-align: center; padding: 2.5rem 1rem;
-    background: linear-gradient(135deg, rgba(92,107,192,0.08), rgba(200,169,110,0.08));
-    border: 1px solid rgba(200,169,110,0.2); border-radius: 24px;
-    margin-bottom: 1.5rem; position: relative; overflow: hidden;
+  /* EBOOK CARDS GRID */
+  .ebooks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 640px) { .ebooks-grid { grid-template-columns: 1fr; } }
+
+  /* EBOOK CARD */
+  .ebook-card {
+    background: var(--glass); border: 1px solid var(--glass-border);
+    border-radius: 24px; padding: 2rem 1.8rem;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    display: flex; flex-direction: column; gap: 1rem;
+    text-decoration: none; position: relative; overflow: hidden;
+    transition: transform 0.38s cubic-bezier(0.34,1.56,0.64,1),
+                box-shadow 0.3s ease, border-color 0.3s ease;
+    cursor: pointer;
   }
-  .ebook-hero::before {
-    content: '📖'; font-size: 5rem; display: block;
-    margin-bottom: 1rem; filter: drop-shadow(0 0 20px rgba(200,169,110,0.3));
+  .ebook-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+  .ebook-card-1 { border-color: rgba(149,117,205,0.3); }
+  .ebook-card-1:hover { border-color: rgba(149,117,205,0.6); box-shadow: 0 20px 60px rgba(149,117,205,0.1); }
+  .ebook-card-2 { border-color: rgba(128,203,196,0.3); }
+  .ebook-card-2:hover { border-color: rgba(128,203,196,0.6); box-shadow: 0 20px 60px rgba(128,203,196,0.1); }
+
+  .ebook-emoji {
+    font-size: 3.5rem; display: block; text-align: center;
     animation: float 4s ease-in-out infinite;
   }
-  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
-  .ebook-title {
+  .ebook-card-2 .ebook-emoji { animation-delay: -2s; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+  .ebook-badge {
+    display: inline-block; padding: 0.2rem 0.8rem;
+    border-radius: 50px; font-size: 0.68rem; letter-spacing: 0.1em;
+    text-align: center; width: fit-content; margin: 0 auto;
+  }
+  .badge-purple { background: rgba(149,117,205,0.15); border: 1px solid rgba(149,117,205,0.35); color: var(--accent); }
+  .badge-mint { background: var(--mint-glow); border: 1px solid rgba(128,203,196,0.35); color: var(--mint); }
+
+  .ebook-card-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 400;
-    background: linear-gradient(135deg, var(--gold), var(--mint));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-clip: text; line-height: 1.3; margin-bottom: 0.8rem;
+    font-size: clamp(1.3rem, 3vw, 1.7rem); font-weight: 400;
+    text-align: center; line-height: 1.3;
   }
-  .ebook-tagline { font-size: 0.9rem; color: var(--text-muted); max-width: 420px; margin: 0 auto 1.5rem; line-height: 1.7; }
-  .price-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.6rem 1.6rem;
-    background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.4);
-    border-radius: 50px; font-size: 1rem; color: var(--gold);
-    font-family: 'Cormorant Garamond', serif; font-weight: 600;
-    letter-spacing: 0.06em; margin-bottom: 1.5rem;
+  .ebook-card-1 .ebook-card-title { color: var(--accent); }
+  .ebook-card-2 .ebook-card-title { color: var(--mint); }
+
+  .ebook-card-desc { font-size: 0.8rem; color: var(--text-muted); text-align: center; line-height: 1.7; }
+
+  .ebook-points { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .ebook-points li { font-size: 0.77rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+  .ebook-points li::before { flex-shrink: 0; margin-top: 0.15rem; }
+  .ebook-card-1 .ebook-points li::before { content: '✦'; color: var(--accent); }
+  .ebook-card-2 .ebook-points li::before { content: '✦'; color: var(--mint); }
+
+  .ebook-price {
+    text-align: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--gold); letter-spacing: 0.08em;
+    padding: 0.4rem 0;
   }
 
-  .buy-btn {
-    display: inline-block; padding: 0.9rem 2.8rem;
-    background: linear-gradient(135deg, rgba(200,169,110,0.4), rgba(149,117,205,0.35));
-    border: 1px solid rgba(200,169,110,0.6); border-radius: 50px;
-    color: var(--text); font-size: 1rem; letter-spacing: 0.08em;
-    text-decoration: none; cursor: pointer;
-    transition: all 0.3s ease; font-family: 'DM Sans', sans-serif;
-    box-shadow: 0 0 30px rgba(200,169,110,0.15);
+  .ebook-cta {
+    display: block; text-align: center; padding: 0.75rem 1.5rem;
+    border-radius: 50px; font-size: 0.82rem; letter-spacing: 0.06em;
+    font-family: 'DM Sans', sans-serif; transition: all 0.3s ease;
+    text-decoration: none; margin-top: auto;
   }
-  .buy-btn:hover { background: linear-gradient(135deg, rgba(200,169,110,0.6), rgba(149,117,205,0.5)); box-shadow: 0 0 40px rgba(200,169,110,0.3); transform: translateY(-2px); }
-
-  /* WHAT YOU GET */
-  .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.5rem; }
-  @media (max-width: 560px) { .features-grid { grid-template-columns: 1fr; } }
-  .feature-item {
-    padding: 1.2rem; background: rgba(255,255,255,0.02);
-    border: 1px solid var(--glass-border); border-radius: 16px;
-    display: flex; gap: 0.8rem; align-items: flex-start;
+  .cta-purple {
+    background: linear-gradient(135deg, rgba(149,117,205,0.4), rgba(92,107,192,0.35));
+    border: 1px solid rgba(149,117,205,0.5); color: var(--text);
   }
-  .feature-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.1rem; }
-  .feature-text h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.3rem; font-weight: 500; }
-  .feature-text p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; }
-
-  /* WHO IS THIS FOR */
-  .for-list { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.5rem; }
-  .for-list li { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
-  .for-list li::before { content: '✦'; color: var(--mint); flex-shrink: 0; margin-top: 0.1rem; }
-
-  /* TESTIMONIAL */
-  .testimonial {
-    padding: 1.5rem; text-align: center;
-    background: linear-gradient(135deg, rgba(128,203,196,0.05), rgba(149,117,205,0.05));
-    border: 1px solid rgba(128,203,196,0.15); border-radius: 16px;
-    margin-top: 0.5rem;
+  .cta-purple:hover { background: linear-gradient(135deg, rgba(149,117,205,0.6), rgba(92,107,192,0.5)); box-shadow: 0 0 25px rgba(149,117,205,0.25); }
+  .cta-mint {
+    background: linear-gradient(135deg, rgba(128,203,196,0.3), rgba(92,107,192,0.25));
+    border: 1px solid rgba(128,203,196,0.5); color: var(--text);
   }
-  .testimonial p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-style: italic; color: var(--text); line-height: 1.7; }
-  .testimonial small { font-size: 0.75rem; color: var(--text-dim); letter-spacing: 0.08em; margin-top: 0.8rem; display: block; }
+  .cta-mint:hover { background: linear-gradient(135deg, rgba(128,203,196,0.5), rgba(92,107,192,0.4)); box-shadow: 0 0 25px rgba(128,203,196,0.2); }
 
-  /* CTA BOTTOM */
-  .cta-bottom { text-align: center; padding: 2rem 1rem; }
-  .cta-bottom p { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; }
+  /* NEW badge */
+  .new-ribbon {
+    position: absolute; top: 1rem; right: 1rem;
+    background: linear-gradient(135deg, var(--mint), #5c6bc0);
+    color: white; font-size: 0.62rem; letter-spacing: 0.1em;
+    padding: 0.2rem 0.7rem; border-radius: 50px; font-weight: 500;
+  }
 
-  /* CONTACT ICON */
-  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); font-size: 1.3rem; text-decoration: none; transition: all 0.3s ease; }
+  .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
   .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
 
   @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } }
-  @media (max-width: 600px) { .glass-card { padding: 1.5rem 1.2rem; } }
 </style>
 </head>
 <body>
-
 <div class="aurora">
-  <div class="aurora-orb"></div>
-  <div class="aurora-orb"></div>
-  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div><div class="aurora-orb"></div><div class="aurora-orb"></div>
 </div>
 
 <div class="wrapper">
@@ -148,113 +154,53 @@
     <a href="contact.html" class="site-nav-link">💛 Support</a>
   </nav>
 
-  <!-- HERO -->
-  <div class="ebook-hero">
-    <div class="ebook-title">"Stop Overthinking" Find Inner Peace</div>
-    <p class="ebook-tagline">Yeh koi solution nahi deti, Yeh aapko woh dikhata hai jahan se problem shuru hoti hai..</p>
-    <div class="price-badge">✦ &nbsp; Sirf ₹99 mein &nbsp; ✦</div>
-    <br>
-    <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">📖 Buy Now ₹99</a>
-    <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access after payment · Secure checkout via Razorpay</p>
+  <div class="intro-text">
+    <h2>Kaun Si Ebook Aapke Liye Hai?</h2>
+    <p>Dono ebooks alag-alag dardon ke liye hain, par dono ek hi baat kehti hain: <em style="color:var(--mint);">badlaav bahar se nahi, andar se hota hai.</em> Apni zaroorat ke hisaab se chunein.</p>
   </div>
 
-  <!-- WHAT YOU GET -->
-  <div class="glass-card">
-    <h2 class="section-title">Is Ebook Mein Kya Milega?</h2>
-    <p class="section-sub">Sirf theory nahi — practical wisdom jo kaam aati hai</p>
+  <div class="ebooks-grid">
 
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">🧠</div>
-        <div class="feature-text">
-          <h4>Overthinking ki Jad</h4>
-          <p>Samjho ki overthinking problem nahi, ek aadat kaise ban jaati hai, aur kaise woh dheere dheere aapko khud se door karti hai.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🌙</div>
-        <div class="feature-text">
-          <h4>Raat ki Bechaini</h4>
-          <p>Woh sach jo raat ke silence me saamne aata hai, jab mann rukta nahi, aur aap khud se bhaagte rehte ho.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">💭</div>
-        <div class="feature-text">
-          <h4>Vichar ko Dekhna</h4>
-          <p>Yeh samajhna ki aap apne thoughts nahi ho aur unse ladna hi unhe strong banata hai.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">🫁</div>
-        <div class="feature-text">
-          <h4>Andar ka Conflict</h4>
-          <p>Kaise overthinking aapko ek invisible court me khada kar deti hai ,jahan aap hi judge ho, aur aap hi guilty.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">📿</div>
-        <div class="feature-text">
-          <h4>Real Spiritual Insight</h4>
-          <p>Yeh koi technique nahi, yeh ek nazariya hai jo dheere dheere aapka rishta apne mann se badalta hai.</p>
-        </div>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">✍️</div>
-        <div class="feature-text">
-          <h4>Slow Change</h4>
-          <p>Yeh ebook turant change ka promise nahi karti, par ek aisi samajh deti hai jo dheere dheere sab badal deti hai.</p>
-        </div>
-      </div>
-    </div>
+    <!-- EBOOK 1: OVERTHINKING -->
+    <a href="Ebook-overthinking.html" class="ebook-card ebook-card-1">
+      <span class="ebook-emoji">🧠</span>
+      <span class="ebook-badge badge-purple">BESTSELLER</span>
+      <div class="ebook-card-title">"Stop Overthinking"<br>Find Inner Peace</div>
+      <p class="ebook-card-desc">Jab mann ruk nahi raha, raat ko neend nahi aati, aur khud ke vichar hi sabse bada dushman ban jaate hain, yeh ebook usi waqt ke liye hai.</p>
+      <ul class="ebook-points">
+        <li>Overthinking ki asli jad kya hai aur use kaise pakdein</li>
+        <li>Raat ke 2 baje wala woh andhera samajhna aur jeena</li>
+        <li>Apne thoughts ko dekhna seekho, unme doobna nahi</li>
+        <li>Spiritual insight jo dheere-dheere sab badal deti hai</li>
+      </ul>
+      <div class="ebook-price">✦ Sirf ₹99 ✦</div>
+      <span class="ebook-cta cta-purple">🧠 Yeh Ebook Dekhein →</span>
+    </a>
+
+    <!-- EBOOK 2: RISHTE -->
+    <a href="Ebook-rishte.html" class="ebook-card ebook-card-2">
+      <span class="new-ribbon">✦ NEW</span>
+      <span class="ebook-emoji">💙</span>
+      <span class="ebook-badge badge-mint">NEW LAUNCH</span>
+      <div class="ebook-card-title">रिश्ते कैसे सुधारें?<br><span style="font-size:0.8em;">Jab Rishta Tootne Lage</span></div>
+      <p class="ebook-card-desc">Ek hi ghar mein rehke bhi akela feel karna yeh situation bahut log jeete hain par koi nahi batata iska kya karna hai. Yeh ebook batati hai.</p>
+      <ul class="ebook-points">
+        <li>'Main' se 'Hum' tak ka woh adhura safar</li>
+        <li>Ankahe shikaayatein jo dheere-dheere rishta kha jaati hain</li>
+        <li>Maafi ego ki haar ya pyaar ki jeet?</li>
+        <li>Romance ko wapas laana chote-chote kadam se</li>
+      </ul>
+      <div class="ebook-price">✦ Sirf ₹199 ✦</div>
+      <span class="ebook-cta cta-mint">💙 Yeh Ebook Dekhein →</span>
+    </a>
+
   </div>
 
-  <!-- WHO IS THIS FOR -->
-  <div class="glass-card">
-    <h2 class="section-title">Yeh Ebook Aapke Liye Hai Agar...</h2>
-    <p class="section-sub">Khud se puchho, kitni cheezein match karti hain?</p>
+ 
 
-    <ul class="for-list">
-      <li>Raat ko sote waqt mann bund nahi hota, ek ke baad ek vichar aate rehte hain</li>
-      <li>Choti si cheez par ghanton sochte rehte ho, "kya hoga agar..." waali loop mein</li>
-      <li>Log bolte hain "zyada mat socho" par koi nahi batata ki kaise band karo</li>
-      <li>Anxiety aur stress ko feel karte ho par naam nahi de paate</li>
-      <li>Meditation try ki, par mann nahi rukta toh chhod diya</li>
-      <li>Apne thoughts se khud hi thak jaate ho shaant rehna chahte ho</li>
-      <li>Spirituality mein interest hai par kahan se shuru karein samajh nahi aata</li>
-    </ul>
-  </div>
-
-  <!-- TESTIMONIAL -->
-  <div class="glass-card">
-    <h2 class="section-title">Padhne Walon Ne Kya Kaha</h2>
-    <p class="section-sub">Unke alfaz, unka anubhav</p>
-
-    <div class="testimonial">
-      <p>"Pehli baar kisi ne itni seedhi bhasha mein samjhaya. Laga koi meri baat sun raha hai. Raat wali neend ab bahut better hai."</p>
-      <small>— Reader, Jaipur</small>
-    </div>
-
-    <div class="testimonial" style="margin-top:1rem;">
-      <p>"Maine pehle socha tha ₹99 mein kya milega par yaar, is ebook ne meri life ki ek ahem cheez badal di. Overthinking ka pattern ab samajh aata hai."</p>
-      <small>— Reader, Delhi</small>
-    </div>
-  </div>
-
-  <!-- BOTTOM CTA -->
-  <div class="glass-card">
-    <div class="cta-bottom">
-      <p>For just ₹99, less than the cost of a cup of tea. But what you gain is control over your mind, better sleep, and inner peace.. <br><br>
-      <em style="color:var(--mint); font-family:'Cormorant Garamond',serif; font-size:1.1rem;">Bas ek chhoti si shuruat. Baaki sab dheerey dheerey.</em></p>
-      <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="buy-btn">📖 Buy Now ₹99</a>
-      <p style="margin-top:1rem; font-size:0.75rem; color:var(--text-dim);">Instant access after payment</p>
-    </div>
-  </div>
-
-  <footer style="margin-top:2rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
+  <footer style="margin-top:2.5rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
     <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
     <div style="margin-top:1.2rem;">
-      <p style="font-size:0.75rem; color:var(--text-muted); letter-spacing:0.12em; margin-bottom:0.8rem;">CONNECT WITH US</p>
       <div style="display:flex; justify-content:center; gap:25px; align-items:center; flex-wrap:wrap;">
         <span style="color:var(--mint); font-size:0.85rem;">adhyatmikyatra@zohomail.in</span>
         <a href="https://instagram.com/adhyatmikyatra123" target="_blank" class="contact-icon">
@@ -262,7 +208,7 @@
         </a>
       </div>
     </div>
-    <p style="margin-top:1.5rem; font-size:0.75rem; color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
+    <p style="margin-top:1.2rem; font-size:0.75rem; color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
   </footer>
 </div>
 </body>
