@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Sitemap ka rasta batana zaroori hai
+Sitemap: https://adhyatmikyatra.in/sitemap.xml
