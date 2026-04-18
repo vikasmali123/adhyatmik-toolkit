@@ -18,7 +18,6 @@
   }
   html { scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
-
   .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
   .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
   .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
@@ -26,82 +25,34 @@
   .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
   @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
   body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
-
   .wrapper { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; padding: 0 1.5rem 5rem; }
-
-  /* HEADER */
   header { text-align: center; padding: 2.5rem 0 1.5rem; }
   .brand-symbol { font-size: 1.6rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.4rem; }
   header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 5vw, 2.6rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
-
-  /* NAVBAR */
   .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
   .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
   .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
   .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
-
-  /* BACK BUTTON */
-  .back-btn {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.5rem 1.2rem;
-    background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 50px; color: var(--text-muted); font-size: 0.78rem;
-    text-decoration: none; letter-spacing: 0.05em;
-    transition: all 0.3s ease; margin-bottom: 1.8rem;
-    font-family: 'DM Sans', sans-serif;
-  }
+  .back-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1.2rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; text-decoration: none; letter-spacing: 0.05em; transition: all 0.3s ease; margin-bottom: 1.8rem; font-family: 'DM Sans', sans-serif; }
   .back-btn:hover { color: var(--mint); border-color: var(--mint); background: var(--mint-glow); }
-
-  /* BLOG CARD */
-  .blog-card {
-    background: var(--glass); border: 1px solid var(--glass-border);
-    border-radius: 20px; padding: 2.5rem 2.5rem 2rem;
-    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-    margin-bottom: 1.5rem;
-  }
-
-  /* BLOG META */
+  .blog-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2.5rem 2.5rem 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
   .blog-cat-tag { font-size: 0.7rem; color: var(--mint); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1rem; }
-  .blog-main-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 400;
-    color: var(--text); line-height: 1.3; margin-bottom: 1.2rem;
-  }
+  .blog-main-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 400; color: var(--text); line-height: 1.3; margin-bottom: 1.2rem; }
   .blog-divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
-
-  /* BLOG CONTENT — styles for tumhara existing HTML content */
   .blog-body { color: #d4d2e0; line-height: 1.9; font-size: 0.95rem; }
   .blog-body p { margin-bottom: 1.2rem; }
   .blog-body h2 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); margin: 2rem 0 0.8rem; letter-spacing: 0.02em; }
-  .blog-body h1 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; color: var(--text); margin-bottom: 1.2rem; }
+  .blog-body h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; color: var(--gold); margin: 1.2rem 0 0.5rem; }
   .blog-body strong { color: var(--text); font-weight: 500; }
   .blog-body em { color: var(--mint); font-style: normal; }
   .blog-body hr { border: none; border-top: 1px solid var(--glass-border); margin: 1.8rem 0; }
-
-  /* BOTTOM NAV */
-  .blog-bottom-nav {
-    display: flex; justify-content: center; gap: 1rem;
-    flex-wrap: wrap; margin-top: 2rem;
-  }
-  .btn-back-bottom {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.7rem 1.8rem;
-    background: linear-gradient(135deg, rgba(92,107,192,0.35), rgba(149,117,205,0.3));
-    border: 1px solid rgba(149,117,205,0.5); border-radius: 50px;
-    color: var(--text); font-size: 0.85rem; letter-spacing: 0.06em;
-    text-decoration: none; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif;
-  }
+  .blog-body ul { margin: 0.5rem 0 1.2rem 1.5rem; }
+  .blog-body ul li { margin-bottom: 0.5rem; color: #d4d2e0; }
+  .blog-bottom-nav { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+  .btn-back-bottom { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.8rem; background: linear-gradient(135deg, rgba(92,107,192,0.35), rgba(149,117,205,0.3)); border: 1px solid rgba(149,117,205,0.5); border-radius: 50px; color: var(--text); font-size: 0.85rem; letter-spacing: 0.06em; text-decoration: none; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; }
   .btn-back-bottom:hover { box-shadow: 0 0 20px rgba(149,117,205,0.25); transform: translateY(-2px); }
-  .btn-share {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.7rem 1.8rem;
-    background: transparent; border: 1px solid var(--glass-border);
-    border-radius: 50px; color: var(--text-muted); font-size: 0.85rem;
-    cursor: pointer; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif;
-  }
+  .btn-share { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.7rem 1.8rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 50px; color: var(--text-muted); font-size: 0.85rem; cursor: pointer; transition: all 0.3s ease; font-family: 'DM Sans', sans-serif; }
   .btn-share:hover { border-color: var(--gold); color: var(--gold); }
-
-  /* RELATED STRIP */
   .related-strip { margin-top: 1rem; }
   .related-strip p { font-size: 0.78rem; color: var(--text-dim); letter-spacing: 0.08em; text-align: center; margin-bottom: 1rem; }
   .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
@@ -110,25 +61,22 @@
   .related-card:hover { border-color: rgba(128,203,196,0.3); transform: translateY(-2px); }
   .related-card .r-tag { font-size: 0.65rem; color: var(--mint); letter-spacing: 0.1em; margin-bottom: 0.3rem; }
   .related-card .r-title { font-size: 0.82rem; color: var(--text); line-height: 1.4; }
-
+  .donate-box { margin-top: 2rem; padding: 1.2rem 1.5rem; background: linear-gradient(135deg, rgba(200,169,110,0.07), rgba(149,117,205,0.07)); border: 1px solid rgba(200,169,110,0.2); border-radius: 16px; text-align: center; }
+  .donate-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.7; }
   .contact-icon { width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--glass); border: 1px solid var(--glass-border); color: var(--text-muted); text-decoration: none; transition: all 0.3s ease; }
   .contact-icon:hover { transform: translateY(-4px) scale(1.1); color: #e1306c; border-color: #e1306c; box-shadow: 0 0 20px rgba(225,48,108,0.4); }
-
   @media (max-width: 500px) { .site-navbar { gap: 0.15rem; padding: 0.4rem; } .site-nav-link { padding: 0.35rem 0.7rem; font-size: 0.72rem; } .blog-card { padding: 1.5rem 1.2rem; } }
 </style>
 </head>
 <body>
-
 <div class="aurora">
   <div class="aurora-orb"></div><div class="aurora-orb"></div><div class="aurora-orb"></div>
 </div>
-
 <div class="wrapper">
   <header>
     <span class="brand-symbol">ॐ</span>
     <h1>Adhyatmik Toolkit</h1>
   </header>
-
   <nav class="site-navbar">
     <a href="../index.html"   class="site-nav-link">🏠 Home</a>
     <a href="../ebook.html"   class="site-nav-link">📖 Ebook</a>
@@ -136,140 +84,108 @@
     <a href="../about.html"   class="site-nav-link">🙏 About</a>
     <a href="../contact.html" class="site-nav-link">💛 Support</a>
   </nav>
-
-  <!-- BACK BUTTON TOP -->
-  <a href="../wisdom.html" class="back-btn">← Back to Articles</a>
-
-  <!-- BLOG CONTENT CARD -->
+  <a href="../wisdom.html" class="back-btn">← Wisdom Par Wapas Jaao</a>
   <div class="blog-card">
-    <div class="blog-cat-tag">🌱 Zindagi</div>
-    <h1 class="blog-main-title">जीवन में पहले जैसी खुशी क्यों नहीं रही?</h1>
+    <div class="blog-cat-tag">🕉 Adhyatma</div>
+    <h1 class="blog-main-title">अहंकार — वह दीवार जो हमें सबसे अलग करती है</h1>
     <hr class="blog-divider">
-
-    <!-- =====================================================
-         TUMHARA BLOG CONTENT YAHAN SE SHURU HOTA HAI
-         Sirf <div class="blog-content"> ke andar ka content copy karo
-         ===================================================== -->
     <div class="blog-body">
+      <p><em>कबीर ने कहा — "प्रेम गली अति साँकरी, ता में दो न समाय संग।"</em></p>
 
-      <p><em>कबीर ने कहा — “प्रेम गली अति साँकरी, ता में दो न समाय संग।”</em></p>
-    
-      <p><strong>सच यह है — जब तक “मैं” है, तब तक प्रेम, सत्य या ईश्वर का अनुभव नहीं हो सकता।</strong></p>
-    
-      <p>अहंकार वही दीवार है जो हमें बाकी सब से अलग करती है…  
-      और यही हमारे सभी दुखों की जड़ है।</p>
-    
-      <p>इंसान अपना पूरा जीवन इस “मैं” को सजाने में लगा देता है…  
-      लेकिन कभी यह नहीं देखता कि यह “मैं” है क्या।</p>
-    
+      <p><strong>सच यह है — जब तक "मैं" है, तब तक प्रेम, सत्य या ईश्वर का अनुभव नहीं हो सकता।</strong></p>
+
+      <p>अहंकार वही दीवार है जो हमें बाकी सब से अलग करती है… और यही हमारे सभी दुखों की जड़ है।</p>
+
+      <p>इंसान अपना पूरा जीवन इस "मैं" को सजाने में लगा देता है… लेकिन कभी यह नहीं देखता कि यह "मैं" है क्या।</p>
+
       <hr>
-    
+
       <h2>अहंकार का खेल</h2>
-    
-      <p>अहंकार बहुत चालाक होता है।</p>
-    
-      <p>कभी धन बनकर आता है…  
-      कभी धर्म बनकर…  
-      और कभी आध्यात्मिकता के रूप में।</p>
-    
-      <p><strong>यह यहाँ तक कहता है — “मैं अहंकार रहित हूँ।”</strong></p>
-    
+
+      <p>अहंकार बहुत चालाक होता है। कभी धन बनकर आता है… कभी धर्म बनकर… और कभी आध्यात्मिकता के रूप में।</p>
+
+      <p><strong>यह यहाँ तक कहता है — "मैं अहंकार रहित हूँ।"</strong></p>
+
       <p>और यही सबसे गहरा भ्रम है।</p>
-    
+
+      <p>जब कोई कहता है — "मुझे गुस्सा नहीं आता" — तो अक्सर यही अहंकार बोल रहा होता है। जब कोई कहता है — "मैं बहुत spiritual हूँ" — वहाँ भी यही है।</p>
+
+      <p><strong>अहंकार सबसे ज़्यादा वहाँ छिपता है जहाँ हम उसे ढूँढते ही नहीं।</strong></p>
+
       <hr>
-    
+
       <h2>जागरण कैसे आता है?</h2>
-    
-      <p>रमण महर्षि से किसी ने पूछा — “मैं कौन हूँ?”</p>
-    
-      <p>उन्होंने कहा — <strong>“अगर तू जान गया, तो तू समाप्त हो जाएगा।”</strong></p>
-    
-      <p>जागरण ज्ञान से नहीं…  
-      <strong>अवलोकन से आता है।</strong></p>
-    
-      <p>जब तुम “मैं” से लड़ते हो, वह मजबूत होता है…  
-      लेकिन जब तुम उसे देखते हो — वह धीरे-धीरे पिघलता है।</p>
-    
+
+      <p>रमण महर्षि से किसी ने पूछा — "मैं कौन हूँ?"</p>
+
+      <p>उन्होंने कहा — <strong>"अगर तू जान गया, तो तू समाप्त हो जाएगा।"</strong></p>
+
+      <p>जागरण ज्ञान से नहीं… <strong>अवलोकन से आता है।</strong></p>
+
+      <p>जब तुम "मैं" से लड़ते हो, वह मजबूत होता है… लेकिन जब तुम उसे देखते हो — वह धीरे-धीरे पिघलता है।</p>
+
       <p><strong>यही सच्ची साधना है।</strong></p>
-    
+
       <hr>
-    
+
       <h2>अहंकार कैसे गिरता है?</h2>
-    
-      <p>जब कोई तुम्हारा अपमान करे… और तुम प्रतिक्रिया न दो —  
-      एक परत गिरती है।</p>
-    
-      <p>जब कोई तुम्हारी तारीफ़ करे… और तुम भीतर से मौन रहो —  
-      एक और परत टूटती है।</p>
-    
-      <p><strong>धीरे-धीरे “मैं” गलने लगता है।</strong></p>
-    
+
+      <p>जब कोई तुम्हारा अपमान करे… और तुम प्रतिक्रिया न दो — एक परत गिरती है।</p>
+
+      <p>जब कोई तुम्हारी तारीफ़ करे… और तुम भीतर से मौन रहो — एक और परत टूटती है।</p>
+
+      <p><strong>धीरे-धीरे "मैं" गलने लगता है।</strong></p>
+
       <p>और वहीं से भीतर एक निःशब्दता जन्म लेती है।</p>
-    
+
       <hr>
-    
+
       <h2>Social Media और अहंकार</h2>
-    
-      <p>आज अहंकार पहले से ज्यादा सक्रिय है।</p>
-    
-      <p>हर पोस्ट एक घोषणा है — “देखो, मैं भी हूँ।”</p>
-    
-      <p>हर like एक छोटा नशा है…  
-      जो ego को feed करता है।</p>
-    
+
+      <p>आज अहंकार पहले से ज़्यादा सक्रिय है। हर पोस्ट एक घोषणा है — "देखो, मैं भी हूँ।"</p>
+
+      <p>हर like एक छोटा नशा है… जो ego को feed करता है।</p>
+
       <p><strong>हम connect हो रहे हैं… लेकिन खुद से disconnect हो रहे हैं।</strong></p>
-    
+
       <hr>
-    
+
       <h2>असली सच्चाई</h2>
-    
-      <p><strong>“मैं” कोई वस्तु नहीं — यह एक कहानी है।</strong></p>
-    
+
+      <p><strong>"मैं" कोई वस्तु नहीं — यह एक कहानी है।</strong></p>
+
       <p>नाम, पेशा, इतिहास — सब कहानियाँ हैं।</p>
-    
-      <p>लेकिन तुम कहानी नहीं…  
-      <strong>तुम वह हो जो कहानी को देख रहा है।</strong></p>
-    
-      <p>जब यह समझ आती है —  
-      अहंकार गिरने लगता है।</p>
-    
+
+      <p>लेकिन तुम कहानी नहीं… <strong>तुम वह हो जो कहानी को देख रहा है।</strong></p>
+
+      <p>जब यह समझ आती है — अहंकार गिरने लगता है।</p>
+
       <hr>
-    
+
       <h2>अंतिम सत्य</h2>
-    
-      <p><strong>अहंकार की मृत्यु तुम्हारी मृत्यु नहीं…  
-      तुम्हारे असली जन्म की शुरुआत है।</strong></p>
-    
-      <p>जब “मैं” गिरता है —  
-      तब पहली बार सच्चा “मैं” प्रकट होता है।</p>
-    
+
+      <p><strong>अहंकार की मृत्यु तुम्हारी मृत्यु नहीं… तुम्हारे असली जन्म की शुरुआत है।</strong></p>
+
+      <p>जब "मैं" गिरता है — तब पहली बार सच्चा "मैं" प्रकट होता है।</p>
+
       <p><strong>और वहीं से वास्तविक जीवन शुरू होता है।</strong></p>
-    
     </div>
-    <!-- ===== BLOG CONTENT KHATAM ===== -->
   </div>
-
-  <!-- BOTTOM BUTTONS -->
   <div class="blog-bottom-nav">
-    <a href="../wisdom.html" class="btn-back-bottom">← Back to Articles</a>
-    <button class="btn-share" onclick="shareArticle()">⎘ Share Karein</button>
+    <a href="../wisdom.html" class="btn-back-bottom">← Wisdom Par Wapas Jaao</a>
+    <button class="btn-share" onclick="shareArticle('अहंकार से मुक्ति')">⎘ Share Karein</button>
   </div>
-
-  <!-- RELATED ARTICLES -->
+  <div class="donate-box">
+    <p>Agar yeh lekh aapke kaam aaya, toh apni khushi se support karein 🌸</p>
+    <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_S4QyXobYceXrr6" async></script></form>
+  </div>
   <div class="related-strip" style="margin-top:2rem;">
-    <p>✦ &nbsp; READ MORE &nbsp; ✦</p>
+    <p>✦ &nbsp; AUR PADHEIN &nbsp; ✦</p>
     <div class="related-grid">
-      <a href="gussa.html" class="related-card">
-        <div class="r-tag">🧠 Mann</div>
-        <div class="r-title">गुस्सा क्यों आता है ?एक आध्यात्मिक दृष्टि</div>
-      </a>
-      <a href="jeevan-ka-saar.html" class="related-card">
-        <div class="r-tag">🌱 Zindagi</div>
-        <div class="r-title">जीवन का सार</div>
-      </a>
+      <a href="sakshi-bhav.html" class="related-card"><div class="r-tag">🕉 Adhyatma</div><div class="r-title">साक्षी भाव — जब आप कुछ नहीं करते</div></a>
+      <a href="jeevan-ka-saar.html" class="related-card"><div class="r-tag">🕉 Adhyatma</div><div class="r-title">जीवन का सार</div></a>
     </div>
   </div>
-
   <footer style="margin-top:3rem;padding:2rem 0;border-top:1px solid var(--glass-border);text-align:center;">
     <p style="font-size:0.8rem;color:var(--text-dim);letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
     <div style="margin-top:1.2rem;">
@@ -283,19 +199,15 @@
     <p style="margin-top:1.2rem;font-size:0.75rem;color:var(--text-dim);">प्राचीन ज्ञान · आधुनिक साधना · Eternal Peace</p>
   </footer>
 </div>
-
 <script>
-function shareArticle() {
+function shareArticle(title) {
   if (navigator.share) {
-    navigator.share({
-      title: 'अहंकार से मुक्ति',
-      url: window.location.href
-    });
+    navigator.share({ title: title, url: window.location.href });
   } else {
     navigator.clipboard.writeText(window.location.href).then(() => {
       const btn = document.querySelector('.btn-share');
       btn.textContent = '✓ Link Copy Ho Gaya!';
-      setTimeout(() => btn.textContent = '⎘ Share', 2000);
+      setTimeout(() => btn.textContent = '⎘ Share Karein', 2000);
     });
   }
 }
