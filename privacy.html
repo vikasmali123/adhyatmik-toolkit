@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — Adhyatmik Toolkit</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0b0d14; --bg2: #11141f; --bg3: #181c2a;
+    --glass: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.09);
+    --glass-hover: rgba(255,255,255,0.08); --indigo: #5c6bc0;
+    --indigo-light: #7986cb; --mint: #80cbc4; --mint-glow: rgba(128,203,196,0.18);
+    --gold: #c8a96e; --gold-dim: rgba(200,169,110,0.15);
+    --text: #e8e6f0; --text-muted: #8b8fa8; --text-dim: #555a73; --accent: #9575cd;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+  .aurora { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .aurora-orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.12; animation: drift 18s ease-in-out infinite alternate; }
+  .aurora-orb:nth-child(1) { width: 600px; height: 600px; background: #3d5afe; top: -100px; left: -150px; }
+  .aurora-orb:nth-child(2) { width: 500px; height: 500px; background: #7c4dff; top: 20%; right: -100px; animation-delay: -6s; }
+  .aurora-orb:nth-child(3) { width: 400px; height: 400px; background: #00bfa5; bottom: -50px; left: 30%; animation-delay: -12s; }
+  @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
+  body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
+  .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  header { text-align: center; padding: 3rem 0 2rem; }
+  .brand-symbol { font-size: 2rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.5rem; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
+
+  .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
+  .site-nav-link { padding: 0.42rem 1rem; border-radius: 50px; color: var(--text-muted); font-size: 0.78rem; letter-spacing: 0.05em; text-decoration: none; font-family: 'DM Sans', sans-serif; transition: all 0.3s ease; white-space: nowrap; }
+  .site-nav-link:hover { color: var(--text); background: var(--glass-hover); }
+  .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
+
+  .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 20px; padding: 2rem; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); margin-bottom: 1.5rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--mint); letter-spacing: 0.04em; margin-bottom: 0.3rem; }
+  .section-sub { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+  .divider { border: none; border-top: 1px solid var(--glass-border); margin: 1.5rem 0; }
+
+
+</style>
+</head>
+<body>
+<div class="aurora">
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+  <div class="aurora-orb"></div>
+</div>
+
+<div class="wrapper">
+  <header>
+    <span class="brand-symbol">ॐ</span>
+    <h1>Adhyatmik Toolkit</h1>
+    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+  </header>
+
+  <nav class="site-navbar">
+    <a href="index.html"   class="site-nav-link">🏠 Home</a>
+    <a href="ebook.html"   class="site-nav-link">📖 Ebook</a>
+    <a href="wisdom.html"  class="site-nav-link">✦ Wisdom</a>
+    <a href="about.html"   class="site-nav-link">🙏 About</a>
+    <a href="contact.html" class="site-nav-link">💛 Support</a>
+  </nav>
+
+  <header><h1>Privacy Policy</h1><p>Aapka data, aapki amanat.</p></header>
+  <div class="glass-card">
+    <p>At <strong>Adhyatmik Yatra</strong>, we value the trust you place in us. This policy explains how we handle your information.</p>
+    <h2>1. Information We Collect</h2>
+    <p>When you purchase an e-book or connect with us, we collect basic details like your Name and Email address. This is only to deliver your product and provide support.</p>
+    <h2>2. Payment Security</h2>
+    <p>We use <strong>Razorpay</strong> as our payment gateway. We do not store your credit card, debit card, or UPI details on our servers. All transactions are processed through secure, encrypted channels by Razorpay.</p>
+    <h2>3. Usage of Data</h2>
+    <p>Your email is used to send the e-book download link or to reply to your queries. We promise never to sell, rent, or share your personal data with any third party for marketing purposes.</p>
+    <h2>4. Analytics</h2>
+    <p>We use basic tools like Google Search Console to understand site traffic and improve our spiritual tools. This data is anonymous and does not identify you personally.</p>
+    <p>For any questions, contact us at: <span style="color:var(--mint);">adhyatmikyatra@zohomail.in</span></p>
+    <a href="index.html" class="back-link">← Back to Home</a>
+  </div>
+</div>
+</body>
+</html>
