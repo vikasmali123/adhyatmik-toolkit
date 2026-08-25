@@ -55,7 +55,8 @@
   .intro-text p { font-size: 0.88rem; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; }
 
   /* EBOOK CARDS GRID */
-  .ebooks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .ebooks-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; }
+  @media (max-width: 900px) { .ebooks-grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 640px) { .ebooks-grid { grid-template-columns: 1fr; } }
 
   /* EBOOK CARD */
@@ -77,12 +78,15 @@
   .ebook-card-1:hover { border-color: rgba(149,117,205,0.6); box-shadow: 0 20px 60px rgba(149,117,205,0.1); }
   .ebook-card-2 { border-color: rgba(128,203,196,0.3); }
   .ebook-card-2:hover { border-color: rgba(128,203,196,0.6); box-shadow: 0 20px 60px rgba(128,203,196,0.1); }
+  .ebook-card-3 { border-color: rgba(200,169,110,0.3); }
+  .ebook-card-3:hover { border-color: rgba(200,169,110,0.6); box-shadow: 0 20px 60px rgba(200,169,110,0.1); }
 
   .ebook-emoji {
     font-size: 3.5rem; display: block; text-align: center;
     animation: float 4s ease-in-out infinite;
   }
   .ebook-card-2 .ebook-emoji { animation-delay: -2s; }
+  .ebook-card-3 .ebook-emoji { animation-delay: -1s; }
   @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
 
   .ebook-badge {
@@ -92,6 +96,7 @@
   }
   .badge-purple { background: rgba(149,117,205,0.15); border: 1px solid rgba(149,117,205,0.35); color: var(--accent); }
   .badge-mint { background: var(--mint-glow); border: 1px solid rgba(128,203,196,0.35); color: var(--mint); }
+  .badge-gold { background: var(--gold-dim); border: 1px solid rgba(200,169,110,0.35); color: var(--gold); }
 
   .ebook-card-title {
     font-family: 'Cormorant Garamond', serif;
@@ -100,6 +105,7 @@
   }
   .ebook-card-1 .ebook-card-title { color: var(--accent); }
   .ebook-card-2 .ebook-card-title { color: var(--mint); }
+  .ebook-card-3 .ebook-card-title { color: var(--gold); }
 
   .ebook-card-desc { font-size: 0.8rem; color: var(--text-muted); text-align: center; line-height: 1.7; }
 
@@ -108,6 +114,7 @@
   .ebook-points li::before { flex-shrink: 0; margin-top: 0.15rem; }
   .ebook-card-1 .ebook-points li::before { content: '✦'; color: var(--accent); }
   .ebook-card-2 .ebook-points li::before { content: '✦'; color: var(--mint); }
+  .ebook-card-3 .ebook-points li::before { content: '✦'; color: var(--gold); }
 
   .ebook-price {
     text-align: center; font-family: 'Cormorant Garamond', serif;
@@ -131,11 +138,22 @@
     border: 1px solid rgba(128,203,196,0.5); color: var(--text);
   }
   .cta-mint:hover { background: linear-gradient(135deg, rgba(128,203,196,0.5), rgba(92,107,192,0.4)); box-shadow: 0 0 25px rgba(128,203,196,0.2); }
+  .cta-gold {
+    background: linear-gradient(135deg, rgba(200,169,110,0.35), rgba(149,117,205,0.3));
+    border: 1px solid rgba(200,169,110,0.5); color: var(--text);
+  }
+  .cta-gold:hover { background: linear-gradient(135deg, rgba(200,169,110,0.55), rgba(149,117,205,0.45)); box-shadow: 0 0 25px rgba(200,169,110,0.2); }
 
   /* NEW badge */
   .new-ribbon {
     position: absolute; top: 1rem; right: 1rem;
     background: linear-gradient(135deg, var(--mint), #5c6bc0);
+    color: white; font-size: 0.62rem; letter-spacing: 0.1em;
+    padding: 0.2rem 0.7rem; border-radius: 50px; font-weight: 500;
+  }
+  .new-ribbon-gold {
+    position: absolute; top: 1rem; right: 1rem;
+    background: linear-gradient(135deg, var(--gold), var(--accent));
     color: white; font-size: 0.62rem; letter-spacing: 0.1em;
     padding: 0.2rem 0.7rem; border-radius: 50px; font-weight: 500;
   }
@@ -168,7 +186,7 @@
 
   <div class="intro-text">
     <h2>Kaun Si Ebook Aapke Liye Hai?</h2>
-    <p>Dono ebooks alag-alag dardon ke liye hain, par dono ek hi baat kehti hain: <em style="color:var(--mint);">badlaav bahar se nahi, andar se hota hai.</em> Apni zaroorat ke hisaab se chunein.</p>
+    <p>Teeno ebooks alag-alag dardon ke liye hain, par ek hi baat kehti hain: <em style="color:var(--mint);">badlaav bahar se nahi, andar se hota hai.</em> Apni zaroorat ke hisaab se chunein.</p>
   </div>
 
   <div class="ebooks-grid">
@@ -191,9 +209,8 @@
 
     <!-- EBOOK 2: RISHTE -->
     <a href="ebook/Ebook-rishte.html" class="ebook-card ebook-card-2">
-      <span class="new-ribbon">✦ NEW</span>
       <span class="ebook-emoji">💙</span>
-      <span class="ebook-badge badge-mint">NEW LAUNCH</span>
+      <span class="ebook-badge badge-mint">POPULAR</span>
       <div class="ebook-card-title">रिश्ते कैसे सुधारें?<br><span style="font-size:0.8em;">Jab Rishta Tootne Lage</span></div>
       <p class="ebook-card-desc">Ek hi ghar mein rehke bhi akela feel karna yeh situation bahut log jeete hain par koi nahi batata iska kya karna hai. Yeh ebook batati hai.</p>
       <ul class="ebook-points">
@@ -204,6 +221,23 @@
       </ul>
       <div class="ebook-price">✦ Sirf ₹199 ✦</div>
       <span class="ebook-cta cta-mint">💙 Yeh Ebook Dekhein →</span>
+    </a>
+
+    <!-- EBOOK 3: DHYAN -->
+    <a href="ebook/Ebook-rishte.html" class="ebook-card ebook-card-3">
+      <span class="new-ribbon-gold">✦ NEW</span>
+      <span class="ebook-emoji">🧘</span>
+      <span class="ebook-badge badge-gold">NEW LAUNCH</span>
+      <div class="ebook-card-title">ध्यान कैसे करें?<br><span style="font-size:0.8em;">Ek Saral Maargdarshika</span></div>
+      <p class="ebook-card-desc">Meditation try ki par mann nahi ruka? Yeh ebook aapko shuruat se lekar 21-din ki saadhna tak, ek saral tareeke se le jaati hai.</p>
+      <ul class="ebook-points">
+        <li>Dhyan kya hai aur shuru kaise karein</li>
+        <li>Saakshi bhaav vicharon ko bina uljhe dekhna</li>
+        <li>Dhyan mein aane wali aam badhaon ka samadhaan</li>
+        <li>21 dino ki step-by-step saadhna, roz sirf 10-15 minute</li>
+      </ul>
+      <div class="ebook-price">✦ Sirf ₹98 ✦</div>
+      <span class="ebook-cta cta-gold">🧘 Yeh Ebook Dekhein →</span>
     </a>
 
   </div>
