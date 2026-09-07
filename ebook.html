@@ -40,9 +40,9 @@
   @keyframes drift { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(40px,30px) scale(1.08); } }
   body::after { content: ''; position: fixed; inset: 0; z-index: 1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); opacity: 0.4; }
   .wrapper { position: relative; z-index: 2; max-width: 900px; margin: 0 auto; padding: 0 1.5rem 4rem; }
-  header { text-align: center; padding: 3rem 0 2rem; }
+  header { text-align: center; padding: 1.2rem 0 1rem; }
   .brand-symbol { font-size: 2rem; color: var(--gold); letter-spacing: 0.3em; font-family: 'Cormorant Garamond', serif; font-weight: 300; opacity: 0.8; display: block; margin-bottom: 0.5rem; }
-  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+  header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 6vw, 3.2rem); font-weight: 300; letter-spacing: 0.04em; background: linear-gradient(135deg, #e8e6f0 0%, var(--mint) 60%, var(--gold) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
   header p { margin-top: 0.75rem; color: var(--text-muted); font-size: 0.9rem; letter-spacing: 0.08em; font-weight: 300; }
 
   .site-navbar { display: flex; justify-content: center; gap: 0.25rem; flex-wrap: wrap; padding: 0.55rem 0.8rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 50px; margin: 0 auto 2.5rem; max-width: 580px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); position: relative; z-index: 10; }
@@ -51,12 +51,12 @@
   .site-nav-link.active { background: linear-gradient(135deg, rgba(92,107,192,0.3), rgba(149,117,205,0.25)); color: var(--text); border: 1px solid var(--indigo); box-shadow: 0 0 16px rgba(92,107,192,0.15); }
 
   /* INTRO */
-  .intro-text { text-align: center; margin-bottom: 2rem; }
+  .intro-text { text-align: center; margin-bottom: 1rem; }
   .intro-text h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 300; color: var(--text); margin-bottom: 0.8rem; }
   .intro-text p { font-size: 0.88rem; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; }
 
   /* SWIPE HINT (mobile only) */
-  .swipe-hint { display: none; text-align: center; font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.05em; margin-bottom: 1rem; }
+  .swipe-hint { display: none; text-align: center; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1rem; font-weight: 700; }
   .swipe-hint i { margin: 0 4px; animation: swipe-pulse 1.6s ease-in-out infinite; }
   @keyframes swipe-pulse { 0%,100% { transform: translateX(0); opacity: 0.5; } 50% { transform: translateX(5px); opacity: 1; } }
 
@@ -226,7 +226,7 @@
   <header>
     <span class="brand-symbol">ॐ</span>
     <h1>Adhyatmik Toolkit</h1>
-    <p>आत्म-साक्षात्कार का डिजिटल साथी · Ancient Wisdom, Modern Practice</p>
+    <p>Ancient Wisdom, Modern Practice</p>
   </header>
 
   <nav class="site-navbar">
