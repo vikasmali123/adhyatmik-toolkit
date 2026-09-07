@@ -56,7 +56,7 @@
   .intro-text p { font-size: 0.88rem; color: var(--text-muted); max-width: 520px; margin: 0 auto; line-height: 1.8; }
 
   /* SWIPE HINT (mobile only) */
-  .swipe-hint { display: none; text-align: center; font-size: 0.72rem; color: var(--gold); letter-spacing: 0.05em; margin-bottom: 1rem; font-weight: 700; }
+  .swipe-hint { display: none; text-align: center; font-size: 0.9rem; color: var(--mint); letter-spacing: 0.05em; margin-bottom: 1rem; font-weight: 500; }
   .swipe-hint i { margin: 0 4px; animation: swipe-pulse 1.6s ease-in-out infinite; }
   @keyframes swipe-pulse { 0%,100% { transform: translateX(0); opacity: 0.5; } 50% { transform: translateX(5px); opacity: 1; } }
 
@@ -224,7 +224,6 @@
 
 <div class="wrapper">
   <header>
-    <span class="brand-symbol">ॐ</span>
     <h1>Adhyatmik Toolkit</h1>
     <p>Ancient Wisdom, Modern Practice</p>
   </header>
@@ -238,12 +237,14 @@
   </nav>
 
   <div class="intro-text">
-    <h2>Kaun Si Ebook Aapke Liye Hai?</h2>
+    <h2>Apni Ebook chune...</h2>
     
   </div>
 
-  <p class="swipe-hint"><i class="fa-solid fa-arrow-left"></i> Swipe karke saari ebooks dekhein <i class="fa-solid fa-arrow-right"></i></p>
-
+  <p class="swipe-hint"><i class="fa-solid fa-arrow-left"></i> Swipe <i class="fa-solid fa-arrow-right"></i></p>
+  <div class="carousel-dots" id="carouselDots">
+    <span class="active"></span><span></span><span></span><span></span>
+  </div>
   <div class="ebooks-grid" id="ebooksGrid">
 
     <!-- EBOOK 1: OVERTHINKING -->
@@ -314,9 +315,7 @@
 
   </div>
 
-  <div class="carousel-dots" id="carouselDots">
-    <span class="active"></span><span></span><span></span><span></span>
-  </div>
+  
 
   <footer style="margin-top:2.5rem; padding:2rem 0; border-top:1px solid var(--glass-border); text-align:center;">
     <p style="font-size:0.8rem; color:var(--text-dim); letter-spacing:0.08em;">Made with ❤ for <span style="color:var(--gold);">YOU</span></p>
