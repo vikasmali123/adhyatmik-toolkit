@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Adhyatmik Toolkit — Ebooks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: linear-gradient(180deg, #eef1e4 0%, #c9d4b8 45%, #8a9c78 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1.2rem;
+  }
+  .page {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background: #14161c;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.1rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  }
+  .logo svg { width: 42px; height: 42px; }
+  .brand {
+    font-weight: 700;
+    font-size: 1.35rem;
+    color: #14161c;
+    margin-bottom: 0.7rem;
+  }
+  .tagline {
+    font-size: 0.95rem;
+    color: #2b2f3a;
+    opacity: 0.75;
+    margin-bottom: 1.6rem;
+  }
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #5c4257;
+    border-radius: 50px;
+    padding: 0.55rem 1rem;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease;
+  }
+  .link-btn:active { transform: scale(0.98); }
+  .thumb {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    animation: bob 3s ease-in-out infinite;
+  }
+  .link-btn:nth-child(2) .thumb { animation-delay: -0.6s; }
+  .link-btn:nth-child(3) .thumb { animation-delay: -1.2s; }
+  .link-btn:nth-child(4) .thumb { animation-delay: -1.8s; }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-3px) rotate(-4deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .thumb { animation: none; }
+  }
+  .thumb-1 { background: #efe6f5; }
+  .thumb-2 { background: #e3f0ee; }
+  .thumb-3 { background: #14161c; }
+  .thumb-4 { background: #f7e9ec; }
+  .link-text {
+    flex: 1;
+    text-align: center;
+    font-weight: 500;
+    font-size: 0.98rem;
+    color: #f2ede0;
+  }
+  .price-tag {
+    font-size: .9rem;
+    color: #b8b0a0;
+    flex-shrink: 0;
+    padding-right: 01rem;
+  }
+  .socials {
+    margin-top: 1.6rem;
+    display: flex;
+    gap: 1rem;
+  }
+  .socials a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(20,22,28,0.12);
+    display: flex; align-items: center; justify-content: center;
+    color: #14161c;
+    text-decoration: none;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="brand">Adhyatmik Yatra</div>
+  <div class="tagline">Ebooks</div>
+
+  <div class="links">
+      
+    <a href="https://rzp.io/rzp/Q3qri1GP" target="_blank" class="link-btn">
+      <span class="thumb thumb-4">🌿</span>
+      <span class="link-text">जिंदगी को आसान बनाना सीखिए !</span>
+      <span class="price-tag">₹149</span>
+    </a>
+
+    <a href="https://rzp.io/rzp/zheWSMY" target="_blank" class="link-btn">
+      <span class="thumb thumb-1">🧠</span>
+      <span class="link-text">Overthinking aur aap  </span>
+      <span class="price-tag">₹99</span>
+    </a>
+
+    <a href="https://rzp.io/rzp/4FBZBCHX" target="_blank" class="link-btn">
+      <span class="thumb thumb-2">💙</span>
+      <span class="link-text">रिश्ते कैसे सुधारें?</span>
+      <span class="price-tag">₹199</span>
+    </a>
+
+    <a href="https://rzp.io/rzp/oskSFfBK" target="_blank" class="link-btn">
+      <span class="thumb thumb-3">🧘</span>
+      <span class="link-text">ध्यान कैसे करें?</span>
+      <span class="price-tag">₹98</span>
+    </a>
+
+    
+
+  </div>
+
+
+
+</div>
+</body>
+</html>
